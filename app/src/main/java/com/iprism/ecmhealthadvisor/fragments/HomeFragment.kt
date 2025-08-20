@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 import com.iprism.ecmhealthadvisor.databinding.FragmentHomeBinding
 
@@ -115,7 +116,7 @@ class HomeFragment : Fragment() {
 
     private fun handleAddUSersLo() {
         binding.addUsersLo.setOnClickListener(View.OnClickListener {
-           // startActivity(Intent(requireContext(), AddUsersActivity::class.java))
+            startActivity(Intent(requireContext(), AddUsersActivity::class.java))
         })
     }
 

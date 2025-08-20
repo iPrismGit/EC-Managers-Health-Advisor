@@ -104,4 +104,6 @@
     <string name="team_connect">Team Connect</string>
     <string name="refer_diag_test">Refer Diag Test</string>
     <string name="social_media">Social Media</string>
+    <string name="mobile_contact_leads">Mobile Contact Leads</string>
+    <string name="social_groups">Social Groups</string>
 </resources>
