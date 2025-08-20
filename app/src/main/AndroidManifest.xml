@@ -11,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECMHealthAdvisor">
-
+        <activity
+            android:name=".activities.ReferDiagnosticActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.TeamConnectActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MyTaskProgressActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.MyTasksActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.MobileContactMembersActivity"
             android:exported="false" />

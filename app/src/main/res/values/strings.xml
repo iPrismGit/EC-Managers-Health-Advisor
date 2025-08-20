@@ -107,4 +107,8 @@
     <string name="mobile_contact_leads">Mobile Contact Leads</string>
     <string name="social_groups">Social Groups</string>
     <string name="social_group_members">Social Group Members</string>
+    <string name="refer_diagnostic_test">Refer Diagnostic Test</string>
+    <string name="dob">Date of Birth</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
 </resources>
