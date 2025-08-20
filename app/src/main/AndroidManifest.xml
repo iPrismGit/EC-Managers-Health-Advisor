@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ECMHealthAdvisor">
 
         <activity
+            android:name=".activities.TeamConnectActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.MyTaskProgressActivity"
             android:exported="false" />
 

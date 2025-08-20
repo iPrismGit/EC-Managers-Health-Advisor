@@ -10,6 +10,7 @@ import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
+import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 import com.iprism.ecmhealthadvisor.databinding.FragmentHomeBinding
 
@@ -144,7 +145,7 @@ class HomeFragment : Fragment() {
 
     private fun handleTeamConnectLo() {
         binding.teamConnectLo.setOnClickListener { view ->
-        //    startActivity(Intent(requireContext(), TeamConnectActivity::class.java))
+            startActivity(Intent(requireContext(), TeamConnectActivity::class.java))
         }
     }
 
