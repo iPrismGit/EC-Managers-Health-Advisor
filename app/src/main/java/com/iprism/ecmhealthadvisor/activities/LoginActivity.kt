@@ -35,10 +35,10 @@ class LoginActivity : AppCompatActivity() {
         binding.termsTxt.setOnClickListener { view ->
             tag = "terms"
             name = "Terms & Conditions"
-//            var intent = Intent(this, ContentPagesActivity::class.java)
-//            intent.putExtra("tag", tag)
-//            intent.putExtra("name", name)
-//            startActivity(intent)
+            var intent = Intent(this, ContentPagesActivity::class.java)
+            intent.putExtra("tag", tag)
+            intent.putExtra("name", name)
+            startActivity(intent)
         }
     }
 

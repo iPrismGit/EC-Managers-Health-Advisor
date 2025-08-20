@@ -110,11 +110,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         bottomSheetBinding.contactUsLo.setOnClickListener(View.OnClickListener {
-          //  startActivity(Intent(this, ContactUsActivity::class.java))
+            startActivity(Intent(this, ContactUsActivity::class.java))
         })
 
         bottomSheetBinding!!.aboutUsLo.setOnClickListener(View.OnClickListener {
-         //   startActivity(Intent(this, AboutUsActivity::class.java))
+            startActivity(Intent(this, AboutUsActivity::class.java))
         })
 
         bottomSheetBinding!!.logOutLo.setOnClickListener(View.OnClickListener {

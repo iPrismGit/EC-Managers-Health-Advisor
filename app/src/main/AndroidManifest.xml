@@ -11,6 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECMHealthAdvisor">
+
+        <activity
+            android:name=".activities.AboutUsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.ContactUsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ContentPagesActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.AddUsersActivity"
             android:exported="false" />
