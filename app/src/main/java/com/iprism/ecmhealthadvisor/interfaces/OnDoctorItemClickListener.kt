@@ -1,4 +1,4 @@
-package com.iprism.ecmcorporatemarketing.interfaces
+package com.iprism.ecmhealthadvisor.interfaces
 
 interface OnDoctorItemClickListener {
 

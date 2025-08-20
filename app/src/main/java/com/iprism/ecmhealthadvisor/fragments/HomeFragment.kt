@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
+import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
+import com.iprism.ecmhealthadvisor.activities.HospitalHodsActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
@@ -161,13 +163,13 @@ class HomeFragment : Fragment() {
 
     private fun handleHospitalHodsLo() {
         binding.hospitalHodsLo.setOnClickListener { view ->
-          //  startActivity(Intent(requireContext(), HospitalHodsActivity::class.java))
+            startActivity(Intent(requireContext(), HospitalHodsActivity::class.java))
         }
     }
 
     private fun handleHospitalDoctorsLo() {
         binding.hospitalDoctorsLo.setOnClickListener { view ->
-         //   startActivity(Intent(requireContext(), HospitalDoctorsActivity::class.java))
+            startActivity(Intent(requireContext(), HospitalDoctorsActivity::class.java))
         }
     }
 

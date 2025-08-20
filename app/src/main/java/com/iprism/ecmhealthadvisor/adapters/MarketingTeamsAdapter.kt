@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.VISIBLE
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-import com.iprism.ecmcorporatemarketing.interfaces.OnSingleItemClickListener
+import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 

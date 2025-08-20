@@ -1,4 +1,4 @@
-package com.iprism.ecmanagerstrademarketing.interfaces
+package com.iprism.ecmhealthadvisor.interfaces
 
 interface OnEventClickListener {
 

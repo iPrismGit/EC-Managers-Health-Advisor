@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import com.iprism.ecmcorporatemarketing.interfaces.OnDoctorItemClickListener
+import com.iprism.ecmhealthadvisor.interfaces.OnDoctorItemClickListener
 import com.iprism.ecmhealthadvisor.adapters.MyTasksAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityMyTasksBinding
 

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.iprism.ecmcorporatemarketing.interfaces.OnDoctorItemClickListener
+import com.iprism.ecmhealthadvisor.interfaces.OnDoctorItemClickListener
 import com.iprism.ecmhealthadvisor.databinding.DoctorItemBinding
 
 class MyTasksAdapter(var context: Context) : Adapter<MyTasksAdapter.MyTaskViewHolder>() {

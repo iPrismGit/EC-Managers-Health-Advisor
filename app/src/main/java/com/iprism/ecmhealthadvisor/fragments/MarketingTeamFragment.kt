@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iprism.ecmhealthadvisor.adapters.MarketingTeamsAdapter
-import com.iprism.ecmcorporatemarketing.interfaces.OnSingleItemClickListener
+import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.databinding.FragmentMarketingTeamBinding
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 

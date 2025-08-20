@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.annotation.UiContext
 import androidx.recyclerview.widget.RecyclerView
-import com.iprism.ecmanagerstrademarketing.interfaces.OnEventClickListener
-import com.iprism.ecmcorporatemarketing.interfaces.OnSingleItemClickListener
+import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.R
-import com.iprism.ecmhealthadvisor.databinding.ActivityMainBinding
 import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 
 class MembersAdapter(var context: Context) : RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {

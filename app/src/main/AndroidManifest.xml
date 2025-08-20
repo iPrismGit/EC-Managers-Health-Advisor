@@ -11,6 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECMHealthAdvisor">
+
+        <activity
+            android:name=".activities.HospitalHodsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.HospitalDoctorsActivity"
+            android:exported="false" />
+
         <activity
             android:name=".activities.ReferDiagnosticActivity"
             android:exported="false" />
