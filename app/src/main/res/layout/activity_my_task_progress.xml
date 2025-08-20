@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MyTaskProgressActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="6dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            app:srcCompat="@drawable/white_back"
+            app:tint="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="My Tasks"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#EEEEEEEE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/light_gray1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="August 2025"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/lato"/>
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_gray1"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="July 2025"
+                            android:gravity="center"
+                            android:layout_weight="1"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/lato"/>
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/light_gray1"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="June 2025"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/lato"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/light_gray1"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"
+                                android:gravity="center"
+                                android:text="Lead Task"/>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginBottom="4dp"
+                                app:cardBackgroundColor="#C1FFAE">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="300"
+                                    android:gravity="center"
+                                    android:textSize="22dp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/lato_medium"
+                                    android:padding="20dp"/>
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:textSize="14dp"
+                                android:text="Achived"/>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginBottom="4dp"
+                                app:cardBackgroundColor="#FFD09C">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="100"
+                                    android:gravity="center"
+                                    android:textSize="22dp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/lato_medium"
+                                    android:padding="20dp"/>
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"
+                                android:gravity="center"
+                                android:text="Pending"/>
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="8dp"
+                                android:layout_marginBottom="4dp"
+                                app:cardBackgroundColor="#FFCACB">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="200"
+                                    android:textSize="22dp"
+                                    android:gravity="center"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/lato_medium"
+                                    android:padding="20dp"/>
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingStart="20dp">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Good"
+                            android:checked="true"
+                            android:enabled="false"
+                            android:textColor="@color/black"
+                            android:buttonTint="@color/green" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:enabled="false"
+                            android:layout_marginStart="16dp"
+                            android:text="Average"/>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:enabled="false"
+                            android:layout_marginStart="16dp"
+                            android:text="Poor"/>
+                    </RadioGroup>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="Graph"
+                        android:layout_margin="4dp"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/lato_medium"/>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/graph_img"
+                        android:layout_marginTop="20dp"
+                        android:adjustViewBounds="true"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
