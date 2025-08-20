@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
+import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 import com.iprism.ecmhealthadvisor.databinding.FragmentHomeBinding
 
@@ -32,7 +34,47 @@ class HomeFragment : Fragment() {
         handlePatientTestimonialsLo()
         handleHealthTalks()
         handleHealthMedia()
+        handleMobileContactMembers()
+        handleMyGroupMembersLo()
+        handleSocialGroupMembers()
+        handleWhatsappGroupMembersLo()
         return binding.root
+    }
+
+    private fun handleWhatsappGroupMembersLo() {
+        binding.whatsappGroupLo.setOnClickListener { view ->
+            var value = getString(R.string.whats_app_group_members)
+            var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
+            intent.putExtra("tag", value)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleSocialGroupMembers() {
+        binding.socialGroupMembersLo.setOnClickListener { view ->
+            var value = getString(R.string.social_group_members)
+            var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
+            intent.putExtra("tag", value)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMyGroupMembersLo() {
+        binding.myGroupMembersLo.setOnClickListener { view ->
+            var value = getString(R.string.my_group_members)
+            var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
+            intent.putExtra("tag", value)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMobileContactMembers() {
+        binding.mobileContactMembersLo.setOnClickListener { view ->
+            var value = getString(R.string.mobile_contact_members)
+            var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
+            intent.putExtra("tag", value)
+            startActivity(intent)
+        }
     }
 
 
@@ -111,8 +153,6 @@ class HomeFragment : Fragment() {
          //   startActivity(Intent(requireContext(), HospitalDoctorsActivity::class.java))
         }
     }
-
-
 
     private fun handleAddUSersLo() {
         binding.addUsersLo.setOnClickListener(View.OnClickListener {
