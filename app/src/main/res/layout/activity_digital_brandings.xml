@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.DigitalBrandingsActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_img"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="12dp"
+            app:srcCompat="@drawable/white_back"
+            app:tint="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/digital_branding"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Images"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato" />
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Videos"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato" />
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reels"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato" />
+
+                    <View
+                        android:layout_width="0.5dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/gray"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Social frames"
+                        android:padding="12dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/gray"/>
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/light_gray1"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:fontFamily="@font/lato_medium"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="Branding"/>
+
+                            <LinearLayout
+                                android:id="@+id/add_branding_promo_lo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    app:tint="#0075AF"
+                                    android:src="@drawable/pluse_img"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Promos"
+                                    android:textSize="12dp"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:textColor="#0075AF"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/branding_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp" />
+
+                        <Button
+                            android:id="@+id/branding_view_all_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:padding="12dp"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12dp"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            app:cornerRadius="26dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/light_gray1"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:fontFamily="@font/lato_medium"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="Festivals"/>
+
+                            <LinearLayout
+                                android:id="@+id/add_festival_promo_lo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    app:tint="#0075AF"
+                                    android:src="@drawable/pluse_img"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Promos"
+                                    android:textSize="12dp"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:textColor="#0075AF"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/festivals_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp" />
+
+                        <Button
+                            android:id="@+id/festivals_view_all_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:padding="12dp"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12dp"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            app:cornerRadius="26dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/light_gray1"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:fontFamily="@font/lato_medium"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="Occasions"/>
+
+                            <LinearLayout
+                                android:id="@+id/add_occasion_promo_lo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    app:tint="#0075AF"
+                                    android:src="@drawable/pluse_img"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Promos"
+                                    android:textSize="12dp"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:textColor="#0075AF"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/occasion_promos_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp" />
+
+                        <Button
+                            android:id="@+id/occasion_view_all_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:padding="12dp"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12dp"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            app:cornerRadius="26dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/light_gray1"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:fontFamily="@font/lato_medium"
+                                android:textColor="@color/black"
+                                android:layout_weight="1"
+                                android:text="BirthDays"/>
+
+                            <LinearLayout
+                                android:id="@+id/add_birthday_promo_lo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    app:tint="#0075AF"
+                                    android:src="@drawable/pluse_img"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add Promos"
+                                    android:textSize="12dp"
+                                    android:layout_marginStart="6dp"
+                                    android:fontFamily="@font/inter_semibold"
+                                    android:textColor="#0075AF"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/birthdays_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="8dp" />
+
+                        <Button
+                            android:id="@+id/birthdays_view_all_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:padding="12dp"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="16dp"
+                            android:textSize="12dp"
+                            android:text="View All"
+                            android:textAllCaps="false"
+                            app:cornerRadius="26dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/light_gray1"/>
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

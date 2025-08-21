@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
+import com.iprism.ecmhealthadvisor.activities.DigitalBrandingsActivity
 import com.iprism.ecmhealthadvisor.activities.HealthMediaActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalFecilitiesActivity
@@ -58,7 +59,7 @@ class HomeFragment : Fragment() {
 
     private fun handleDigitalBrandingLo() {
         binding.digitalBrandingLo.setOnClickListener { view ->
-            ToastUtils.showErrorCustomToast(requireContext(), "There are No Screens in Figma!")
+           startActivity(Intent(requireContext(), DigitalBrandingsActivity::class.java))
         }
     }
 

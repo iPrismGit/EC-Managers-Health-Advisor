@@ -11,31 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ECMHealthAdvisor">
-
+        <activity
+            android:name=".activities.AddDeigitalBrandingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ViewAllDigitalBrandingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DigitalBrandingsActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.HospitalFecilitiesActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.HospitalTariffSingleListActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.HospitalTariffsListActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.HealthMediaActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.HospitalTieupsActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.SingleHospitalTieupsActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.PromoCouponsActivity"
             android:exported="false" />
