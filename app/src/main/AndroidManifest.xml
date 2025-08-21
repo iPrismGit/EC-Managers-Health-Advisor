@@ -13,6 +13,18 @@
         android:theme="@style/Theme.ECMHealthAdvisor">
 
         <activity
+            android:name=".activities.HealthMediaActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.HospitalTieupsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.SingleHospitalTieupsActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".activities.PromoCouponsActivity"
             android:exported="false" />
         <activity

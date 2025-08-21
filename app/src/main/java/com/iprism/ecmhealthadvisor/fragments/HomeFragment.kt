@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
+import com.iprism.ecmhealthadvisor.activities.HealthMediaActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalHodsActivity
+import com.iprism.ecmhealthadvisor.activities.HospitalTieupsActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
 import com.iprism.ecmhealthadvisor.activities.PromoCouponsActivity
@@ -100,7 +102,7 @@ class HomeFragment : Fragment() {
 
     private fun handleHealthMedia() {
         binding.healthMediaLo.setOnClickListener { view ->
-         //   startActivity(Intent(requireContext(), HealthMediaActivity::class.java))
+            startActivity(Intent(requireContext(), HealthMediaActivity::class.java))
         }
     }
 
@@ -125,26 +127,26 @@ class HomeFragment : Fragment() {
 
     private fun handleHospitalTarrifsLo() {
         binding.hospitalTariffsLo.setOnClickListener { view ->
-         //   startActivity(Intent(requireContext(), HospitalTariffsListActivity::class.java))
+            //   startActivity(Intent(requireContext(), HospitalTariffsListActivity::class.java))
         }
     }
 
     private fun handleHospitalTieupsLo() {
         binding.hospitalTieupsLo.setOnClickListener { view ->
-           // startActivity(Intent(requireContext(), HospitalTieupsActivity::class.java))
+            startActivity(Intent(requireContext(), HospitalTieupsActivity::class.java))
         }
     }
 
     private fun handleHospitalFecilitiesLo() {
         binding.hospitalFacilitiesLo.setOnClickListener { view ->
-          //  startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
+            //  startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
         }
 
     }
 
     private fun handleRewardsLo() {
         binding.rewardsLo.setOnClickListener { view ->
-          //  startActivity(Intent(requireContext(), RewardsActivity::class.java))
+            //  startActivity(Intent(requireContext(), RewardsActivity::class.java))
         }
     }
 
@@ -159,7 +161,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), TeamConnectActivity::class.java))
         }
     }
-
 
 
     private fun handleHospitalHodsLo() {
