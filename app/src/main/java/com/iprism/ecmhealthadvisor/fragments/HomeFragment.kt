@@ -10,6 +10,7 @@ import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
 import com.iprism.ecmhealthadvisor.activities.HealthMediaActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
+import com.iprism.ecmhealthadvisor.activities.HospitalFecilitiesActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalHodsActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalTariffsListActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalTieupsActivity
@@ -35,7 +36,6 @@ class HomeFragment : Fragment() {
         handleHospitalHodsLo()
         handleTeamConnectLo()
         handlePromoCouponsLo()
-        handleRewardsLo()
         handleHospitalFecilitiesLo()
         handleHospitalTieupsLo()
         handleHospitalTarrifsLo()
@@ -140,16 +140,12 @@ class HomeFragment : Fragment() {
 
     private fun handleHospitalFecilitiesLo() {
         binding.hospitalFacilitiesLo.setOnClickListener { view ->
-            //  startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
+              startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
         }
 
     }
 
-    private fun handleRewardsLo() {
-        binding.rewardsLo.setOnClickListener { view ->
-            //  startActivity(Intent(requireContext(), RewardsActivity::class.java))
-        }
-    }
+
 
     private fun handlePromoCouponsLo() {
         binding.promoCouponsLo.setOnClickListener { view ->
