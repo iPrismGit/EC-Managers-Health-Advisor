@@ -12,6 +12,7 @@ import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalHodsActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
+import com.iprism.ecmhealthadvisor.activities.PromoCouponsActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
 import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
@@ -149,7 +150,7 @@ class HomeFragment : Fragment() {
 
     private fun handlePromoCouponsLo() {
         binding.promoCouponsLo.setOnClickListener { view ->
-           // startActivity(Intent(requireContext(), PromoCouponsActivity::class.java))
+            startActivity(Intent(requireContext(), PromoCouponsActivity::class.java))
         }
     }
 
