@@ -11,6 +11,7 @@ import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
 import com.iprism.ecmhealthadvisor.activities.HealthMediaActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalHodsActivity
+import com.iprism.ecmhealthadvisor.activities.HospitalTariffsListActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalTieupsActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
@@ -127,7 +128,7 @@ class HomeFragment : Fragment() {
 
     private fun handleHospitalTarrifsLo() {
         binding.hospitalTariffsLo.setOnClickListener { view ->
-            //   startActivity(Intent(requireContext(), HospitalTariffsListActivity::class.java))
+               startActivity(Intent(requireContext(), HospitalTariffsListActivity::class.java))
         }
     }
 
