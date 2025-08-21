@@ -426,7 +426,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/refer_diagnostic_lo"
+                            android:id="@+id/refer_admission_lo"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="4dp"
@@ -456,9 +456,48 @@
                                 android:layout_marginTop="6dp"
                                 android:fontFamily="@font/lato"
                                 android:gravity="center"
-                                android:text="@string/refer_diag_test"
+                                android:text="@string/refer_an_admission"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/refer_diagnostic_lo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="match_parent"
+                                android:layout_height="80dp"
+                                android:visibility="visible"
+                                app:cardCornerRadius="8dp"
+                                app:strokeColor="@color/gray"
+                                app:strokeWidth="0.5dp">
+
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/team_connect_img" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/lato"
+                                android:gravity="center"
+                                android:text="@string/refer_diag_test"
+                                android:textColor="@color/black"
+                                android:textSize="12dp"
+                                android:visibility="visible" />
 
                         </LinearLayout>
 
@@ -467,7 +506,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="4dp"
-                            android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -500,12 +538,20 @@
                                 android:visibility="visible" />
 
                         </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/health_media_lo"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -538,19 +584,13 @@
                                 android:visibility="visible" />
 
                         </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="16dp"
-                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:id="@+id/social_media_lo"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="4dp"
+                            android:layout_marginStart="4dp"
                             android:layout_weight="1"
                             android:orientation="vertical">
 
@@ -657,42 +697,7 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="4dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
 
-                            <com.google.android.material.card.MaterialCardView
-                                android:layout_width="match_parent"
-                                android:layout_height="80dp"
-                                android:visibility="gone"
-                                app:cardCornerRadius="8dp"
-                                app:strokeColor="@color/gray"
-                                app:strokeWidth="0.5dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:adjustViewBounds="true"
-                                    android:scaleType="centerCrop"
-                                    android:src="@drawable/events_img" />
-
-                            </com.google.android.material.card.MaterialCardView>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="6dp"
-                                android:fontFamily="@font/lato"
-                                android:gravity="center"
-                                android:text="Events"
-                                android:textColor="@color/black"
-                                android:textSize="12dp"
-                                android:visibility="gone" />
-
-                        </LinearLayout>
                     </LinearLayout>
 
                     <androidx.cardview.widget.CardView

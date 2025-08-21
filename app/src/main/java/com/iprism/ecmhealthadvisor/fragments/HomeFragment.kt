@@ -49,12 +49,39 @@ class HomeFragment : Fragment() {
         handleWhatsappGroupMembersLo()
         handleTargetVsPerformanceLo()
         handleReferDiagnosticLo()
+        handleReferAdmissionLo()
+        handleServiceFeedBackLo()
+        handleDigitalBrandingLo()
         return binding.root
+    }
+
+
+    private fun handleDigitalBrandingLo() {
+        binding.digitalBrandingLo.setOnClickListener { view ->
+            ToastUtils.showErrorCustomToast(requireContext(), "There are No Screens in Figma!")
+        }
+    }
+
+    private fun handleServiceFeedBackLo() {
+        binding.serviceFeedBackLo.setOnClickListener { view ->
+            ToastUtils.showErrorCustomToast(requireContext(), "There are No Screens in Figma!")
+        }
     }
 
     private fun handleReferDiagnosticLo() {
         binding.referDiagnosticLo.setOnClickListener { view ->
-            startActivity(Intent(requireContext(), ReferDiagnosticActivity::class.java))
+            var intent = Intent(requireContext(), ReferDiagnosticActivity::class.java)
+            intent.putExtra("tag", "Diagnostic Test")
+            startActivity(intent)
+        }
+    }
+
+
+    private fun handleReferAdmissionLo() {
+        binding.referAdmissionLo.setOnClickListener { view ->
+            var intent = Intent(requireContext(), ReferDiagnosticActivity::class.java)
+            intent.putExtra("tag", "Hospital Admission")
+            startActivity(intent)
         }
     }
 
