@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.activities.AddUsersActivity
+import com.iprism.ecmhealthadvisor.activities.AdvisorBenefitsActivity
 import com.iprism.ecmhealthadvisor.activities.DigitalBrandingsActivity
 import com.iprism.ecmhealthadvisor.activities.HealthMediaActivity
 import com.iprism.ecmhealthadvisor.activities.HospitalDoctorsActivity
@@ -53,7 +54,14 @@ class HomeFragment : Fragment() {
         handleReferAdmissionLo()
         handleServiceFeedBackLo()
         handleDigitalBrandingLo()
+        handleAdvisorBenefitsLo()
         return binding.root
+    }
+
+    private fun handleAdvisorBenefitsLo() {
+        binding.advisorBenefitsLo.setOnClickListener { view ->
+            startActivity(Intent(requireContext(), AdvisorBenefitsActivity::class.java))
+        }
     }
 
 

@@ -111,4 +111,7 @@
     <string name="dob">Date of Birth</string>
     <string name="female">Female</string>
     <string name="male">Male</string>
+    <string name="advisor_benefits">Advisor Benefits</string>
+    <string name="accept_terms_and_conditions_for_advisor_benefits">Accept<font fgcolor='#1B55F1'> terms and conditions</font> for Advisor Benefits </string>
+    <string name="book_appointment">Book Appointment</string>
 </resources>

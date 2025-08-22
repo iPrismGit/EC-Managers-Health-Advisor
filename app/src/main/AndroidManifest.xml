@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECMHealthAdvisor">
         <activity
+            android:name=".activities.BenifitTypesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AdvisorBenefitsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddDeigitalBrandingActivity"
             android:exported="false" />
         <activity
