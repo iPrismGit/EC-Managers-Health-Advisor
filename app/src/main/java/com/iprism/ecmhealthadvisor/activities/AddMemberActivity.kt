@@ -88,7 +88,7 @@ class AddMemberActivity : AppCompatActivity() {
 
     private fun handleBack() {
         binding.backImg.setOnClickListener { view ->
-            finishAffinity()
+            finish()
         }
     }
 
