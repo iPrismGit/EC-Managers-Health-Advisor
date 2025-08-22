@@ -55,7 +55,14 @@ class HomeFragment : Fragment() {
         handleServiceFeedBackLo()
         handleDigitalBrandingLo()
         handleAdvisorBenefitsLo()
+        handleSocialMediaLo()
         return binding.root
+    }
+
+    private fun handleSocialMediaLo() {
+        binding.socialMediaLo.setOnClickListener { view ->
+            ToastUtils.showErrorCustomToast(requireContext(), "There No Screens in Figma!")
+        }
     }
 
     private fun handleAdvisorBenefitsLo() {

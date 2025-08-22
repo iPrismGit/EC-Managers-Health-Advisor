@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.iprism.ecmhealthadvisor.R
+import com.iprism.ecmhealthadvisor.activities.AddMemberActivity
 import com.iprism.ecmhealthadvisor.databinding.FragmentAddUsersBinding
 
 class AddUsersFragment : Fragment() {
@@ -17,42 +19,47 @@ class AddUsersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAddUsersBinding.inflate(inflater, container, false)
-//        handleMyLeadsLo()
-//        handleCompaniesLo()
-//        handleMyHealthAdvisorLo()
-//        handleOutBoundMarketingTeamLo()
-//        handlePanelAdvisorsLo()
+        handleMobileContactLeadsLo()
+        handleMyGroupsLo()
+        handleMyWhatsaapLo()
+        handleSocialLo()
         return binding.root
     }
 
-//    private fun handlePanelAdvisorsLo() {
-//        binding.panelAdvisorsLo.setOnClickListener { view ->
-//            startActivity(Intent(requireContext(), AddPanelAdvisorActivity::class.java))
-//        }
-//    }
-//
-//    private fun handleMyHealthAdvisorLo() {
-//        binding.healthAdvisersLo.setOnClickListener { view ->
-//            startActivity(Intent(requireContext(), AddHealthAdvisorActivity::class.java))
-//        }
-//    }
-//
-//    private fun handleOutBoundMarketingTeamLo() {
-//        binding.clientRelationsLo.setOnClickListener { view ->
-//            startActivity(Intent(requireContext(), AddOutBoundMarketingTeamActivity::class.java))
-//        }
-//    }
-//
-//    private fun handleCompaniesLo() {
-//        binding.companiesLo.setOnClickListener(View.OnClickListener {
-//            startActivity(Intent(requireContext(), CreateCompaniesActivity::class.java))
-//        })
-//    }
-//
-//    private fun handleMyLeadsLo() {
-//        binding.myLeadsLo.setOnClickListener(View.OnClickListener {
-//            startActivity(Intent(requireContext(), CreateMyLeadsActivity::class.java))
-//        })
-//    }
+    private fun handleSocialLo() {
+        binding.soccialGroupsLo.setOnClickListener { view ->
+            var name = getString(R.string.social_groups)
+            var intent = Intent(requireContext(), AddMemberActivity::class.java)
+            intent.putExtra("name", name)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMyWhatsaapLo() {
+        binding.whatsappGroupLo.setOnClickListener { view ->
+            var name = getString(R.string.whats_app_group_members)
+            var intent = Intent(requireContext(), AddMemberActivity::class.java)
+            intent.putExtra("name", name)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMyGroupsLo() {
+        binding.myGroupLo.setOnClickListener { view ->
+            var name = getString(R.string.my_group_members)
+            var intent = Intent(requireContext(), AddMemberActivity::class.java)
+            intent.putExtra("name", name)
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMobileContactLeadsLo() {
+        binding.mobileContactLeadsLo.setOnClickListener { view ->
+            var name = getString(R.string.mobile_contact_leads)
+            var intent = Intent(requireContext(), AddMemberActivity::class.java)
+            intent.putExtra("name", name)
+            startActivity(intent)
+        }
+    }
 
 }

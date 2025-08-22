@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ECMHealthAdvisor">
         <activity
+            android:name=".activities.AddMemberActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.BenifitTypesActivity"
             android:exported="false" />
         <activity

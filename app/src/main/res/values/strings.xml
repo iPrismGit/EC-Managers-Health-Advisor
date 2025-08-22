@@ -114,4 +114,9 @@
     <string name="advisor_benefits">Advisor Benefits</string>
     <string name="accept_terms_and_conditions_for_advisor_benefits">Accept<font fgcolor='#1B55F1'> terms and conditions</font> for Advisor Benefits </string>
     <string name="book_appointment">Book Appointment</string>
+    <string name="your_treatment_covered_under">Your Treatment Covered Under</string>
+    <string name="company_insurance">Company Insurance</string>
+    <string name="health_insurance">Health Insurance</string>
+    <string name="cash">Cash</string>
+    <string name="download_app">Download App</string>
 </resources>
