@@ -28,9 +28,12 @@ class HospitalTariffsListActivity : AppCompatActivity() {
         var linearLayoutManager = LinearLayoutManager(this)
         binding.tariffsRv.adapter = hospitalTariffsAdapter
         binding.tariffsRv.layoutManager = linearLayoutManager
-        hospitalTariffsAdapter.setupListener(object  : OnWhiteBoardClickListener{
+        hospitalTariffsAdapter.setupListener(object : OnWhiteBoardClickListener {
             override fun onItemClick(boardId: String) {
-                var intent = Intent(this@HospitalTariffsListActivity, HospitalTariffSingleListActivity::class.java)
+                var intent = Intent(
+                    this@HospitalTariffsListActivity,
+                    HospitalTariffSingleListActivity::class.java
+                )
                 startActivity(intent)
             }
 

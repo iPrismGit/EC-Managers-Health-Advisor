@@ -14,7 +14,7 @@ import com.iprism.ecmhealthadvisor.databinding.ActivityMyTasksBinding
 
 class MyTasksActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMyTasksBinding
+    private lateinit var binding: ActivityMyTasksBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +35,7 @@ class MyTasksActivity : AppCompatActivity() {
         var linearLayoutManager = GridLayoutManager(this, 4)
         binding.myTasksRv.adapter = myTasksAdapter
         binding.myTasksRv.layoutManager = linearLayoutManager
-        myTasksAdapter.setupListener(object  : OnDoctorItemClickListener{
+        myTasksAdapter.setupListener(object : OnDoctorItemClickListener {
             override fun onItemClick(categoryId: String, doctorId: String) {
                 var intent = Intent(this@MyTasksActivity, MyTaskProgressActivity::class.java)
                 startActivity(intent)

@@ -12,7 +12,7 @@ import com.iprism.ecmhealthadvisor.databinding.ActivityHospitalFecilitiesBinding
 
 class HospitalFecilitiesActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityHospitalFecilitiesBinding
+    private lateinit var binding: ActivityHospitalFecilitiesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

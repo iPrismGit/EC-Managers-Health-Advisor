@@ -51,7 +51,7 @@ class TeamConnectActivity : AppCompatActivity() {
         })
     }
 
-    private fun setupButtonsStyling(textView: TextView, textView1: TextView){
+    private fun setupButtonsStyling(textView: TextView, textView1: TextView) {
         textView.setTextColor(ContextCompat.getColor(this, R.color.white))
         textView.setBackgroundColor(ContextCompat.getColor(this, R.color.green))
         textView1.setTextColor(ContextCompat.getColor(this, R.color.black))

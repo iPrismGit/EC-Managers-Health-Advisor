@@ -13,7 +13,7 @@ import com.iprism.ecmhealthadvisor.databinding.ActivityNotificationsBinding
 
 class NotificationsActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityNotificationsBinding
+    private lateinit var binding: ActivityNotificationsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,4 +41,5 @@ class NotificationsActivity : AppCompatActivity() {
             finish()
         })
     }
+
 }

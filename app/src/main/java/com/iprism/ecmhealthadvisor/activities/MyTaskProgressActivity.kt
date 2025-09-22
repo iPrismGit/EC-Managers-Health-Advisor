@@ -10,7 +10,7 @@ import com.iprism.ecmhealthadvisor.databinding.ActivityMyTaskProgressBinding
 
 class MyTaskProgressActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMyTaskProgressBinding
+    private lateinit var binding: ActivityMyTaskProgressBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -96,7 +96,7 @@ class ReferDiagnosticActivity : AppCompatActivity() {
 
     private fun handleBack() {
         binding.backImg.setOnClickListener { view ->
-           finish()
+            finish()
         }
     }
 

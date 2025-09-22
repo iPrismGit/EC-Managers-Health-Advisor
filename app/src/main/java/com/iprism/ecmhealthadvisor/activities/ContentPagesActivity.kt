@@ -9,8 +9,8 @@ import com.iprism.ecmhealthadvisor.databinding.ActivityContentPagesBinding
 class ContentPagesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContentPagesBinding
-    private var tag : String = ""
-    private var name : String = ""
+    private var tag: String = ""
+    private var name: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

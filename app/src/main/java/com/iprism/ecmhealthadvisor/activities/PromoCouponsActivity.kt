@@ -87,4 +87,5 @@ class PromoCouponsActivity : AppCompatActivity() {
             finish()
         })
     }
+
 }

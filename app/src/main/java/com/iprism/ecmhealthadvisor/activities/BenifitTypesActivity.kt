@@ -46,9 +46,9 @@ class BenifitTypesActivity : AppCompatActivity() {
     }
 
     private fun handleBack() {
-       binding.backImg.setOnClickListener { view ->
-           finish()
-       }
+        binding.backImg.setOnClickListener { view ->
+            finish()
+        }
     }
 
 }

@@ -40,9 +40,12 @@ class AddDeigitalBrandingActivity : AppCompatActivity() {
         var linearLayoutManager = GridLayoutManager(this, 2)
         binding.brandingsRv.adapter = templatesAdapter
         binding.brandingsRv.layoutManager = linearLayoutManager
-        templatesAdapter.setupListener(object : OnWhiteBoardClickListener{
+        templatesAdapter.setupListener(object : OnWhiteBoardClickListener {
             override fun onItemClick(boardId: String) {
-                ToastUtils.showSuccessCustomToast(this@AddDeigitalBrandingActivity, "Digital Branding Promo Added Successfully!")
+                ToastUtils.showSuccessCustomToast(
+                    this@AddDeigitalBrandingActivity,
+                    "Digital Branding Promo Added Successfully!"
+                )
             }
 
         })

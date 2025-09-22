@@ -15,7 +15,7 @@ import com.iprism.ecmhealthadvisor.databinding.ActivityViewAllDigitalBrandingsBi
 class ViewAllDigitalBrandingsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityViewAllDigitalBrandingsBinding
-    private var name : String = ""
+    private var name: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +32,6 @@ class ViewAllDigitalBrandingsActivity : AppCompatActivity() {
         handleBack()
         setupInsuranceCompaniesAdapter()
     }
-
     private fun handleBack() {
         binding.backImg.setOnClickListener { view ->
             finish()

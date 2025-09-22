@@ -13,12 +13,12 @@ import com.iprism.ecmhealthadvisor.databinding.ActivitySinglePromoCouponsBinding
 class SinglePromoCouponsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySinglePromoCouponsBinding
-    private var name : String = ""
+    private var name: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding= ActivitySinglePromoCouponsBinding.inflate(layoutInflater)
+        binding = ActivitySinglePromoCouponsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

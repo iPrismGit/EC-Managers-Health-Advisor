@@ -42,7 +42,7 @@ class AdvisorBenefitsActivity : AppCompatActivity() {
         var linearLayoutManager = LinearLayoutManager(this)
         binding.tariffsRv.adapter = hospitalTariffsAdapter
         binding.tariffsRv.layoutManager = linearLayoutManager
-        hospitalTariffsAdapter.setupListener(object  : OnWhiteBoardClickListener{
+        hospitalTariffsAdapter.setupListener(object : OnWhiteBoardClickListener {
             override fun onItemClick(boardId: String) {
                 var intent = Intent(this@AdvisorBenefitsActivity, BenifitTypesActivity::class.java)
                 startActivity(intent)

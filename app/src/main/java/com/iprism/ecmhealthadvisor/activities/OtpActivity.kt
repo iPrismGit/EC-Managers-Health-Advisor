@@ -38,4 +38,5 @@ class OtpActivity : AppCompatActivity() {
             finish()
         })
     }
+
 }

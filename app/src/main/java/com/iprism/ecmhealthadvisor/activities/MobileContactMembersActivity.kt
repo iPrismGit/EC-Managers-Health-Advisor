@@ -14,7 +14,6 @@ import com.iprism.ecmhealthadvisor.utils.ToastUtils
 class MobileContactMembersActivity : AppCompatActivity() {
 
     private var tag = ""
-
     private lateinit var binding: ActivityMobileContactMembersBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,17 +37,26 @@ class MobileContactMembersActivity : AppCompatActivity() {
         var linearLayoutManager = LinearLayoutManager(this)
         binding.membersRv.adapter = membersAdapter
         binding.membersRv.layoutManager = linearLayoutManager
-        membersAdapter.setupListener(object : OnSingleItemClickListener{
+        membersAdapter.setupListener(object : OnSingleItemClickListener {
             override fun onCallNowClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(this@MobileContactMembersActivity, "Calling to the Member!")
+                ToastUtils.showSuccessCustomToast(
+                    this@MobileContactMembersActivity,
+                    "Calling to the Member!"
+                )
             }
 
             override fun onSmsClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(this@MobileContactMembersActivity, "Messaging to the Member!")
+                ToastUtils.showSuccessCustomToast(
+                    this@MobileContactMembersActivity,
+                    "Messaging to the Member!"
+                )
             }
 
             override fun onWhatsappClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(this@MobileContactMembersActivity, "Navigate to Member Whatsapp")
+                ToastUtils.showSuccessCustomToast(
+                    this@MobileContactMembersActivity,
+                    "Navigate to Member Whatsapp"
+                )
             }
 
         })

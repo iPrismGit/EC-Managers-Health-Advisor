@@ -11,7 +11,7 @@ import com.iprism.ecmhealthadvisor.databinding.ActivitySingleHospitalTieupsBindi
 class SingleHospitalTieupsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySingleHospitalTieupsBinding
-    private var name : String = ""
+    private var name: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

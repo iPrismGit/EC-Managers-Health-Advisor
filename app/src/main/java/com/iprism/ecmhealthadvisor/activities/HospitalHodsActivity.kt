@@ -36,17 +36,26 @@ class HospitalHodsActivity : AppCompatActivity() {
         var linearLayoutManager = LinearLayoutManager(this)
         binding.hospitalHodsRv.adapter = hospitalHodsAdapter
         binding.hospitalHodsRv.layoutManager = linearLayoutManager
-        hospitalHodsAdapter.setupListener(object : OnSingleItemClickListener{
+        hospitalHodsAdapter.setupListener(object : OnSingleItemClickListener {
             override fun onCallNowClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(this@HospitalHodsActivity, "Calling to the Hospital Hod!")
+                ToastUtils.showSuccessCustomToast(
+                    this@HospitalHodsActivity,
+                    "Calling to the Hospital Hod!"
+                )
             }
 
             override fun onSmsClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(this@HospitalHodsActivity, "Messaging to the Hospital Hod!")
+                ToastUtils.showSuccessCustomToast(
+                    this@HospitalHodsActivity,
+                    "Messaging to the Hospital Hod!"
+                )
             }
 
             override fun onWhatsappClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(this@HospitalHodsActivity, "Navigate to Whatsapp!")
+                ToastUtils.showSuccessCustomToast(
+                    this@HospitalHodsActivity,
+                    "Navigate to Whatsapp!"
+                )
             }
 
         })

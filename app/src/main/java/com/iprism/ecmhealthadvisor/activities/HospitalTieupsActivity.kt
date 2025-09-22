@@ -103,4 +103,5 @@ class HospitalTieupsActivity : AppCompatActivity() {
             finish()
         })
     }
+
 }
