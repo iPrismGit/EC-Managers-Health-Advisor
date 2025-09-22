@@ -14,7 +14,6 @@ object DateTimeUtils {
 
     var dateMonthYear: String = ""
 
-
     fun getDate(dateTxt: TextView, isPreviousCalendar: Boolean): String {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)

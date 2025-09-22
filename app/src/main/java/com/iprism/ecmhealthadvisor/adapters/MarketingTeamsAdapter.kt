@@ -14,13 +14,13 @@ import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 
 
-class MarketingTeamsAdapter(var context: Context):
+class MarketingTeamsAdapter(var context: Context) :
     Adapter<MarketingTeamsAdapter.MarketingTeamViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
     val bounce = AnimationUtils.loadAnimation(context, R.anim.bounce)
 
-    fun setupListener(listener: OnSingleItemClickListener){
+    fun setupListener(listener: OnSingleItemClickListener) {
         this.listener = listener
     }
 
@@ -57,8 +57,9 @@ class MarketingTeamsAdapter(var context: Context):
     }
 
     override fun getItemCount(): Int {
-        return  4
+        return 4
     }
 
     class MarketingTeamViewHolder(var binding: PersonItemBinding) : ViewHolder(binding.root)
+
 }

@@ -46,4 +46,5 @@ class HospitalTariffsAdapter(var context: Context) :
 
     class HospitalTariffViewHolder(var binding: WhiteBoardFeedBackItemBinding) :
         ViewHolder(binding.root)
+
 }

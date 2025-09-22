@@ -7,13 +7,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.iprism.ecmhealthadvisor.databinding.PromoCouponItemBinding
 
-class SinglePromoCouponsAdapter (var context: Context) : Adapter<SinglePromoCouponsAdapter.SinglePromoCouponViewHolder>(){
+class SinglePromoCouponsAdapter(var context: Context) :
+    Adapter<SinglePromoCouponsAdapter.SinglePromoCouponViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): SinglePromoCouponsAdapter.SinglePromoCouponViewHolder {
-        val binding = PromoCouponItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            PromoCouponItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SinglePromoCouponViewHolder(binding)
     }
 
@@ -28,5 +30,7 @@ class SinglePromoCouponsAdapter (var context: Context) : Adapter<SinglePromoCoup
         return 10
     }
 
-    class SinglePromoCouponViewHolder(var binding: PromoCouponItemBinding) : ViewHolder(binding.root)
+    class SinglePromoCouponViewHolder(var binding: PromoCouponItemBinding) :
+        ViewHolder(binding.root)
+
 }

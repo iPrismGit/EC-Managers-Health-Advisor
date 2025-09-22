@@ -32,11 +32,17 @@ class MarketingTeamFragment : Fragment() {
         binding.marketingTeamRv.layoutManager = linearLayoutManager
         marketingTeamsAdapter.setupListener(object : OnSingleItemClickListener {
             override fun onCallNowClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(requireContext(), "Calling to the Marketing Team!")
+                ToastUtils.showSuccessCustomToast(
+                    requireContext(),
+                    "Calling to the Marketing Team!"
+                )
             }
 
             override fun onSmsClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(requireContext(), "Messaging to the Marketing Team!")
+                ToastUtils.showSuccessCustomToast(
+                    requireContext(),
+                    "Messaging to the Marketing Team!"
+                )
             }
 
             override fun onWhatsappClick(doctorId: String, mobile: String) {

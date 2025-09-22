@@ -20,7 +20,7 @@ class BenefitsAdapter() : RecyclerView.Adapter<BenefitsAdapter.BenefitViewHOlder
     }
 
     override fun getItemCount(): Int {
-       return 10
+        return 10
     }
 
     class BenefitViewHOlder(var binding: BenefitItemBinding) : RecyclerView.ViewHolder(binding.root)

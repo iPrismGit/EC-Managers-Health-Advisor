@@ -32,6 +32,7 @@ class ViewAllDigitalBrandingsActivity : AppCompatActivity() {
         handleBack()
         setupInsuranceCompaniesAdapter()
     }
+
     private fun handleBack() {
         binding.backImg.setOnClickListener { view ->
             finish()

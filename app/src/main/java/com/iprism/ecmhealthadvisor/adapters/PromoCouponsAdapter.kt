@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
 
-class PromoCouponsAdapter(var context: Context) : Adapter<PromoCouponsAdapter.PromoCouponViewHolder>() {
+class PromoCouponsAdapter(var context: Context) :
+    Adapter<PromoCouponsAdapter.PromoCouponViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): PromoCouponsAdapter.PromoCouponViewHolder {
-        var binding = InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding =
+            InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return PromoCouponViewHolder(binding)
     }
 
@@ -23,7 +25,12 @@ class PromoCouponsAdapter(var context: Context) : Adapter<PromoCouponsAdapter.Pr
         holder: PromoCouponsAdapter.PromoCouponViewHolder,
         position: Int
     ) {
-        holder.binding.imageView6.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.to_do_list_img))
+        holder.binding.imageView6.setImageDrawable(
+            ContextCompat.getDrawable(
+                context,
+                R.drawable.to_do_list_img
+            )
+        )
     }
 
     override fun getItemCount(): Int {

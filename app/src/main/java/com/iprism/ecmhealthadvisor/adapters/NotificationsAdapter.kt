@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.iprism.ecmhealthadvisor.databinding.NotificationItemBinding
 
-class NotificationsAdapter(private var context: Context) : Adapter<NotificationsAdapter.NotificationViewHolder> (){
+class NotificationsAdapter(private var context: Context) :
+    Adapter<NotificationsAdapter.NotificationViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): NotificationsAdapter.NotificationViewHolder {
-        var binding = NotificationItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding =
+            NotificationItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return NotificationViewHolder(binding)
     }
 
@@ -27,6 +30,6 @@ class NotificationsAdapter(private var context: Context) : Adapter<Notifications
         return 10
     }
 
-    class NotificationViewHolder(var binding: NotificationItemBinding):ViewHolder(binding.root)
+    class NotificationViewHolder(var binding: NotificationItemBinding) : ViewHolder(binding.root)
 
 }

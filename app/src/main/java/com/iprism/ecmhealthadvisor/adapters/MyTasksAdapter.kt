@@ -13,7 +13,7 @@ class MyTasksAdapter(var context: Context) : Adapter<MyTasksAdapter.MyTaskViewHo
 
     private lateinit var listener: OnDoctorItemClickListener
 
-    fun setupListener(listener: OnDoctorItemClickListener){
+    fun setupListener(listener: OnDoctorItemClickListener) {
         this.listener = listener
     }
 
@@ -37,4 +37,5 @@ class MyTasksAdapter(var context: Context) : Adapter<MyTasksAdapter.MyTaskViewHo
     }
 
     class MyTaskViewHolder(var binding: DoctorItemBinding) : ViewHolder(binding.root)
+
 }

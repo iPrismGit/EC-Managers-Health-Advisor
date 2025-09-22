@@ -8,11 +8,12 @@ import com.iprism.ecmhealthadvisor.databinding.DigitalBrandingTemplateItemBindin
 import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.interfaces.OnWhiteBoardClickListener
 
-class DigitalBrandingTemplatesAdapter() : RecyclerView.Adapter<DigitalBrandingTemplatesAdapter.DigitalBrandingTemplateViewHolder>() {
+class DigitalBrandingTemplatesAdapter() :
+    RecyclerView.Adapter<DigitalBrandingTemplatesAdapter.DigitalBrandingTemplateViewHolder>() {
 
     private lateinit var listener: OnWhiteBoardClickListener
 
-    fun setupListener(listener: OnWhiteBoardClickListener){
+    fun setupListener(listener: OnWhiteBoardClickListener) {
         this.listener = listener
     }
 
@@ -20,7 +21,11 @@ class DigitalBrandingTemplatesAdapter() : RecyclerView.Adapter<DigitalBrandingTe
         parent: ViewGroup,
         viewType: Int
     ): DigitalBrandingTemplatesAdapter.DigitalBrandingTemplateViewHolder {
-        var binding = DigitalBrandingTemplateItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding = DigitalBrandingTemplateItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return DigitalBrandingTemplateViewHolder(binding)
     }
 
@@ -34,8 +39,10 @@ class DigitalBrandingTemplatesAdapter() : RecyclerView.Adapter<DigitalBrandingTe
     }
 
     override fun getItemCount(): Int {
-       return 6
+        return 6
     }
 
-    class DigitalBrandingTemplateViewHolder(var binding: DigitalBrandingTemplateItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class DigitalBrandingTemplateViewHolder(var binding: DigitalBrandingTemplateItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
 }

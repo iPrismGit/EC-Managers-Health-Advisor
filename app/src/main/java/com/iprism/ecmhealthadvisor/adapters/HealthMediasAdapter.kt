@@ -7,7 +7,6 @@ import com.iprism.ecmhealthadvisor.databinding.HealthMediaItemBinding
 
 class HealthMediasAdapter() : RecyclerView.Adapter<HealthMediasAdapter.HealthMediaViewHolder>() {
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -28,4 +27,5 @@ class HealthMediasAdapter() : RecyclerView.Adapter<HealthMediasAdapter.HealthMed
     }
 
     class HealthMediaViewHolder(var binding: HealthMediaItemBinding) : RecyclerView.ViewHolder(binding.root)
+
 }

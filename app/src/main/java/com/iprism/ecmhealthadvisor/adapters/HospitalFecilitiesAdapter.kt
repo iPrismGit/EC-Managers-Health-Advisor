@@ -10,12 +10,15 @@ import com.iprism.ecmhealthadvisor.R
 
 import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
 
-class HospitalFecilitiesAdapter(var context : Context) : Adapter<HospitalFecilitiesAdapter.HospitalFecilityViewHolder>() {
+class HospitalFecilitiesAdapter(var context: Context) :
+    Adapter<HospitalFecilitiesAdapter.HospitalFecilityViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): HospitalFecilitiesAdapter.HospitalFecilityViewHolder {
-        var binding = InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding =
+            InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HospitalFecilityViewHolder(binding)
     }
 
@@ -23,13 +26,18 @@ class HospitalFecilitiesAdapter(var context : Context) : Adapter<HospitalFecilit
         holder: HospitalFecilitiesAdapter.HospitalFecilityViewHolder,
         position: Int
     ) {
-        holder.binding.imageView6.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.img))
+        holder.binding.imageView6.setImageDrawable(
+            ContextCompat.getDrawable(
+                context,
+                R.drawable.img
+            )
+        )
     }
 
     override fun getItemCount(): Int {
         return 6
     }
 
-    class HospitalFecilityViewHolder(var binding : InsuranceItemBinding): ViewHolder(binding.root)
+    class HospitalFecilityViewHolder(var binding: InsuranceItemBinding) : ViewHolder(binding.root)
 
 }

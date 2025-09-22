@@ -71,10 +71,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun handleDigitalBrandingLo() {
         binding.digitalBrandingLo.setOnClickListener { view ->
-           startActivity(Intent(requireContext(), DigitalBrandingsActivity::class.java))
+            startActivity(Intent(requireContext(), DigitalBrandingsActivity::class.java))
         }
     }
 
@@ -91,7 +90,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
     }
-
 
     private fun handleReferAdmissionLo() {
         binding.referAdmissionLo.setOnClickListener { view ->
@@ -143,7 +141,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     private fun handleHealthMedia() {
         binding.healthMediaLo.setOnClickListener { view ->
             startActivity(Intent(requireContext(), HealthMediaActivity::class.java))
@@ -155,7 +152,6 @@ class HomeFragment : Fragment() {
             ToastUtils.showErrorCustomToast(requireContext(), "There are no Screens in Figma!")
         }
     }
-
 
     private fun handleHospitalUpdatesLo() {
         binding.hospitalUpdatesLo.setOnClickListener(View.OnClickListener {
@@ -171,7 +167,7 @@ class HomeFragment : Fragment() {
 
     private fun handleHospitalTarrifsLo() {
         binding.hospitalTariffsLo.setOnClickListener { view ->
-               startActivity(Intent(requireContext(), HospitalTariffsListActivity::class.java))
+            startActivity(Intent(requireContext(), HospitalTariffsListActivity::class.java))
         }
     }
 
@@ -183,12 +179,10 @@ class HomeFragment : Fragment() {
 
     private fun handleHospitalFecilitiesLo() {
         binding.hospitalFacilitiesLo.setOnClickListener { view ->
-              startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
+            startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
         }
 
     }
-
-
 
     private fun handlePromoCouponsLo() {
         binding.promoCouponsLo.setOnClickListener { view ->
@@ -201,7 +195,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), TeamConnectActivity::class.java))
         }
     }
-
 
     private fun handleHospitalHodsLo() {
         binding.hospitalHodsLo.setOnClickListener { view ->

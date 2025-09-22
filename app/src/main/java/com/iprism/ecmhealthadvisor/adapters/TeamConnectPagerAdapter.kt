@@ -7,7 +7,8 @@ import com.iprism.ecmhealthadvisor.fragments.InBoundTeamFragment
 import com.iprism.ecmhealthadvisor.fragments.MarketingTeamFragment
 
 
-class TeamConnectPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity)  {
+class TeamConnectPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+
     override fun getItemCount(): Int {
         return 2
     }
@@ -19,4 +20,5 @@ class TeamConnectPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapte
             else -> MarketingTeamFragment()
         }
     }
+
 }

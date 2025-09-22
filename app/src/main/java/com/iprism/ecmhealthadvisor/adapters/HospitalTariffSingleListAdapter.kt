@@ -8,12 +8,18 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.iprism.ecmhealthadvisor.databinding.WhiteBoardFeedBackItemBinding
 
-class HospitalTariffSingleListAdapter(var context: Context) : Adapter<HospitalTariffSingleListAdapter.HospitalTariffSingleItemViewHolder>() {
+class HospitalTariffSingleListAdapter(var context: Context) :
+    Adapter<HospitalTariffSingleListAdapter.HospitalTariffSingleItemViewHolder>() {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): HospitalTariffSingleItemViewHolder {
-        var binding = WhiteBoardFeedBackItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding = WhiteBoardFeedBackItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return HospitalTariffSingleItemViewHolder(binding)
     }
 
@@ -30,6 +36,7 @@ class HospitalTariffSingleListAdapter(var context: Context) : Adapter<HospitalTa
         return 20
     }
 
-    class HospitalTariffSingleItemViewHolder(var binding: WhiteBoardFeedBackItemBinding) : ViewHolder(binding.root)
+    class HospitalTariffSingleItemViewHolder(var binding: WhiteBoardFeedBackItemBinding) :
+        ViewHolder(binding.root)
 
 }

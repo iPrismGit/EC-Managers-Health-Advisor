@@ -13,14 +13,16 @@ import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 
-class HospitalHodsAdapter(var context: Context) : Adapter<HospitalHodsAdapter.HsopitalHodViewHolder>() {
+class HospitalHodsAdapter(var context: Context) :
+    Adapter<HospitalHodsAdapter.HsopitalHodViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
     val bounce = AnimationUtils.loadAnimation(context, R.anim.bounce)
 
-    fun setupListener(listener: OnSingleItemClickListener){
+    fun setupListener(listener: OnSingleItemClickListener) {
         this.listener = listener
     }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -57,5 +59,6 @@ class HospitalHodsAdapter(var context: Context) : Adapter<HospitalHodsAdapter.Hs
         return 10
     }
 
-    class HsopitalHodViewHolder(var binding: PersonItemBinding): ViewHolder(binding.root)
+    class HsopitalHodViewHolder(var binding: PersonItemBinding) : ViewHolder(binding.root)
+
 }

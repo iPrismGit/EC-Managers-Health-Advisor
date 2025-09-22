@@ -10,12 +10,13 @@ import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 
-class MembersAdapter(var context: Context) : RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
+class MembersAdapter(var context: Context) :
+    RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
     val bounce = AnimationUtils.loadAnimation(context, R.anim.bounce)
 
-    fun setupListener(listener: OnSingleItemClickListener){
+    fun setupListener(listener: OnSingleItemClickListener) {
         this.listener = listener
     }
 
