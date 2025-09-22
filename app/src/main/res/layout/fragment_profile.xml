@@ -45,6 +45,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
+                        android:visibility="gone"
                         android:src="@drawable/camera_img"
                         app:layout_constraintEnd_toEndOf="@id/profile_iv"
                         app:layout_constraintBottom_toBottomOf="@id/profile_iv"

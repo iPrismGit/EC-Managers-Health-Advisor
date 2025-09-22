@@ -46,6 +46,7 @@ class ReferDiagnosticActivity : AppCompatActivity() {
     private fun handleContinueBtn() {
         binding.continueBtn.setOnClickListener { view ->
             ToastUtils.showSuccessCustomToast(this, "Reference Send Successfully!")
+            finish()
         }
     }
 

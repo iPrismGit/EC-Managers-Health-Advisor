@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@string/advisor_benefits"
+            android:text="@string/op_consultation"
             android:textColor="@color/black"
             android:textSize="18dp" />
     </LinearLayout>
@@ -55,6 +55,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Choose Below"
+                        android:textSize="16dp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/lato_bold"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/benefits_rv"
