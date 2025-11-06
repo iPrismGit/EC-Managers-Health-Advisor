@@ -3,6 +3,8 @@ package com.iprism.ecmhealthadvisor.network
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiRequest
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
+import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
+import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -15,9 +17,9 @@ interface EcManagersService {
     @POST(Constants.RESEND_OTP_ENDPOINT)
     suspend fun resendOtp(@Body resendOtpApiRequest: ResendOtpApiRequest) : LoginApiResponse
 
-//    @POST(Constants.HOME_PAGE_ENDPOINT)
-//    suspend fun fetchHomePageResponse(@Body homePageApiRequest: HomePageApiRequest) : HomePageApiResponse
-//
+    @POST(Constants.HOME_PAGE_ENDPOINT)
+    suspend fun fetchHomePageResponse(@Body homePageApiRequest: HomePageApiRequest) : HomePageApiResponse
+
 //    @POST(Constants.ALL_CATEGORIES_ENDPOINT)
 //    suspend fun fetchDoctorCategories(@Body doctorCategoriesApiRequest: DoctorCategoriesApiRequest) : DoctorCategoriesApiResponse
 //

@@ -7,6 +7,7 @@
     tools:context=".fragments.HomeFragment">
 
     <LinearLayout
+        android:id="@+id/main_lo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -41,6 +42,7 @@
                         android:layout_height="match_parent"
                         android:background="@drawable/edit_text_bg"
                         android:orientation="horizontal"
+                        android:visibility="gone"
                         android:padding="16dp">
 
                         <ImageView
@@ -61,6 +63,7 @@
                     </LinearLayout>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/top_banners_lo"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         android:layout_marginTop="16dp"
@@ -68,9 +71,10 @@
                         app:cardCornerRadius="10dp">
 
                         <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/top_banners_slider"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/banner_img" />
+                            android:background="@drawable/edit_text_gray_bg" />
                     </androidx.cardview.widget.CardView>
 
                     <LinearLayout
@@ -701,6 +705,7 @@
                     </LinearLayout>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/middle_banners_lo"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         android:layout_marginTop="16dp"
@@ -708,9 +713,10 @@
                         app:cardCornerRadius="10dp">
 
                         <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/middle_banners_slider"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/banner_img" />
+                            android:background="@drawable/edit_text_gray_bg" />
                     </androidx.cardview.widget.CardView>
 
                     <LinearLayout
@@ -1183,6 +1189,7 @@
                     </LinearLayout>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/bottom_banners_lo"
                         android:layout_width="match_parent"
                         android:layout_height="180dp"
                         android:layout_marginTop="16dp"
@@ -1190,13 +1197,774 @@
                         app:cardCornerRadius="10dp">
 
                         <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/bottom_banners_slider"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/banner_img" />
+                            android:background="@drawable/edit_text_gray_bg" />
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>
     </LinearLayout>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_Lo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/edit_text_gray_bg"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:tint="@color/gray"
+                        android:visibility="gone"
+                        android:padding="16dp">
+
+                        <ImageView
+
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/search_img" />
+
+                        <EditText
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                            android:hint="Search"
+                            android:paddingStart="12dp"
+                            android:textColorHint="@color/gray"
+                            android:textSize="14dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="horizontal">
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="16dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="6dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="86dp"
+                                        android:layout_height="86dp"
+                                        android:adjustViewBounds="true"
+                                        android:scaleType="centerCrop"
+                                        app:tint="@color/gray"
+                                        android:src="@drawable/ambulance_request_round_img" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Request Ambulance"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:layout_weight="1"
+                                    android:visibility="visible"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="86dp"
+                                        android:layout_height="86dp"
+                                        android:adjustViewBounds="true"
+                                        android:scaleType="centerCrop"
+                                        app:tint="@color/gray"
+                                        android:src="@drawable/reffer_admission_rount_img" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Refer an Admission"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:layout_weight="1"
+                                    android:visibility="visible"
+                                    android:orientation="vertical">
+
+
+                                    <ImageView
+                                        android:layout_width="86dp"
+                                        android:layout_height="86dp"
+                                        android:adjustViewBounds="true"
+                                        android:scaleType="centerCrop"
+                                        app:tint="@color/gray"
+                                        android:src="@drawable/hospital_assistence_round_img" />
+
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Hospital Assistaance"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="6dp"
+                                    android:layout_marginEnd="6dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <ImageView
+                                        android:layout_width="86dp"
+                                        android:layout_height="86dp"
+                                        android:adjustViewBounds="true"
+                                        android:scaleType="centerCrop"
+                                        app:tint="@color/gray"
+                                        android:src="@drawable/reffer_diagnostic_round_img" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:maxLines="2"
+                                        android:background="@color/gray"
+                                        android:text="Refer a Admission"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </HorizontalScrollView>
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginTop="16dp"
+                        android:elevation="8dp"
+                        android:background="@color/gray"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:cardCornerRadius="10dp">
+
+                        <com.smarteist.autoimageslider.SliderView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/gray" />
+                    </androidx.cardview.widget.CardView>
+
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_margin="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="4dp"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/home_tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            app:tint="@color/gray"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="4dp"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/home_tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            app:tint="@color/gray"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="16dp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginEnd="4dp"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/home_tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            app:tint="@color/gray"
+                                            android:scaleType="centerCrop"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="80dp"
+                                        app:cardCornerRadius="8dp"
+                                        app:cardBackgroundColor="@color/gray"
+                                        app:strokeColor="@color/gray"
+                                        app:strokeWidth="0.5dp">
+
+                                        <ImageView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerCrop"
+                                            app:tint="@color/gray"
+                                            android:src="@drawable/tele_clinic_img" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="6dp"
+                                        android:fontFamily="@font/lato"
+                                        android:gravity="center"
+                                        android:background="@color/gray"
+                                        android:text="Doctor Consultation"
+                                        android:textColor="@color/gray"
+                                        android:textSize="12dp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

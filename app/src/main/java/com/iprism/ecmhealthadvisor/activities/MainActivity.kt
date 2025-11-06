@@ -1,18 +1,28 @@
 package com.iprism.ecmhealthadvisor.activities
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Color
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.snackbar.Snackbar
@@ -21,11 +31,18 @@ import com.iprism.ecmhealthadvisor.adapters.ViewPagerAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityMainBinding
 import com.iprism.ecmhealthadvisor.databinding.LogOutDialogBinding
 import com.iprism.ecmhealthadvisor.databinding.MenuBottomSheetBinding
+import com.iprism.ecmhealthadvisor.utils.NetworkUtil
+import com.iprism.ecmhealthadvisor.utils.User
+import com.iprism.ecmhealthadvisor.utils.showToast
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var backPressedOnce = false
+    private lateinit var user : User
+    private lateinit var userDetails : HashMap<String, String?>
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +54,16 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        user = User(this)
+        userDetails = user.getUserDetails()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        val city = getSharedPreferences("user_location", MODE_PRIVATE)
+            .getString("city_name", "Location Not Given!")
+        if (!NetworkUtil.isConnected(this)) {
+            showNoInternetDialog()
+            return
+        }
+        binding.addressTxt.text = city
         val adapter = ViewPagerAdapter(this)
         binding.viewPager.isUserInputEnabled = false
         binding.viewPager.adapter = adapter
@@ -44,6 +71,118 @@ class MainActivity : AppCompatActivity() {
         handleBottomNav()
         handleNotificationsIv()
         handleMenuImg()
+        handleAddressTxt()
+    }
+
+    private fun handleAddressTxt() {
+        binding.addressTxt.setOnClickListener { view ->
+            if (binding.addressTxt.text.equals("Location Not Given!")){
+                checkLocationPermissionAndFetch()
+            }
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun getCityNameFromLocation(location: Location) {
+        try {
+            val geocoder = Geocoder(this, Locale.getDefault())
+            val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            if (!addresses.isNullOrEmpty()) {
+
+                val areaName = addresses[0].subLocality
+                val cityName = addresses[0].locality
+                val fullName = when {
+                    !areaName.isNullOrEmpty() -> areaName
+                    !cityName.isNullOrEmpty() -> cityName
+                    else -> "Unknown Area"
+                }
+
+                val editor = getSharedPreferences("user_location", MODE_PRIVATE).edit()
+                editor.putString("city_name", fullName)
+                editor.apply()
+
+                binding.addressTxt.text = fullName
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            showToast("Unable to fetch area name")
+        }
+    }
+
+    private fun showNoInternetDialog() {
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("No Internet Connection")
+            .setMessage("Please check your internet connection and try again.")
+            .setCancelable(false)
+            .setPositiveButton("Retry") { dialog, _ ->
+                dialog.dismiss()
+                recreate()
+            }
+            .setNegativeButton("Exit") { dialog, _ ->
+                dialog.dismiss()
+                finishAffinity()
+            }
+
+        builder.show()
+    }
+
+    private fun showNoPermissionDialog() {
+        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Permission Needed")
+            .setMessage("Location permission is required to get your city name.")
+            .setPositiveButton("Grant") { dialog, _ ->
+                dialog.dismiss()
+                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+        builder.show()
+    }
+
+    private fun checkLocationPermissionAndFetch() {
+        when {
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED -> {
+                fetchLocation()
+            }
+            ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) -> {
+                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+            else -> {
+                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+            }
+        }
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                fetchLocation()
+            } else {
+                showNoPermissionDialog()
+            }
+        }
+
+    private fun fetchLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            return
+        }
+
+        fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+            if (location != null) {
+                getCityNameFromLocation(location)
+            } else {
+                showToast("Unable to get location. Try again.")
+            }
+        }
     }
 
     private fun handleMenuImg() {
@@ -70,44 +209,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showMenuBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(this, R.style.FullScreenBottomSheetDialog)
+
         val bottomSheetBinding = MenuBottomSheetBinding.inflate(layoutInflater)
-        val bottomSheetDialog = BottomSheetDialog(this)
         bottomSheetDialog.setContentView(bottomSheetBinding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(bottomSheetBinding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
-            insets
-        }
 
-        val bottomSheet =
-            bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-        bottomSheet?.let {
-            val params = it.layoutParams
-            params.height = ViewGroup.LayoutParams.MATCH_PARENT
-            it.layoutParams = params
-        }
-
-        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        bottomSheetDialog.behavior.isFitToContents = false
-        bottomSheetDialog.behavior.skipCollapsed = true
-        bottomSheetDialog.behavior.peekHeight = 0
-
-        bottomSheetDialog.setOnShowListener {
-            val dialog = it as BottomSheetDialog
-            val parentLayout =
-                dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
-            parentLayout?.let { view ->
-                view.setBackgroundResource(R.drawable.bottom_sheet_background)
-
-                val layoutParams = view.layoutParams as ViewGroup.MarginLayoutParams
-                layoutParams.setMargins(20, 80, 20, 0)
-                view.layoutParams = layoutParams
-            }
-        }
-
-        bottomSheetBinding.crossIv.setOnClickListener(View.OnClickListener {
+        bottomSheetBinding.crossIv.setOnClickListener {
             bottomSheetDialog.dismiss()
-        })
+        }
+
+        val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+        bottomSheet?.setBackgroundColor(Color.TRANSPARENT)
+
+        bottomSheet?.let {
+            val behavior = BottomSheetBehavior.from(it)
+            it.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+            behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        bottomSheetDialog.window?.apply {
+            setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            setFlags(
+                WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS,
+                WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS
+            )
+            decorView.setPadding(0, getStatusBarHeight(), 0, 0)
+        }
 
         bottomSheetBinding.contactUsLo.setOnClickListener(View.OnClickListener {
             startActivity(Intent(this, ContactUsActivity::class.java))
@@ -124,13 +251,18 @@ class MainActivity : AppCompatActivity() {
         bottomSheetDialog.show()
     }
 
+    fun getStatusBarHeight(): Int {
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        return if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
+    }
+
     fun showLogOutDialog() {
         val dialog = Dialog(this)
         val logoutBinding = LogOutDialogBinding.inflate(layoutInflater)
         dialog.setContentView(logoutBinding.root)
         dialog.window?.setBackgroundDrawableResource(R.drawable.edit_text_bg)
         logoutBinding.yesBtn.setOnClickListener(View.OnClickListener {
-//            user?.logoutUser()
+            user?.logoutUser()
             startActivity(Intent(this, LoginActivity::class.java))
             dialog.dismiss()
 
