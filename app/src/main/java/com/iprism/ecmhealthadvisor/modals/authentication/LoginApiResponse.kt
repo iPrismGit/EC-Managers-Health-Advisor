@@ -3,12 +3,12 @@ package com.iprism.ecmhealthadvisor.modals.authentication
 data class LoginApiResponse(
 
     val message: String,
-    val response: Response,
+    val response: LoginResponse,
     val status: Boolean
 
 )
 
-data class Response(
+data class LoginResponse(
 
     val address: String,
     val auth_token: String,
@@ -45,6 +45,7 @@ data class Response(
     val sub_cat_id: String,
     val trade_marketer_id: String,
     val type: String,
+    val otp: String,
     val unique_id: String
 
 )

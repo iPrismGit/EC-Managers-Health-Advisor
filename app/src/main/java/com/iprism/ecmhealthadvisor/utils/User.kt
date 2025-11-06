@@ -24,17 +24,13 @@ class User(var context: Context) {
         authToken: String?,
         name: String?,
         mobile: String?,
-        family_member_status : String?,
-        user_addresses_status : String?,
-        reg_status: String?
+        hospital_name: String?
     ) {
         editor.putString(ID, id)
         editor.putString(AUTH_TOKEN, authToken)
         editor.putString(NAME, name)
         editor.putString(MOBILE, mobile)
-        editor.putString(REG_STATUS, reg_status)
-        editor.putString(FAMILY_MEMBER_STATUS, family_member_status)
-        editor.putString(USER_ADDRESS_STATUS, user_addresses_status)
+        editor.putString(HOSPITAL_NAME, hospital_name)
         editor.putBoolean(IS_USER_LOGIN, true)
         editor.commit()
     }
@@ -46,9 +42,7 @@ class User(var context: Context) {
         user[NAME] = sharedPreferences.getString(NAME, null)
         user[MOBILE] = sharedPreferences.getString(MOBILE, null)
         user[EMAIL] = sharedPreferences.getString(EMAIL, null)
-        user[FAMILY_MEMBER_STATUS] = sharedPreferences.getString(FAMILY_MEMBER_STATUS, null)
-        user[USER_ADDRESS_STATUS] = sharedPreferences.getString(USER_ADDRESS_STATUS, null)
-        user[REG_STATUS] = sharedPreferences.getString(REG_STATUS, null)
+        user[HOSPITAL_NAME] = sharedPreferences.getString(HOSPITAL_NAME, null)
         user[MAIN_DATA_ID] = sharedPreferences.getString(MAIN_DATA_ID, null)
         return user
     }
@@ -63,13 +57,12 @@ class User(var context: Context) {
     }
 
     companion object {
+
         const val ID = "id"
         const val NAME = "name"
         const val EMAIL = "email"
         const val MOBILE = "mobile"
-        const val REG_STATUS = "reg_status"
-        const val USER_ADDRESS_STATUS = "user_addresses_status"
-        const val FAMILY_MEMBER_STATUS = "family_member_status"
+        const val HOSPITAL_NAME = "hospital_name"
         const val AUTH_TOKEN = "auth_token"
         const val MAIN_DATA_ID = "main_data_id"
         const val IS_USER_LOGIN = "isUserLogin"
