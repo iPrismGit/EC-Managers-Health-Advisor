@@ -80,7 +80,8 @@ class OtpActivity : AppCompatActivity() {
                         result.data.auth_token,
                         result.data.name,
                         result.data.mobile,
-                        result.data.hospital_name)
+                        result.data.hospital_name,
+                        result.data.image)
                     user.storeMainDataId("1")
                     ToastUtils.showSuccessCustomToast(this, "User Logged in Successfully!")
                     var intent = Intent(this, MainActivity::class.java)

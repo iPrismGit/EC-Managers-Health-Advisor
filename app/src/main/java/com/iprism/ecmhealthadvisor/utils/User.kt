@@ -24,13 +24,15 @@ class User(var context: Context) {
         authToken: String?,
         name: String?,
         mobile: String?,
-        hospital_name: String?
+        hospital_name: String?,
+        image: String?
     ) {
         editor.putString(ID, id)
         editor.putString(AUTH_TOKEN, authToken)
         editor.putString(NAME, name)
         editor.putString(MOBILE, mobile)
         editor.putString(HOSPITAL_NAME, hospital_name)
+        editor.putString(IMAGE, image)
         editor.putBoolean(IS_USER_LOGIN, true)
         editor.commit()
     }
@@ -43,6 +45,7 @@ class User(var context: Context) {
         user[MOBILE] = sharedPreferences.getString(MOBILE, null)
         user[EMAIL] = sharedPreferences.getString(EMAIL, null)
         user[HOSPITAL_NAME] = sharedPreferences.getString(HOSPITAL_NAME, null)
+        user[IMAGE] = sharedPreferences.getString(IMAGE, null)
         user[MAIN_DATA_ID] = sharedPreferences.getString(MAIN_DATA_ID, null)
         return user
     }
@@ -65,6 +68,7 @@ class User(var context: Context) {
         const val HOSPITAL_NAME = "hospital_name"
         const val AUTH_TOKEN = "auth_token"
         const val MAIN_DATA_ID = "main_data_id"
+        const val IMAGE = "image"
         const val IS_USER_LOGIN = "isUserLogin"
     }
 

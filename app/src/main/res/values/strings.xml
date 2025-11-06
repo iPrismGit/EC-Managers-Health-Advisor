@@ -120,4 +120,5 @@
     <string name="cash">Cash</string>
     <string name="download_app">Download App</string>
     <string name="op_consultation">OP Consultation</string>
+    <string name="fetch_location">"Fetching your location to provide faster and more\naccurate service."</string>
 </resources>

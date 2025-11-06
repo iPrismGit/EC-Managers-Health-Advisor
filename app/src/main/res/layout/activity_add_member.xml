@@ -41,7 +41,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/download_app_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -59,30 +59,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="6dp"
+                    app:cardElevation="6dp"
                     app:strokeColor="@color/gray"
-                    app:strokeWidth="0.5dp"
-                    app:cardElevation="6dp">
+                    app:strokeWidth="0.5dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:gravity="center"
+                        android:orientation="horizontal"
                         android:padding="16dp">
-                        
+
                         <com.google.android.material.card.MaterialCardView
                             android:layout_width="68dp"
                             android:layout_height="90dp"
-                            app:strokeWidth="0.5dp"
+                            app:cardElevation="6dp"
                             app:strokeColor="@color/gray"
-                            app:cardElevation="6dp">
+                            app:strokeWidth="0.5dp">
 
                             <ImageView
+                                android:id="@+id/advisor_img"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:adjustViewBounds="true"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/my_health_adviser_img"/>
+                                android:src="@drawable/my_health_adviser_img" />
 
 
                         </com.google.android.material.card.MaterialCardView>
@@ -96,37 +97,39 @@
                             android:paddingEnd="16dp">
 
                             <TextView
+                                android:id="@+id/advisor_name_txt"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/lato_bold"
                                 android:text="Mr. Ramana Rao"
                                 android:textColor="@color/black"
-                                android:textSize="14dp"
-                                android:fontFamily="@font/lato_bold"/>
+                                android:textSize="14dp" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/lato"
                                 android:text="Health Advisor"
-                                android:layout_marginTop="10dp"
                                 android:textColor="@color/black"
-                                android:textSize="14dp"
-                                android:fontFamily="@font/lato"/>
+                                android:textSize="14dp" />
 
                             <TextView
+                                android:id="@+id/hospital_name_txt"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Anurag Hospital"
                                 android:layout_marginTop="10dp"
+                                android:fontFamily="@font/lato"
+                                android:text="Anurag Hospital"
                                 android:textColor="@color/black"
-                                android:textSize="14dp"
-                                android:fontFamily="@font/lato"/>
+                                android:textSize="14dp" />
 
                         </LinearLayout>
-                        
+
                         <ImageView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:src="@drawable/logo"/>
+                            android:src="@drawable/app_logo" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -135,8 +138,8 @@
                     android:id="@+id/profile_lo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_gravity="center">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_iv"
@@ -162,7 +165,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/full_name"
+                    android:text="Full Name"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
@@ -173,7 +176,7 @@
                     android:layout_marginTop="6dp"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/lato"
-                    android:hint="@string/enter_name"
+                    android:hint="Enter Name"
                     android:inputType="textPersonName"
                     android:padding="16dp"
                     android:textColor="@color/black"
@@ -185,19 +188,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/mobile_number"
+                    android:text="Mobile Number"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/contact_number_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/lato"
-                    android:hint="@string/enter_mobile_number"
-                    android:inputType="textPersonName"
+                    android:hint="Enter Mobile Number"
+                    android:inputType="number"
+                    android:maxLength="10"
                     android:padding="16dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
@@ -208,24 +212,23 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/email_id"
+                    android:text="Email Id"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/email_txt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/lato"
-                    android:hint="@string/enter_email"
+                    android:hint="Enter Email"
                     android:inputType="textEmailAddress"
                     android:padding="16dp"
                     android:textColor="@color/black"
                     android:textColorHint="@color/gray"
                     android:textSize="14dp" />
-
 
                 <TextView
                     android:layout_width="match_parent"
@@ -237,104 +240,73 @@
                     android:textSize="14dp" />
 
                 <LinearLayout
+                    android:id="@+id/gender_lo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:background="@drawable/edit_text_bg"
-                    >
+                    android:gravity="center">
 
-                    <LinearLayout
-                        android:id="@+id/gender_lo"
+                    <Spinner
+                        android:id="@+id/genders_sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/lato"
+                        android:hint="Select"
+                        android:orientation="horizontal"
                         android:padding="16dp"
-                        android:orientation="horizontal">
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14dp" />
 
-                        <TextView
-                            android:id="@+id/gender_txt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/lato"
-                            android:inputType="number"
-                            android:hint="Choose Gender"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
-                            android:background="@android:color/transparent"
-                            android:textColorHint="@color/gray"/>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/drop_down_img" />
 
-                        <ImageView
-                            android:id="@+id/down_arrow_img"
-                            android:layout_width="16dp"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            app:tint="@color/black"
-                            android:src="@drawable/drop_down_img"/>
+                </LinearLayout>
 
-                        <ImageView
-                            android:id="@+id/up_arrow_img"
-                            android:layout_width="16dp"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            app:tint="@color/black"
-                            android:visibility="gone"
-                            android:src="@drawable/up_arrow_img"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/lato"
+                    android:text="Blood Group"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
 
+                <LinearLayout
+                    android:id="@+id/blood_group_lo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:gravity="center">
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/gender_types_lo"
+                    <Spinner
+                        android:id="@+id/blood_groups_sp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        android:orientation="vertical">
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/lato"
+                        android:hint="Select"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14dp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0.5dp"
-                            android:background="@color/gray"/>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <TextView
-                                android:id="@+id/male_txt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/male"
-                                android:padding="8dp"
-                                android:fontFamily="@font/lato"
-                                android:textColor="@color/black"/>
-
-                            <TextView
-                                android:id="@+id/female_txt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/female"
-                                android:padding="8dp"
-                                android:fontFamily="@font/lato"
-                                android:textColor="@color/black"/>
-
-                            <TextView
-                                android:id="@+id/others_txt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/others"
-                                android:padding="8dp"
-                                android:fontFamily="@font/lato"
-                                android:textColor="@color/black"/>
-
-                        </LinearLayout>
-
-
-
-                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/drop_down_img" />
 
                 </LinearLayout>
 
@@ -362,7 +334,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/lato"
-                        android:hint="@string/select"
+                        android:hint="Select"
                         android:orientation="horizontal"
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray"
@@ -381,31 +353,37 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/your_treatment_covered_under"
+                    android:text="Profession"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
                 <RadioGroup
+                    android:id="@+id/profession_rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/employee_rb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/health_insurance"/>
+                        android:text="Employee"
+                        android:textColor="@color/black" />
 
                     <RadioButton
+                        android:id="@+id/business_rb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/cash"
-                        android:layout_marginStart="4dp"/>
+                        android:text="Business"
+                        android:textColor="@color/black" />
+
 
                     <RadioButton
+                        android:id="@+id/proffession_others_rb"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/others"
-                        android:layout_marginStart="4dp"/>
+                        android:text="Others"
+                        android:textColor="@color/black" />
 
                 </RadioGroup>
 
@@ -414,137 +392,344 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/lato"
-                    android:text="@string/health_insurance_details"
+                    android:text="Total Family members"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <RadioGroup
+                <EditText
+                    android:id="@+id/family_members_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:fontFamily="@font/lato"
+                    android:hint="Enter"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:padding="16dp"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/lato"
+                    android:text="Address"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <LinearLayout
+                    android:id="@+id/address_lo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:gravity="center"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/address_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato"
+                        android:hint="Select"
+                        android:orientation="horizontal"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14dp" />
+
+                    <ImageView
+                        android:id="@+id/location_fetch_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/current_location_img" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/personal_insurance"/>
 
-                    <RadioButton
-                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="@font/lato"
+                            android:text="Treatment Status"
+                            android:textColor="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+                            android:id="@+id/treatment_status_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/edit_text_bg"
+                            android:fontFamily="@font/lato"
+                            android:hint=" Enter"
+                            android:padding="16dp"
+                            android:textColor="@color/black"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="@font/inter"
+                    android:text="Payment Type"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/edit_text_bg"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/payments_sp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/company_insurance"
-                        android:layout_marginStart="4dp"/>
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:padding="16dp" />
 
-                </RadioGroup>
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/drop_down_img" />
 
-                <TextView
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/insurance_lo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/lato"
-                    android:text="@string/insurance_company_name"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <EditText
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato"
+                        android:text="Health Insurance Details"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <RadioGroup
+                        android:id="@+id/insurance_companies_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/personal_insurance_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Personal Insurance"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/company_insurance_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Company Sponsored"
+                            android:textColor="@color/black" />
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato"
+                        android:text="Insurance Company Name"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/insurance_company_name_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:fontFamily="@font/lato"
+                        android:hint="Enter"
+                        android:inputType="text"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato"
+                        android:text="TPA Name"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/tpa_name_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:fontFamily="@font/lato"
+                        android:hint="Enter"
+                        android:inputType="text"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato"
+                        android:text="No. of Persons Covered"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/no_persons_covered_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:fontFamily="@font/lato"
+                        android:hint="Enter"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/others_lo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/edit_text_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="@string/enter_name"
-                    android:inputType="textPersonName"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
-                    android:textSize="14dp" />
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/lato"
-                    android:text="@string/insurance_coverage_amount"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato"
+                        android:text="Others"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/edit_text_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="@string/enter"
-                    android:inputType="number"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
-                    android:textSize="14dp" />
+                    <RadioGroup
+                        android:id="@+id/others_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/lato"
-                    android:text="@string/no_of_persons_covered"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+                        <RadioButton
+                            android:id="@+id/state_govt_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="State Government"
+                            android:textColor="@color/black" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/edit_text_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="@string/enter"
-                    android:inputType="number"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
-                    android:textSize="14dp" />
+                        <RadioButton
+                            android:id="@+id/central_govt_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Central Government"
+                            android:textColor="@color/black" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/lato"
-                    android:text="@string/tpa_name"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+                        <RadioButton
+                            android:id="@+id/arogyabhadratha_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arogyabhadratha"
+                            android:textColor="@color/black" />
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/edit_text_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="@string/enter"
-                    android:inputType="textPersonName"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
-                    android:textSize="14dp" />
+                        <RadioButton
+                            android:id="@+id/arogyasree_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arogyasree"
+                            android:textColor="@color/black" />
 
-                <Button
-                    android:id="@+id/download_app_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/lato"
-                    android:backgroundTint="#0066E3"
-                    android:padding="12dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/download_app"
-                    android:textAllCaps="false"
-                    app:cornerRadius="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                        <RadioButton
+                            android:id="@+id/ayushmanbhava_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ayushmanbhava"
+                            android:textColor="@color/black" />
+
+                        <RadioButton
+                            android:id="@+id/others_rb"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Others"
+                            android:textColor="@color/black" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
 
             </LinearLayout>
+
 
         </ScrollView>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/download_app_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/lato"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Download App"
+        android:textAllCaps="false"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/green"
+        app:indicatorName="LineSpinFadeLoaderIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
