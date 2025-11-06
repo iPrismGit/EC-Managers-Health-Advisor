@@ -23,19 +23,19 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="60dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/logo" />
+                android:src="@drawable/app_logo" />
 
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/top_edges_bg"
                 android:orientation="vertical">
 
