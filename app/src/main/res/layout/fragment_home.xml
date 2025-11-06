@@ -310,7 +310,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/promo_coupons_lo"
+                            android:id="@+id/rewards_lo"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="4dp"
@@ -331,7 +331,7 @@
                                     android:layout_height="match_parent"
                                     android:adjustViewBounds="true"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/task_performance_img" />
+                                    android:src="@drawable/reward_img" />
 
                             </com.google.android.material.card.MaterialCardView>
 
@@ -341,7 +341,7 @@
                                 android:layout_marginTop="6dp"
                                 android:fontFamily="@font/lato"
                                 android:gravity="center"
-                                android:text="@string/promo_coupons"
+                                android:text="@string/rewards"
                                 android:textColor="@color/black"
                                 android:textSize="12dp"
                                 android:visibility="visible" />
@@ -450,7 +450,7 @@
                                     android:layout_height="match_parent"
                                     android:adjustViewBounds="true"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/team_connect_img" />
+                                    android:src="@drawable/admission_img" />
 
                             </com.google.android.material.card.MaterialCardView>
 
@@ -488,7 +488,7 @@
                                     android:layout_height="match_parent"
                                     android:adjustViewBounds="true"
                                     android:scaleType="centerCrop"
-                                    android:src="@drawable/team_connect_img" />
+                                    android:src="@drawable/diagnostic" />
 
                             </com.google.android.material.card.MaterialCardView>
 
@@ -639,6 +639,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="80dp"
                                 app:cardCornerRadius="8dp"
+                                android:visibility="gone"
                                 app:strokeColor="@color/gray"
                                 app:strokeWidth="0.5dp">
 
@@ -658,6 +659,7 @@
                                 android:fontFamily="@font/lato"
                                 android:gravity="center"
                                 android:text="Rewards"
+                                android:visibility="gone"
                                 android:textColor="@color/black"
                                 android:textSize="12dp" />
 

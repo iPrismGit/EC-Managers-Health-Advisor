@@ -67,7 +67,6 @@ class HomeFragment : Fragment() {
         handleHospitalDoctorsLo()
         handleHospitalHodsLo()
         handleTeamConnectLo()
-        handlePromoCouponsLo()
         handleHospitalFecilitiesLo()
         handleHospitalTieupsLo()
         handleHospitalTarrifsLo()
@@ -305,12 +304,6 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), HospitalFecilitiesActivity::class.java))
         }
 
-    }
-
-    private fun handlePromoCouponsLo() {
-        binding.promoCouponsLo.setOnClickListener { view ->
-            startActivity(Intent(requireContext(), PromoCouponsActivity::class.java))
-        }
     }
 
     private fun handleTeamConnectLo() {
