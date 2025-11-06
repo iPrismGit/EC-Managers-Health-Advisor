@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
+import com.iprism.ecmhealthadvisor.modals.addleads.Lead
+import com.iprism.ecmhealthadvisor.utils.Constants
 
-class MembersAdapter(var context: Context) :
+class MembersAdapter(var context: Context, var leads : List<Lead>) :
     RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
@@ -29,28 +33,36 @@ class MembersAdapter(var context: Context) :
     }
 
     override fun onBindViewHolder(holder: MembersAdapter.MemberViewHolder, position: Int) {
-        holder.binding.nameTxt.text = "P Suresh Reddy"
-        holder.binding.qualificationTxt.text = "Vice President"
-        holder.binding.clinicNameTxt.visibility = View.VISIBLE
-        holder.binding.clinicNameTxt.text = "Marketing"
+        var lead = leads[position]
+        holder.binding.nameTxt.text = lead.name
+        holder.binding.qualificationTxt.text = lead.profession
+        holder.binding.clinicNameTxt.visibility = View.GONE
+        holder.binding.profileIv.borderColor = ContextCompat.getColor(context, R.color.green)
+        holder.binding.profileIv.borderWidth = 4
+        if (lead.image.isNotEmpty()){
+            Glide.with(context).load(Constants.IMAGES_URL + lead.image).error(ContextCompat.getDrawable(context,
+                R.drawable.customer_image)).into(holder.binding.profileIv)
+        } else{
+            holder.binding.profileIv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.customer_image))
+        }
         holder.binding.callNowLo.setOnClickListener(View.OnClickListener {
-            listener.onCallNowClick("", "")
+            listener.onCallNowClick(lead.id, lead.mobile)
             it.startAnimation(bounce)
         })
 
         holder.binding.smsLo.setOnClickListener(View.OnClickListener {
-            listener.onSmsClick("", "")
+            listener.onSmsClick(lead.id, lead.mobile)
             it.startAnimation(bounce)
         })
 
         holder.binding.whatsAppLo.setOnClickListener(View.OnClickListener {
-            listener.onWhatsappClick("", "")
+            listener.onWhatsappClick(lead.id, lead.mobile)
             it.startAnimation(bounce)
         })
     }
 
     override fun getItemCount(): Int {
-        return 4
+        return leads.size
     }
 
     class MemberViewHolder(var binding: PersonItemBinding) : RecyclerView.ViewHolder(binding.root)

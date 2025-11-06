@@ -229,6 +229,7 @@ class HomeFragment : Fragment() {
             var value = getString(R.string.whats_app_group_members)
             var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
             intent.putExtra("tag", value)
+            intent.putExtra("type", "whatsapp_group")
             startActivity(intent)
         }
     }
@@ -238,6 +239,7 @@ class HomeFragment : Fragment() {
             var value = getString(R.string.social_group_members)
             var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
             intent.putExtra("tag", value)
+            intent.putExtra("type", "social_group")
             startActivity(intent)
         }
     }
@@ -247,6 +249,7 @@ class HomeFragment : Fragment() {
             var value = getString(R.string.my_group_members)
             var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
             intent.putExtra("tag", value)
+            intent.putExtra("type", "my_group")
             startActivity(intent)
         }
     }
@@ -256,6 +259,7 @@ class HomeFragment : Fragment() {
             var value = getString(R.string.mobile_contact_members)
             var intent = Intent(requireContext(), MobileContactMembersActivity::class.java)
             intent.putExtra("tag", value)
+            intent.putExtra("type", "mobile_contact")
             startActivity(intent)
         }
     }

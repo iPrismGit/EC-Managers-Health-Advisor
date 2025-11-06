@@ -2,6 +2,8 @@ package com.iprism.ecmhealthadvisor.network
 
 import com.iprism.ecmhealthadvisor.modals.addleads.AddLeadApiRequest
 import com.iprism.ecmhealthadvisor.modals.addleads.AddLeadApiResponse
+import com.iprism.ecmhealthadvisor.modals.addleads.LeadsApiRequest
+import com.iprism.ecmhealthadvisor.modals.addleads.LeadsApiResponse
 import com.iprism.ecmhealthadvisor.modals.addleads.UserDropDownsApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiRequest
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiResponse
@@ -30,6 +32,11 @@ interface EcManagersService {
     @POST(Constants.ADD_LEAD_ENDPOINT)
     suspend fun addLead(@Body addLeadApiRequest: AddLeadApiRequest) : AddLeadApiResponse
 
+
+    @POST(Constants.TOTAL_LEADS_ENDPOINT)
+    suspend fun fetchTotalLeads(@Body totalLeadsApiRequest: LeadsApiRequest) : LeadsApiResponse
+
+
 //    @POST(Constants.ALL_CATEGORIES_ENDPOINT)
 //    suspend fun fetchDoctorCategories(@Body doctorCategoriesApiRequest: DoctorCategoriesApiRequest) : DoctorCategoriesApiResponse
 //
@@ -55,10 +62,7 @@ interface EcManagersService {
 
 //    @POST(Constants.LEADS_ENDPOINT)
 //    suspend fun fetchLeads(@Body leadsApiRequest: LeadsApiRequest) : LeadsApiResponse
-//
-//    @POST(Constants.TOTAL_LEADS_ENDPOINT)
-//    suspend fun fetchTotalLeads(@Body totalLeadsApiRequest: TotalLeadsApiRequest) : TotalLeadsApiResponse
-//
+
 //    @POST(Constants.HEALTH_ADVISOR_CATEGORIES)
 //    suspend fun fetchHealthAdvisorCategories(@Body healthAdvisorCategoriesApiRequest: HealthAdvisorCategoriesApiRequest) : HealthAdvisorCategoriesApiResponse
 //

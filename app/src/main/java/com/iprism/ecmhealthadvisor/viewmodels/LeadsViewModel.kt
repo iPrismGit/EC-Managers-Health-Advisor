@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iprism.ecmhealthadvisor.modals.addleads.AddLeadApiRequest
 import com.iprism.ecmhealthadvisor.modals.addleads.AddLeadResponse
+import com.iprism.ecmhealthadvisor.modals.addleads.LeadsApiRequest
+import com.iprism.ecmhealthadvisor.modals.addleads.LeadsResponse
 import com.iprism.ecmhealthadvisor.modals.addleads.UserDropDownsResponse
 import com.iprism.ecmhealthadvisor.repositoris.LeadsRepository
 import com.iprism.ecmhealthadvisor.utils.UiState
@@ -18,6 +20,9 @@ class LeadsViewModel(private val repository: LeadsRepository) : ViewModel() {
 
     private val _addLeadResponse = MutableLiveData<UiState<AddLeadResponse>>()
     val addLeadResponse: LiveData<UiState<AddLeadResponse>> = _addLeadResponse
+
+    private val _leadsResponse = MutableLiveData<UiState<LeadsResponse>>()
+    val leadsResponse: LiveData<UiState<LeadsResponse>> = _leadsResponse
 
     fun fetchUserDropDowns() {
         viewModelScope.launch {
@@ -47,6 +52,22 @@ class LeadsViewModel(private val repository: LeadsRepository) : ViewModel() {
                 }
             } catch (e: Exception) {
                 _addLeadResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
+    fun fetchTotalLeads(request: LeadsApiRequest) {
+        viewModelScope.launch {
+            _leadsResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchAllLeads(request)
+                if (response.status) {
+                    _leadsResponse.value = UiState.Success(response.response)
+                } else {
+                    _leadsResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _leadsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
             }
         }
     }
