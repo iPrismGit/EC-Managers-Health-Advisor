@@ -212,7 +212,6 @@ class AddMemberActivity : AppCompatActivity() {
         val repository = LeadsRepository()
         val factory = ViewModelFactory { LeadsViewModel(repository) }
         leadsViewModel = ViewModelProvider(this, factory)[LeadsViewModel::class.java]
-
     }
 
     private fun createLaunchSomeActivity() {

@@ -205,6 +205,7 @@ class HomeFragment : Fragment() {
         binding.referDiagnosticLo.setOnClickListener { view ->
             var intent = Intent(requireContext(), ReferDiagnosticActivity::class.java)
             intent.putExtra("tag", "Diagnostic Test")
+            intent.putExtra("type", "diagnostic_test")
             startActivity(intent)
         }
     }
@@ -213,6 +214,7 @@ class HomeFragment : Fragment() {
         binding.referAdmissionLo.setOnClickListener { view ->
             var intent = Intent(requireContext(), ReferDiagnosticActivity::class.java)
             intent.putExtra("tag", "Hospital Admission")
+            intent.putExtra("type", "hospital_admission")
             startActivity(intent)
         }
     }

@@ -67,11 +67,13 @@
                         android:textColor="@color/black"/>
 
                     <EditText
+                        android:id="@+id/name_txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:fontFamily="@font/lato"
                         android:textSize="14dp"
+                        android:maxLength="60"
                         android:inputType="textPersonName"
                         android:layout_marginTop="6dp"
                         android:background="@drawable/edit_text_bg"
@@ -88,6 +90,7 @@
                         android:textColor="@color/black"/>
 
                     <EditText
+                        android:id="@+id/mobile_txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
@@ -122,15 +125,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:padding="16dp"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/gender_txt"
+                            <Spinner
+                                android:id="@+id/genders_sp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/lato"
                                 android:inputType="number"
+                                android:padding="16dp"
                                 android:hint="Choose Gender"
                                 android:layout_weight="1"
                                 android:textColor="@color/black"
@@ -143,6 +146,7 @@
                                 android:layout_height="wrap_content"
                                 android:adjustViewBounds="true"
                                 app:tint="@color/black"
+                                android:layout_marginEnd="16dp"
                                 android:src="@drawable/drop_down_img"/>
 
                             <ImageView
@@ -277,7 +281,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:indicatorColor="@color/blue"
+        app:indicatorColor="@color/green"
         app:indicatorName="LineSpinFadeLoaderIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

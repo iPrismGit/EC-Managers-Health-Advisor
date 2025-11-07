@@ -10,6 +10,8 @@ import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
+import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
+import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -36,6 +38,8 @@ interface EcManagersService {
     @POST(Constants.TOTAL_LEADS_ENDPOINT)
     suspend fun fetchTotalLeads(@Body totalLeadsApiRequest: LeadsApiRequest) : LeadsApiResponse
 
+    @POST(Constants.HEALTH_ADVISOR_REFER_ENDPOINT)
+    suspend fun referAdmissionOrDiagnostic(@Body request : ReferApiRequest) : ReferApiResponse
 
 //    @POST(Constants.ALL_CATEGORIES_ENDPOINT)
 //    suspend fun fetchDoctorCategories(@Body doctorCategoriesApiRequest: DoctorCategoriesApiRequest) : DoctorCategoriesApiResponse
