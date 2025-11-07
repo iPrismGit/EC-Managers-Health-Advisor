@@ -27,39 +27,39 @@ class HospitalDoctorsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        setupHospitalDoctorsAdapter()
+        //setupHospitalDoctorsAdapter()
         handleBack()
     }
 
-    private fun setupHospitalDoctorsAdapter() {
-        var hospitalHodsAdapter = HospitalHodsAdapter(this)
-        var linearLayoutManager = LinearLayoutManager(this)
-        binding.hospitalDoctorsRv.adapter = hospitalHodsAdapter
-        binding.hospitalDoctorsRv.layoutManager = linearLayoutManager
-        hospitalHodsAdapter.setupListener(object : OnSingleItemClickListener {
-            override fun onCallNowClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(
-                    this@HospitalDoctorsActivity,
-                    "Calling to the Hospital Doctor!"
-                )
-            }
-
-            override fun onSmsClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(
-                    this@HospitalDoctorsActivity,
-                    "Messaging to the Hospital Doctor!"
-                )
-            }
-
-            override fun onWhatsappClick(doctorId: String, mobile: String) {
-                ToastUtils.showSuccessCustomToast(
-                    this@HospitalDoctorsActivity,
-                    "Navigate to Whatsapp!"
-                )
-            }
-
-        })
-    }
+//    private fun setupHospitalDoctorsAdapter() {
+//        var hospitalHodsAdapter = HospitalHodsAdapter(this)
+//        var linearLayoutManager = LinearLayoutManager(this)
+//        binding.hospitalDoctorsRv.adapter = hospitalHodsAdapter
+//        binding.hospitalDoctorsRv.layoutManager = linearLayoutManager
+//        hospitalHodsAdapter.setupListener(object : OnSingleItemClickListener {
+//            override fun onCallNowClick(doctorId: String, mobile: String) {
+//                ToastUtils.showSuccessCustomToast(
+//                    this@HospitalDoctorsActivity,
+//                    "Calling to the Hospital Doctor!"
+//                )
+//            }
+//
+//            override fun onSmsClick(doctorId: String, mobile: String) {
+//                ToastUtils.showSuccessCustomToast(
+//                    this@HospitalDoctorsActivity,
+//                    "Messaging to the Hospital Doctor!"
+//                )
+//            }
+//
+//            override fun onWhatsappClick(doctorId: String, mobile: String) {
+//                ToastUtils.showSuccessCustomToast(
+//                    this@HospitalDoctorsActivity,
+//                    "Navigate to Whatsapp!"
+//                )
+//            }
+//
+//        })
+//    }
 
     private fun handleBack() {
         binding.backImg.setOnClickListener(View.OnClickListener {

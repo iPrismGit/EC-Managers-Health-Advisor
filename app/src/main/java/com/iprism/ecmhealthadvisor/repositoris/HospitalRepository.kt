@@ -1,0 +1,85 @@
+package com.iprism.ecmhealthadvisor.repositoris
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
+
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
+import com.iprism.ecmhealthadvisor.network.EcManagersApi
+
+class HospitalRepository {
+
+
+    private val apiService = EcManagersApi.ecManagersService
+
+
+    suspend fun fetchHospitalHods(request: DoctorsApiRequest): DoctorsApiResponse {
+        return apiService.fetchHospitalHods(request)
+    }
+
+//    suspend fun fetchTeamConnectEmployees(request: TeamConnectApiRequest): TeamConnectApiResponse {
+//        return apiService.fetchTeamConnectEmployees(request)
+//    }
+//
+//    suspend fun dailyReportsInsertAndView(request: DailyReportApiRequest): DailyReportApiResponse {
+//        return apiService.dailyReportsInsertAndView(request)
+//    }
+//
+//    suspend fun fetchHospitalTariffs(request: HospitalTariffsApiRequest): HospitalTariffsApiResponse {
+//        return apiService.fetchHospitalTariffs(request)
+//    }
+//
+//    suspend fun fetchSurgicalPackages(request: SurgicalPackagesApiRequest): SurgicalPackagesApiResponse {
+//        return apiService.fetchSurgicalPackages(request)
+//    }
+//
+//    suspend fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest): WhiteBoardFeedBackApiResponse {
+//        return apiService.whiteBoardFeedBackInsert(request)
+//    }
+//
+//    suspend fun fetchEventsAndStatusUpdating(request: EventsApiRequest): EventsApiResponse {
+//        return apiService.fetchEventsAndStatusUpdating(request)
+//    }
+//
+//    suspend fun fetchSingleEventDetails(request: SingleEventDetailsApiRequest): SingleEventDetailsApiResponse {
+//        return apiService.fetchSingleEventDetails(request)
+//    }
+//
+//    suspend fun fetchTodoListAndInsertTodo(request: TodoListApiRequest): TodoListApiResponse {
+//        return apiService.fetchTodoListAndInsertTodo(request)
+//    }
+//
+//    suspend fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest): TaskAndPerformanceApiResponse {
+//        return apiService.fetchTaskPerformanceDetails(request)
+//    }
+//
+//    suspend fun fetchContentPagesData(request: ContentPagesApiRequest): ContentPagesApiResponse {
+//        return apiService.fetchContentPages(request)
+//    }
+//
+//    suspend fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest): HospitalFacilitiesApiResponse {
+//        return apiService.fetchHospitalFacilities(request)
+//    }
+//
+//    suspend fun fetchHospitalTieups(request: TieupsApiRequest): TieupsApiResponse {
+//        return apiService.fetchHospitalTieups(request)
+//    }
+//
+//    suspend fun contactUs(request: ContactUsApiRequest): ContactUsApiResponse {
+//        return apiService.contactUs(request)
+//    }
+//
+//    suspend fun fetchHealthMediaData(request: HealthMediaApiRequest): HealthMediaApiResponse {
+//        return apiService.fetchHealthMedia(request)
+//    }
+//
+//    suspend fun fetchDigitalPromos(request: DigitalPromosApiRequest): DigitalPromosApiResponse {
+//        return apiService.fetchDigitalPromos(request)
+//    }
+//
+//    suspend fun insertRequestAndRefer(request: RequestReferApiRequest): RequestAndReferApiResponse {
+//        return apiService.insertRequestAndRefer(request)
+//    }
+//
+//    suspend fun fetchTestimonialVideos(request: TestimonialVideosApiRequest): TestimonialVideosApiResponse {
+//        return apiService.fetchTestimonialVideos(request)
+//    }
+
+}

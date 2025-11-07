@@ -10,6 +10,8 @@ import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
@@ -34,12 +36,17 @@ interface EcManagersService {
     @POST(Constants.ADD_LEAD_ENDPOINT)
     suspend fun addLead(@Body addLeadApiRequest: AddLeadApiRequest) : AddLeadApiResponse
 
-
     @POST(Constants.TOTAL_LEADS_ENDPOINT)
     suspend fun fetchTotalLeads(@Body totalLeadsApiRequest: LeadsApiRequest) : LeadsApiResponse
 
     @POST(Constants.HEALTH_ADVISOR_REFER_ENDPOINT)
     suspend fun referAdmissionOrDiagnostic(@Body request : ReferApiRequest) : ReferApiResponse
+
+    @POST(Constants.HOSPITAL_DOCTORS_ENDPOINT)
+    suspend fun fetchHospitalDoctors(@Body doctorsApiRequest: DoctorsApiRequest) : DoctorsApiResponse
+
+    @POST(Constants.HOSPITAL_HODS_ENDPOINT)
+    suspend fun fetchHospitalHods(@Body doctorsApiRequest: DoctorsApiRequest) : DoctorsApiResponse
 
 //    @POST(Constants.ALL_CATEGORIES_ENDPOINT)
 //    suspend fun fetchDoctorCategories(@Body doctorCategoriesApiRequest: DoctorCategoriesApiRequest) : DoctorCategoriesApiResponse
@@ -58,9 +65,6 @@ interface EcManagersService {
 //
 //    @POST(Constants.DOCTORS_ENDPOINT)
 //    suspend fun fetchDoctors(@Body doctorsApiRequest: DoctorsApiRequest) : DoctorsApiResponse
-//
-//    @POST(Constants.HOSPITAL_DOCTORS_ENDPOINT)
-//    suspend fun fetchHospitalDoctors(@Body doctorsApiRequest: DoctorsApiRequest) : DoctorsApiResponse
 
 
 
@@ -96,10 +100,7 @@ interface EcManagersService {
 //
 //    @POST(Constants.TOTAL_HEALTH_ADVISORS_ENDPOINT)
 //    suspend fun fetchHealthAdvisors(@Body healthAdvisorsApiRequest: HealthAdvisorsApiRequest) : HealthAdvisorsApiResponse
-//
-//    @POST(Constants.HOSPITAL_HODS_ENDPOINT)
-//    suspend fun fetchHospitalHods(@Body doctorsApiRequest: DoctorsApiRequest) : DoctorsApiResponse
-//
+
 //    @POST(Constants.TEAM_CONNECT_ENDPOINT)
 //    suspend fun fetchTeamConnectEmployees(@Body teamConnectApiRequest: TeamConnectApiRequest) : TeamConnectApiResponse
 //
