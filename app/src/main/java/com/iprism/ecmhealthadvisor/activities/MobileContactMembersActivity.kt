@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.adapters.MembersAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityMobileContactMembersBinding
@@ -68,6 +69,9 @@ class MobileContactMembersActivity : AppCompatActivity() {
         binding.refreshLayout.setOnChildScrollUpCallback { _, _ ->
             binding.leadsRv.canScrollVertically(-1)
         }
+        binding.refreshLayout.setColorSchemeColors(
+            ContextCompat.getColor(this, R.color.green)
+        )
         setupRecyclerView()
         initViewModel()
         observeLeadsResponse()

@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.adapters.HospitalHodsAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityHospitalHodsBinding
 import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
@@ -64,6 +65,9 @@ class HospitalHodsActivity : AppCompatActivity() {
         binding.refreshLayout.setOnChildScrollUpCallback { _, _ ->
             binding.hodsRv.canScrollVertically(-1)
         }
+        binding.refreshLayout.setColorSchemeColors(
+            ContextCompat.getColor(this, R.color.green)
+        )
         setupRecyclerView()
         initViewModel()
         observeHospitalDoctorsResponse()
