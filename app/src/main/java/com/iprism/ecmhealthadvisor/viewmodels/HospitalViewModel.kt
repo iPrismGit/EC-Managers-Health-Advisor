@@ -15,6 +15,9 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     private val _hospitalHodsResponse = MutableLiveData<UiState<DoctorsResponse>>()
     val hospitalHodsResponse: LiveData<UiState<DoctorsResponse>> = _hospitalHodsResponse
 
+    private val _doctorsResponse = MutableLiveData<UiState<DoctorsResponse>>()
+    val doctorsResponse: LiveData<UiState<DoctorsResponse>> = _doctorsResponse
+
 //    private val _teamConnectResponse = MutableLiveData<UiState<TeamConnectResponse>>()
 //    val teamConnectResponse: LiveData<UiState<TeamConnectResponse>> = _teamConnectResponse
 //
@@ -81,6 +84,22 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
                 }
             } catch (e: Exception) {
                 _hospitalHodsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
+    fun fetchHospitalDoctors(request: DoctorsApiRequest) {
+        viewModelScope.launch {
+            _doctorsResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchHospitalDoctors(request)
+                if (response.status) {
+                    _doctorsResponse.value = UiState.Success(response.response)
+                } else {
+                    _doctorsResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _doctorsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
             }
         }
     }

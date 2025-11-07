@@ -14,6 +14,10 @@ class HospitalRepository {
         return apiService.fetchHospitalHods(request)
     }
 
+    suspend fun fetchHospitalDoctors(request: DoctorsApiRequest): DoctorsApiResponse {
+        return apiService.fetchHospitalDoctors(request)
+    }
+
 //    suspend fun fetchTeamConnectEmployees(request: TeamConnectApiRequest): TeamConnectApiResponse {
 //        return apiService.fetchTeamConnectEmployees(request)
 //    }
