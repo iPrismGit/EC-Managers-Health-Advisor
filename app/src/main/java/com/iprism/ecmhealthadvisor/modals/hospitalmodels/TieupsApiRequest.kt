@@ -1,6 +1,6 @@
 package com.iprism.ecmhealthadvisor.modals.hospitalmodels
 
-data class HospitalFacilitiesApiRequest(
+data class TieupsApiRequest(
 
     val auth_token: String,
     val main_data_id: String,

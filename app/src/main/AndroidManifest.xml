@@ -42,6 +42,14 @@
             android:exported="false" />
 
         <activity
+            android:name=".activities.VideoPlayActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.ViewPhotoActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".activities.TestimonialVideosActivity"
             android:exported="false" />
 

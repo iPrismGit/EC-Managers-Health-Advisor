@@ -1,17 +1,40 @@
 package com.iprism.ecmhealthadvisor.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.adapters.HospitalTieUpsAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityHospitalTieupsBinding
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Tieup
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
+import com.iprism.ecmhealthadvisor.repositoris.HospitalRepository
+import com.iprism.ecmhealthadvisor.utils.ToastUtils
+import com.iprism.ecmhealthadvisor.utils.UiState
+import com.iprism.ecmhealthadvisor.utils.User
+import com.iprism.ecmhealthadvisor.utils.hideProgress
+import com.iprism.ecmhealthadvisor.utils.showProgress
+import com.iprism.ecmhealthadvisor.viewmodels.HospitalViewModel
+import com.iprism.ecmhealthadvisor.viewmodels.ViewModelFactory
 
 class HospitalTieupsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHospitalTieupsBinding
+    private lateinit var tieupsAdapter: HospitalTieUpsAdapter
+    private var tieupsList = mutableListOf<Tieup>()
+    private var isLoading = false
+    private var isLastPage = false
+    private var currentPage = 1
+    private val limit = 10
+    private lateinit var hospitalViewModel: HospitalViewModel
+    private lateinit var user: User
+    private lateinit var userDetails: HashMap<String, String?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,83 +42,133 @@ class HospitalTieupsActivity : AppCompatActivity() {
         binding = ActivityHospitalTieupsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         handleBack()
-        setupAdapterInsuranceCompaniesAdapter()
-        handleNonGIPSAViewAllBtn()
-        handleGIPSAViewAllBtn()
-        handleGovtViewAllBtn()
-        handlePublicViewAllBtn()
-        handlePrivateViewAllBtn()
-        handleCertificationViewAllBtn()
+        user = User(this)
+        userDetails = user.getUserDetails()
+        binding.refreshLayout.setOnChildScrollUpCallback { _, _ ->
+            binding.tieupsRv.canScrollVertically(-1)
+        }
+        binding.refreshLayout.setColorSchemeColors(
+            ContextCompat.getColor(this, R.color.green)
+        )
+        setupRecyclerView()
+        initViewModel()
+        observeHospitalTieupsResponse()
+        loadPromos()
+        handleRefreshLo()
     }
 
-    private fun handleNonGIPSAViewAllBtn() {
-        binding.nonGipsaViewAllBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, SingleHospitalTieupsActivity::class.java)
-            intent.putExtra("name", "Insurance Tie-ups (Non GIPSA)")
-            startActivity(intent)
-        })
+    private fun setupRecyclerView() {
+        tieupsAdapter = HospitalTieUpsAdapter(this, tieupsList)
+        val linearLayoutManager = LinearLayoutManager(this)
+
+        binding.tieupsRv.apply {
+            layoutManager = linearLayoutManager
+            adapter = tieupsAdapter
+
+            addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    binding.refreshLayout.isEnabled = !binding.tieupsRv.canScrollVertically(-1)
+                    val visibleItemCount = linearLayoutManager.childCount
+                    val totalItemCount = linearLayoutManager.itemCount
+                    val firstVisibleItemPosition =
+                        linearLayoutManager.findFirstVisibleItemPosition()
+
+                    if (!isLoading && !isLastPage) {
+                        if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
+                            loadMoreItems()
+                        }
+                    }
+                }
+            })
+        }
+
     }
 
-    private fun handleGIPSAViewAllBtn() {
-        binding.gipsaViewAllBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, SingleHospitalTieupsActivity::class.java)
-            intent.putExtra("name", "Insurance Tie-ups (GIPSA)")
-            startActivity(intent)
-        })
+    private fun loadPromos() {
+        val request = TieupsApiRequest(
+            userDetails[User.AUTH_TOKEN].toString(),
+            userDetails[User.MAIN_DATA_ID].toString(),
+            currentPage,
+            userDetails[User.ID].toString()
+        )
+        hospitalViewModel.fetchHospitalTieups(request)
     }
 
-    private fun handleGovtViewAllBtn() {
-        binding.governmentSectorViewAllBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, SingleHospitalTieupsActivity::class.java)
-            intent.putExtra("name", "Government Sector")
-            startActivity(intent)
-        })
+    private fun refreshData() {
+        currentPage = 1
+        isLastPage = false
+        tieupsList.clear()
+        tieupsAdapter.notifyDataSetChanged()
+        val request = TieupsApiRequest(
+            userDetails[User.AUTH_TOKEN].toString(),
+            userDetails[User.MAIN_DATA_ID].toString(),
+            currentPage,
+            userDetails[User.ID].toString()
+        )
+        hospitalViewModel.fetchHospitalTieups(request)
     }
 
-    private fun handlePublicViewAllBtn() {
-        binding.publicSectorViewAllBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, SingleHospitalTieupsActivity::class.java)
-            intent.putExtra("name", "Public Sector")
-            startActivity(intent)
-        })
+    private fun loadMoreItems() {
+        isLoading = true
+        currentPage += 1
+        loadPromos()
     }
 
-    private fun handlePrivateViewAllBtn() {
-        binding.privateSectorViewAllBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, SingleHospitalTieupsActivity::class.java)
-            intent.putExtra("name", "Private Sector")
-            startActivity(intent)
-        })
+    private fun handleRefreshLo() {
+        binding.refreshLayout.setOnRefreshListener(
+            SwipeRefreshLayout.OnRefreshListener {
+                refreshData()
+                binding.refreshLayout.isRefreshing = false
+            }
+        )
     }
 
-    private fun handleCertificationViewAllBtn() {
-        binding.certificationsViewAllBtn.setOnClickListener(View.OnClickListener {
-            var intent = Intent(this, SingleHospitalTieupsActivity::class.java)
-            intent.putExtra("name", "Certification Sector")
-            startActivity(intent)
-        })
+    private fun observeHospitalTieupsResponse() {
+        hospitalViewModel.tieupsResponse.observe(this) { result ->
+            when (result) {
+                is UiState.Loading -> {
+                    if (currentPage == 1) {
+                        binding.progress.showProgress()
+                    }
+                }
+
+                is UiState.Success -> {
+                    binding.progress.hideProgress()
+                    isLoading = false
+
+                    val newBookings = result.data.tieups
+                    if (newBookings.isNotEmpty()) {
+                        tieupsList.addAll(newBookings)
+                        tieupsAdapter.notifyDataSetChanged()
+                        isLastPage = newBookings.size < limit
+                        binding.tieupsRv.visibility = View.VISIBLE
+                        binding.noDataTxt.visibility = View.GONE
+                    } else {
+                        isLastPage = true
+                        if (currentPage == 1) {
+                            binding.tieupsRv.visibility = View.GONE
+                            binding.noDataTxt.visibility = View.VISIBLE
+                            ToastUtils.showErrorCustomToast(this, "No Data Found!")
+                        }
+                    }
+                }
+
+                is UiState.Error -> {
+                    isLoading = false
+                    binding.progress.hideProgress()
+                    binding.tieupsRv.visibility = View.GONE
+                    binding.noDataTxt.visibility = View.VISIBLE
+                    ToastUtils.showErrorCustomToast(this, result.message)
+                }
+            }
+        }
     }
 
-    private fun setupAdapterInsuranceCompaniesAdapter() {
-        var hospitalTieUpsAdapter = HospitalTieUpsAdapter(this)
-        binding.nonGipsaRv.adapter = hospitalTieUpsAdapter
-        binding.gipsaRv.adapter = hospitalTieUpsAdapter
-        binding.governmentSectorRv.adapter = hospitalTieUpsAdapter
-        binding.publicSectorRv.adapter = hospitalTieUpsAdapter
-        binding.privateSectorRv.adapter = hospitalTieUpsAdapter
-        binding.certificationsRv.adapter = hospitalTieUpsAdapter
-        val linearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val linearLayoutManager1 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val linearLayoutManager2 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val linearLayoutManager3 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val linearLayoutManager4 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val linearLayoutManager5 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        binding.nonGipsaRv.layoutManager = linearLayoutManager
-        binding.gipsaRv.layoutManager = linearLayoutManager1
-        binding.governmentSectorRv.layoutManager = linearLayoutManager2
-        binding.publicSectorRv.layoutManager = linearLayoutManager3
-        binding.privateSectorRv.layoutManager = linearLayoutManager4
-        binding.certificationsRv.layoutManager = linearLayoutManager5
+    private fun initViewModel() {
+        val repository = HospitalRepository()
+        val factory = ViewModelFactory { HospitalViewModel(repository) }
+        hospitalViewModel = ViewModelProvider(this, factory)[HospitalViewModel::class.java]
     }
 
     private fun handleBack() {

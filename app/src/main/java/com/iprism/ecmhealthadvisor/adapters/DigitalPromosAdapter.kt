@@ -4,15 +4,13 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.iprism.ecmcorporatemarketing.adapters.FacilitiesInnerAdapter
+import androidx.recyclerview.widget.RecyclerView
+import com.iprism.ecmcorporatemarketing.adapters.DigitalPromosInnerAdapter
 import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
-import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
-import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Tieup
 
-class HospitalTieUpsAdapter(var context: Context, var tieups : List<Tieup>) :
-    Adapter<HospitalTieUpsAdapter.HospitalTieUpViewHolder>(),   FacilitiesInnerAdapter.OnFacilityInnerClickListener  {
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromo
+
+class DigitalPromosAdapter(var context: Context, var digitalPromos: List<DigitalPromo>) : RecyclerView.Adapter<DigitalPromosAdapter.DigitalPromoViewHolder> (),  DigitalPromosInnerAdapter.OnFacilityInnerClickListener  {
 
     private lateinit var  listener: OnFacilityOuterClickListener
 
@@ -20,28 +18,25 @@ class HospitalTieUpsAdapter(var context: Context, var tieups : List<Tieup>) :
     fun setupListener(listener: OnFacilityOuterClickListener){
         this.listener = listener
     }
-
     interface OnFacilityOuterClickListener {
         fun onItemClick(url: String, type: String)
     }
 
-
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HospitalTieUpsAdapter.HospitalTieUpViewHolder {
-        var binding =
-            FacilityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HospitalTieUpViewHolder(binding)
+    ): DigitalPromoViewHolder {
+        var binding = FacilityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return DigitalPromoViewHolder(binding)
     }
 
     override fun onBindViewHolder(
-        holder: HospitalTieUpsAdapter.HospitalTieUpViewHolder,
+        holder: DigitalPromoViewHolder,
         position: Int
     ) {
-        var tieup = tieups[position]
-        holder.binding.nameTxt.text = tieup.name
-        var adapter = FacilitiesInnerAdapter(context, tieup.media)
+        var promo = digitalPromos[position]
+        holder.binding.nameTxt.text = promo.name
+        var adapter = DigitalPromosInnerAdapter(context, promo.media)
         var linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         holder.binding.facilitiesInnerRv.adapter = adapter
         holder.binding.facilitiesInnerRv.layoutManager = linearLayoutManager
@@ -49,13 +44,12 @@ class HospitalTieUpsAdapter(var context: Context, var tieups : List<Tieup>) :
     }
 
     override fun getItemCount(): Int {
-        return tieups.size
+        return digitalPromos.size
     }
 
     override fun onItemClick(url: String, type: String) {
         listener.onItemClick(url, type)
     }
 
-    class HospitalTieUpViewHolder(var binding: FacilityItemBinding) : ViewHolder(binding.root)
-
+    class DigitalPromoViewHolder(var binding: FacilityItemBinding) : RecyclerView.ViewHolder(binding.root)
 }

@@ -36,6 +36,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout13"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,182 +45,46 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.core.widget.NestedScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/facilities_rv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="Casuality"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/casualities_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="Critical Care"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/critical_care_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="Operation Theaters"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/operation_theaters_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="Hospital Infra"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/hospital_infra_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="Diagnostic Services"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/diagnostic_services_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="CATH LAB"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/cath_labs_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="16dp"
-                        android:textSize="16dp"
-                        android:fontFamily="@font/lato_medium"
-                        android:textColor="@color/black"
-                        android:text="Surgical Branches"/>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/surgical_branches_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:layout_marginTop="16dp"
-                        android:background="@color/light_gray1"/>
-
-                </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
+                android:layout_height="wrap_content"
+                android:padding="8dp"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/no_data_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="center"
+        android:text="No Data Found!"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/green"
+        app:indicatorName="LineSpinFadeLoaderIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

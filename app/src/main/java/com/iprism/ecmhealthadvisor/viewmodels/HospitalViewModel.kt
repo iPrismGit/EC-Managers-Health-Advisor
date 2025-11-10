@@ -4,16 +4,22 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsResponse
 import com.iprism.ecmhealthadvisor.repositoris.HospitalRepository
 import com.iprism.ecmhealthadvisor.utils.UiState
 import kotlinx.coroutines.launch
@@ -41,13 +47,13 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 
 //    private val _contentPagesResponse = MutableLiveData<UiState<ContentPagesResponse>>()
 //    val contentPagesResponse : LiveData<UiState<ContentPagesResponse>> = _contentPagesResponse
-//
-//    private val _facilitiesResponse = MutableLiveData<UiState<HospitalFacilitiesResponse>>()
-//    val facilitiesResponse : LiveData<UiState<HospitalFacilitiesResponse>> = _facilitiesResponse
-//
-//    private val _tieupsResponse = MutableLiveData<UiState<TieupsResponse>>()
-//    val tieupsResponse : LiveData<UiState<TieupsResponse>> = _tieupsResponse
-//
+
+    private val _facilitiesResponse = MutableLiveData<UiState<HospitalFacilitiesResponse>>()
+    val facilitiesResponse : LiveData<UiState<HospitalFacilitiesResponse>> = _facilitiesResponse
+
+    private val _tieupsResponse = MutableLiveData<UiState<TieupsResponse>>()
+    val tieupsResponse : LiveData<UiState<TieupsResponse>> = _tieupsResponse
+
 //    private val _contactUsResponse = MutableLiveData<UiState<ContactUsResponse>>()
 //    val contactUsResponse : LiveData<UiState<ContactUsResponse>> = _contactUsResponse
 //
@@ -57,8 +63,8 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     private val _healthMediaResponse = MutableLiveData<UiState<HealthMediaResponse>>()
     val healthMediaResponse : LiveData<UiState<HealthMediaResponse>> = _healthMediaResponse
 
-//    private val _digitalPromosResponse = MutableLiveData<UiState<DigitalPromosResponse>>()
-//    val digitalPromosResponse : LiveData<UiState<DigitalPromosResponse>> = _digitalPromosResponse
+    private val _digitalPromosResponse = MutableLiveData<UiState<DigitalPromosResponse>>()
+    val digitalPromosResponse : LiveData<UiState<DigitalPromosResponse>> = _digitalPromosResponse
 
     private val _testimonialVideosResponse = MutableLiveData<UiState<TestimonialVideosResponse>>()
     val testimonialVideosResponse : LiveData<UiState<TestimonialVideosResponse>> = _testimonialVideosResponse
@@ -174,39 +180,39 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //            }
 //        }
 //    }
-//
-//    fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest) {
-//        viewModelScope.launch {
-//            _facilitiesResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchHospitalFacilities(request)
-//                if (response.status) {
-//                    _facilitiesResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _facilitiesResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _facilitiesResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
-//
-//    fun fetchHospitalTieups(request: TieupsApiRequest) {
-//        viewModelScope.launch {
-//            _tieupsResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchHospitalTieups(request)
-//                if (response.status) {
-//                    _tieupsResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _tieupsResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _tieupsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
-//
+
+    fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest) {
+        viewModelScope.launch {
+            _facilitiesResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchHospitalFacilities(request)
+                if (response.status) {
+                    _facilitiesResponse.value = UiState.Success(response.response)
+                } else {
+                    _facilitiesResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _facilitiesResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
+    fun fetchHospitalTieups(request: TieupsApiRequest) {
+        viewModelScope.launch {
+            _tieupsResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchHospitalTieups(request)
+                if (response.status) {
+                    _tieupsResponse.value = UiState.Success(response.response)
+                } else {
+                    _tieupsResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _tieupsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
 //    fun contactUs(request: ContactUsApiRequest) {
 //        viewModelScope.launch {
 //            _contactUsResponse.value = UiState.Loading
@@ -255,22 +261,21 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
         }
     }
 
-//    fun fetchDigitalPromos(request: DigitalPromosApiRequest) {
-//        viewModelScope.launch {
-//            _digitalPromosResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchDigitalPromos(request)
-//                if (response.status) {
-//                    _digitalPromosResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _digitalPromosResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _digitalPromosResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
-
+    fun fetchDigitalPromos(request: DigitalPromosApiRequest) {
+        viewModelScope.launch {
+            _digitalPromosResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchDigitalPromos(request)
+                if (response.status) {
+                    _digitalPromosResponse.value = UiState.Success(response.response)
+                } else {
+                    _digitalPromosResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _digitalPromosResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
 
     fun fetchTestimonialVideos(request: TestimonialVideosApiRequest) {
         viewModelScope.launch {

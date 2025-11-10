@@ -25,12 +25,7 @@ class PromoCouponsAdapter(var context: Context) :
         holder: PromoCouponsAdapter.PromoCouponViewHolder,
         position: Int
     ) {
-        holder.binding.imageView6.setImageDrawable(
-            ContextCompat.getDrawable(
-                context,
-                R.drawable.to_do_list_img
-            )
-        )
+
     }
 
     override fun getItemCount(): Int {

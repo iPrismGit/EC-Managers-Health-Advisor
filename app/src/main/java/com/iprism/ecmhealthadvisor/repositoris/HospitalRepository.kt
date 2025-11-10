@@ -1,15 +1,21 @@
 package com.iprism.ecmhealthadvisor.repositoris
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiResponse
 import com.iprism.ecmhealthadvisor.network.EcManagersApi
 
 class HospitalRepository {
@@ -45,18 +51,7 @@ class HospitalRepository {
 //    suspend fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest): WhiteBoardFeedBackApiResponse {
 //        return apiService.whiteBoardFeedBackInsert(request)
 //    }
-//
-//    suspend fun fetchEventsAndStatusUpdating(request: EventsApiRequest): EventsApiResponse {
-//        return apiService.fetchEventsAndStatusUpdating(request)
-//    }
-//
-//    suspend fun fetchSingleEventDetails(request: SingleEventDetailsApiRequest): SingleEventDetailsApiResponse {
-//        return apiService.fetchSingleEventDetails(request)
-//    }
-//
-//    suspend fun fetchTodoListAndInsertTodo(request: TodoListApiRequest): TodoListApiResponse {
-//        return apiService.fetchTodoListAndInsertTodo(request)
-//    }
+
 
     suspend fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest): TaskAndPerformanceApiResponse {
         return apiService.fetchTaskPerformanceDetails(request)
@@ -66,14 +61,14 @@ class HospitalRepository {
 //        return apiService.fetchContentPages(request)
 //    }
 //
-//    suspend fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest): HospitalFacilitiesApiResponse {
-//        return apiService.fetchHospitalFacilities(request)
-//    }
-//
-//    suspend fun fetchHospitalTieups(request: TieupsApiRequest): TieupsApiResponse {
-//        return apiService.fetchHospitalTieups(request)
-//    }
-//
+    suspend fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest): HospitalFacilitiesApiResponse {
+        return apiService.fetchHospitalFacilities(request)
+    }
+
+    suspend fun fetchHospitalTieups(request: TieupsApiRequest): TieupsApiResponse {
+        return apiService.fetchHospitalTieups(request)
+    }
+
 //    suspend fun contactUs(request: ContactUsApiRequest): ContactUsApiResponse {
 //        return apiService.contactUs(request)
 //    }
@@ -82,13 +77,9 @@ class HospitalRepository {
         return apiService.fetchHealthMedia(request)
     }
 
-//    suspend fun fetchDigitalPromos(request: DigitalPromosApiRequest): DigitalPromosApiResponse {
-//        return apiService.fetchDigitalPromos(request)
-//    }
-//
-//    suspend fun insertRequestAndRefer(request: RequestReferApiRequest): RequestAndReferApiResponse {
-//        return apiService.insertRequestAndRefer(request)
-//    }
+    suspend fun fetchDigitalPromos(request: DigitalPromosApiRequest): DigitalPromosApiResponse {
+        return apiService.fetchDigitalPromos(request)
+    }
 
     suspend fun fetchTestimonialVideos(request: TestimonialVideosApiRequest): TestimonialVideosApiResponse {
         return apiService.fetchTestimonialVideos(request)

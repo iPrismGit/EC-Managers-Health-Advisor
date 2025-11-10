@@ -12,16 +12,22 @@ import com.iprism.ecmhealthadvisor.modals.authentication.ProfileApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
@@ -147,24 +153,21 @@ interface EcManagersService {
 
 //    @POST(Constants.CONTENT_PAGES_ENDPOINT)
 //    suspend fun fetchContentPages(@Body contentPagesApiRequest: ContentPagesApiRequest) : ContentPagesApiResponse
-//
-//    @POST(Constants.HOSPITAL_FACILITIES_ENDPOINT)
-//    suspend fun fetchHospitalFacilities(@Body facilitiesApiRequest: HospitalFacilitiesApiRequest) : HospitalFacilitiesApiResponse
-//
-//    @POST(Constants.HOSPITAL_TIEUPS_ENDPOINT)
-//    suspend fun fetchHospitalTieups(@Body tieupsApiRequest: TieupsApiRequest) : TieupsApiResponse
-//
+
+    @POST(Constants.HOSPITAL_FACILITIES_ENDPOINT)
+    suspend fun fetchHospitalFacilities(@Body facilitiesApiRequest: HospitalFacilitiesApiRequest) : HospitalFacilitiesApiResponse
+
+    @POST(Constants.HOSPITAL_TIEUPS_ENDPOINT)
+    suspend fun fetchHospitalTieups(@Body tieupsApiRequest: TieupsApiRequest) : TieupsApiResponse
+
 //    @POST(Constants.CONTACT_US_ENDPOINT)
 //    suspend fun contactUs(@Body contactUsApiRequest: ContactUsApiRequest) : ContactUsApiResponse
 
     @POST(Constants.HEALTH_MEDIA_ENDPOINT)
     suspend fun fetchHealthMedia(@Body healthMediaApiRequest: HealthMediaApiRequest) : HealthMediaApiResponse
 
-//    @POST(Constants.DIGITAL_PROMOS_ENDPOINT)
-//    suspend fun fetchDigitalPromos(@Body digitalPromosApiRequest: DigitalPromosApiRequest) : DigitalPromosApiResponse
-//
-//    @POST(Constants.REQUEST_REFER_ENDPOINT)
-//    suspend fun insertRequestAndRefer(@Body request : RequestReferApiRequest) : RequestAndReferApiResponse
+    @POST(Constants.DIGITAL_PROMOS_ENDPOINT)
+    suspend fun fetchDigitalPromos(@Body digitalPromosApiRequest: DigitalPromosApiRequest) : DigitalPromosApiResponse
 
     @POST(Constants.TESTIMONIAL_VIDEOS_ENDPOINT)
     suspend fun fetchTestimonialVideos(@Body request : TestimonialVideosApiRequest) : TestimonialVideosApiResponse
