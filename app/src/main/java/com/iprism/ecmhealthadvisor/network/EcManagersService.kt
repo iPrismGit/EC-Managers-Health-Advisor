@@ -7,6 +7,8 @@ import com.iprism.ecmhealthadvisor.modals.addleads.LeadsApiResponse
 import com.iprism.ecmhealthadvisor.modals.addleads.UserDropDownsApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiRequest
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiResponse
+import com.iprism.ecmhealthadvisor.modals.authentication.ProfileApiRequest
+import com.iprism.ecmhealthadvisor.modals.authentication.ProfileApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
@@ -117,10 +119,10 @@ interface EcManagersService {
 //
 //    @POST(Constants.SURGICAL_PACKAGES_ENDPOINT)
 //    suspend fun fetchSurgicalPackages(@Body surgicalPackagesApiRequest: SurgicalPackagesApiRequest) : SurgicalPackagesApiResponse
-//
-//    @POST(Constants.PROFILE_ENDPOINT)
-//    suspend fun fetchProfileDetails(@Body profileApiRequest: ProfileApiRequest) : ProfileApiResponse
-//
+
+    @POST(Constants.PROFILE_ENDPOINT)
+    suspend fun fetchProfileDetails(@Body profileApiRequest: ProfileApiRequest) : ProfileApiResponse
+
 //
 //    @POST(Constants.WHITEBOARD_FEEDBACK_ENDPOINT)
 //    suspend fun whiteBoardFeedBackInsert(@Body whiteBoardFeedbackApiRequest: WhiteBoardFeedbackApiRequest) : WhiteBoardFeedBackApiResponse

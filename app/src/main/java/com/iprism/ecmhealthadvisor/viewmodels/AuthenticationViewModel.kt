@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiRequest
 
 import com.iprism.ecmhealthadvisor.modals.authentication.LoginResponse
+import com.iprism.ecmhealthadvisor.modals.authentication.ProfileApiRequest
+import com.iprism.ecmhealthadvisor.modals.authentication.ProfileResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
 import com.iprism.ecmhealthadvisor.repositoris.AuthenticationRepository
 import com.iprism.ecmhealthadvisor.utils.UiState
@@ -19,6 +21,9 @@ class AuthenticationViewModel(private val repository: AuthenticationRepository) 
 
     private val _resendOtpResponse = MutableLiveData<UiState<LoginResponse>>()
     val resendOtpResponse: LiveData<UiState<LoginResponse>> = _resendOtpResponse
+
+    private val _profileResponse = MutableLiveData<UiState<ProfileResponse>>()
+    val profileResponse: LiveData<UiState<ProfileResponse>> = _profileResponse
 
     fun login(request: LoginApiRequest) {
         viewModelScope.launch {
@@ -48,6 +53,22 @@ class AuthenticationViewModel(private val repository: AuthenticationRepository) 
                 }
             } catch (e: Exception) {
                 _resendOtpResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
+    fun fetchProfileDetails(request: ProfileApiRequest) {
+        viewModelScope.launch {
+            _profileResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchProfileDetails(request)
+                if (response.status) {
+                    _profileResponse.value = UiState.Success(response.response)
+                } else {
+                    _profileResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _profileResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
             }
         }
     }
