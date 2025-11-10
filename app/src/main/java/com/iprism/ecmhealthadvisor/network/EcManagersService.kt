@@ -18,6 +18,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
@@ -109,9 +111,9 @@ interface EcManagersService {
 //    @POST(Constants.TOTAL_HEALTH_ADVISORS_ENDPOINT)
 //    suspend fun fetchHealthAdvisors(@Body healthAdvisorsApiRequest: HealthAdvisorsApiRequest) : HealthAdvisorsApiResponse
 
-//    @POST(Constants.TEAM_CONNECT_ENDPOINT)
-//    suspend fun fetchTeamConnectEmployees(@Body teamConnectApiRequest: TeamConnectApiRequest) : TeamConnectApiResponse
-//
+    @POST(Constants.TEAM_CONNECT_ENDPOINT)
+    suspend fun fetchTeamConnectEmployees(@Body teamConnectApiRequest: TeamConnectApiRequest) : TeamConnectApiResponse
+
 //    @POST(Constants.DAILY_REPORTS_ENDPOINT)
 //    suspend fun dailyReportsInsertAndView(@Body dailyReportApiRequest: DailyReportApiRequest) : DailyReportApiResponse
 //

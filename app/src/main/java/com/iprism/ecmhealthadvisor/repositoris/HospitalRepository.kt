@@ -6,6 +6,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.network.EcManagersApi
@@ -24,10 +26,10 @@ class HospitalRepository {
         return apiService.fetchHospitalDoctors(request)
     }
 
-//    suspend fun fetchTeamConnectEmployees(request: TeamConnectApiRequest): TeamConnectApiResponse {
-//        return apiService.fetchTeamConnectEmployees(request)
-//    }
-//
+    suspend fun fetchTeamConnectEmployees(request: TeamConnectApiRequest): TeamConnectApiResponse {
+        return apiService.fetchTeamConnectEmployees(request)
+    }
+
 //    suspend fun dailyReportsInsertAndView(request: DailyReportApiRequest): DailyReportApiResponse {
 //        return apiService.dailyReportsInsertAndView(request)
 //    }
