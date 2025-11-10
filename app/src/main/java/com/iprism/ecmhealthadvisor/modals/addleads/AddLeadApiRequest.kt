@@ -7,7 +7,7 @@ data class AddLeadApiRequest(
     val dob: String,
     val email: String,
     val gender: String,
-    val bloodGroup : String,
+    val blood_group : String,
     val image: String,
     val insurence_company_name: String,
     val lat: String,

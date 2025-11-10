@@ -4,6 +4,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.network.EcManagersApi
@@ -53,11 +55,11 @@ class HospitalRepository {
 //    suspend fun fetchTodoListAndInsertTodo(request: TodoListApiRequest): TodoListApiResponse {
 //        return apiService.fetchTodoListAndInsertTodo(request)
 //    }
-//
-//    suspend fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest): TaskAndPerformanceApiResponse {
-//        return apiService.fetchTaskPerformanceDetails(request)
-//    }
-//
+
+    suspend fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest): TaskAndPerformanceApiResponse {
+        return apiService.fetchTaskPerformanceDetails(request)
+    }
+
 //    suspend fun fetchContentPagesData(request: ContentPagesApiRequest): ContentPagesApiResponse {
 //        return apiService.fetchContentPages(request)
 //    }

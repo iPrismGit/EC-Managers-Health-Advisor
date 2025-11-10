@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
+import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.interfaces.OnDoctorItemClickListener
 import com.iprism.ecmhealthadvisor.adapters.MyTasksAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityMyTasksBinding
@@ -27,21 +28,50 @@ class MyTasksActivity : AppCompatActivity() {
             insets
         }
         handleBack()
-        setupMyTasksAdapter()
+        handleSocialLo()
+        handleMyGroupsLo()
+        handleMyWhatsaapLo()
+        handleMobileContactLeadsLo()
     }
 
-    private fun setupMyTasksAdapter() {
-        var myTasksAdapter = MyTasksAdapter(this)
-        var linearLayoutManager = GridLayoutManager(this, 4)
-        binding.myTasksRv.adapter = myTasksAdapter
-        binding.myTasksRv.layoutManager = linearLayoutManager
-        myTasksAdapter.setupListener(object : OnDoctorItemClickListener {
-            override fun onItemClick(categoryId: String, doctorId: String) {
-                var intent = Intent(this@MyTasksActivity, MyTaskProgressActivity::class.java)
-                startActivity(intent)
-            }
+    private fun handleSocialLo() {
+        binding.soccialGroupsLo.setOnClickListener { view ->
+            var name = getString(R.string.social_groups)
+            var intent = Intent(this, MyTaskProgressActivity::class.java)
+            intent.putExtra("title", name)
+            intent.putExtra("type", "social_group")
+            startActivity(intent)
+        }
+    }
 
-        })
+    private fun handleMyWhatsaapLo() {
+        binding.whatsappGroupLo.setOnClickListener { view ->
+            var name = getString(R.string.whats_app_group_members)
+            var intent = Intent(this, MyTaskProgressActivity::class.java)
+            intent.putExtra("title", name)
+            intent.putExtra("type", "whatsapp_group")
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMyGroupsLo() {
+        binding.myGroupLo.setOnClickListener { view ->
+            var name = getString(R.string.my_group_members)
+            var intent = Intent(this, MyTaskProgressActivity::class.java)
+            intent.putExtra("title", name)
+            intent.putExtra("type", "my_group")
+            startActivity(intent)
+        }
+    }
+
+    private fun handleMobileContactLeadsLo() {
+        binding.mobileContactLeadsLo.setOnClickListener { view ->
+            var name = getString(R.string.mobile_contact_leads)
+            var intent = Intent(this, MyTaskProgressActivity::class.java)
+            intent.putExtra("title", name)
+            intent.putExtra("type", "mobile_contact")
+            startActivity(intent)
+        }
     }
 
     private fun handleBack() {

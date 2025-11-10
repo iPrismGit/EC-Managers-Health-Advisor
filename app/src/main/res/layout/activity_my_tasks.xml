@@ -38,35 +38,177 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <androidx.core.widget.NestedScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/my_tasks_rv"
+                    <LinearLayout
+                        android:id="@+id/mobile_contact_leads_lo"
                         android:layout_width="match_parent"
-                        android:padding="8dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:orientation="vertical">
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@color/gray"
+                            app:strokeWidth="0.5dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/test_tubes_img" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/lato"
+                            android:gravity="center"
+                            android:text="@string/mobile_contact_leads"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/my_group_lo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@color/gray"
+                            app:strokeWidth="0.5dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/my_leads_img" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/lato"
+                            android:gravity="center"
+                            android:text="@string/my_group_members"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/whatsapp_group_lo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@color/gray"
+                            app:strokeWidth="0.5dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/health_adviser_img" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/lato"
+                            android:gravity="center"
+                            android:text="@string/whats_app_group_members"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/soccial_groups_lo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            app:cardCornerRadius="8dp"
+                            app:strokeColor="@color/gray"
+                            app:strokeWidth="0.5dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/hospital_coordinater_img" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="@font/lato"
+                            android:gravity="center"
+                            android:text="@string/social_groups"
+                            android:textColor="@color/black"
+                            android:textSize="12dp" />
+
+                    </LinearLayout>
                 </LinearLayout>
-            </androidx.core.widget.NestedScrollView>
 
-
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
@@ -137,10 +139,10 @@ interface EcManagersService {
 //
 //    @POST(Constants.TODO_LIST_ENDPOINT)
 //    suspend fun fetchTodoListAndInsertTodo(@Body todoListApiRequest: TodoListApiRequest) : TodoListApiResponse
-//
-//    @POST(Constants.TASK_AND_PERFORMANCE_ENDPOINT)
-//    suspend fun fetchTaskPerformanceDetails(@Body taskAndPerformanceApiRequest: TaskAndPerformanceApiRequest) : TaskAndPerformanceApiResponse
-//
+
+    @POST(Constants.TASK_AND_PERFORMANCE_ENDPOINT)
+    suspend fun fetchTaskPerformanceDetails(@Body taskAndPerformanceApiRequest: TaskAndPerformanceApiRequest) : TaskAndPerformanceApiResponse
+
 //    @POST(Constants.CONTENT_PAGES_ENDPOINT)
 //    suspend fun fetchContentPages(@Body contentPagesApiRequest: ContentPagesApiRequest) : ContentPagesApiResponse
 //

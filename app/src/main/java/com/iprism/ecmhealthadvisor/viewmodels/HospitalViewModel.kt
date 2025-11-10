@@ -8,6 +8,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosResponse
 import com.iprism.ecmhealthadvisor.repositoris.HospitalRepository
@@ -45,10 +47,10 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //
 //    private val _todoListResponse = MutableLiveData<UiState<TodoListResponse>>()
 //    val todoListResponse : LiveData<UiState<TodoListResponse>> = _todoListResponse
-//
-//    private val _taskPerformanceDetailsResponse = MutableLiveData<UiState<TaskAndPerformanceResponse>>()
-//    val taskPerformanceDetailsResponse : LiveData<UiState<TaskAndPerformanceResponse>> = _taskPerformanceDetailsResponse
-//
+
+    private val _taskPerformanceDetailsResponse = MutableLiveData<UiState<TaskAndPerformanceResponse>>()
+    val taskPerformanceDetailsResponse : LiveData<UiState<TaskAndPerformanceResponse>> = _taskPerformanceDetailsResponse
+
 //    private val _contentPagesResponse = MutableLiveData<UiState<ContentPagesResponse>>()
 //    val contentPagesResponse : LiveData<UiState<ContentPagesResponse>> = _contentPagesResponse
 //
@@ -235,23 +237,23 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //            }
 //        }
 //    }
-//
-//    fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest) {
-//        viewModelScope.launch {
-//            _taskPerformanceDetailsResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchTaskPerformanceDetails(request)
-//                if (response.status) {
-//                    _taskPerformanceDetailsResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _taskPerformanceDetailsResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _taskPerformanceDetailsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
-//
+
+    fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest) {
+        viewModelScope.launch {
+            _taskPerformanceDetailsResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchTaskPerformanceDetails(request)
+                if (response.status) {
+                    _taskPerformanceDetailsResponse.value = UiState.Success(response.response)
+                } else {
+                    _taskPerformanceDetailsResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _taskPerformanceDetailsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
 //    fun fetchContentPagesData(request: ContentPagesApiRequest) {
 //        viewModelScope.launch {
 //            _contentPagesResponse.value = UiState.Loading
