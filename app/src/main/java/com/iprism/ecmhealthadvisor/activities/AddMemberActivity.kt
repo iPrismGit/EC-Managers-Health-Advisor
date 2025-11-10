@@ -115,11 +115,11 @@ class AddMemberActivity : AppCompatActivity() {
         userDetails = user.getUserDetails()
         name = intent.getStringExtra("name").toString()
         type = intent.getStringExtra("type").toString()
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
         binding.titleTxt.text = name
         binding.advisorNameTxt.text = userDetails[User.NAME]
         binding.hospitalNameTxt.text = userDetails[User.HOSPITAL_NAME]
