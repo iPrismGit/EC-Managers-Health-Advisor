@@ -14,6 +14,8 @@ import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
@@ -150,10 +152,10 @@ interface EcManagersService {
 //
 //    @POST(Constants.CONTACT_US_ENDPOINT)
 //    suspend fun contactUs(@Body contactUsApiRequest: ContactUsApiRequest) : ContactUsApiResponse
-//
-//    @POST(Constants.HEALTH_MEDIA_ENDPOINT)
-//    suspend fun fetchHealthMedia(@Body healthMediaApiRequest: HealthMediaApiRequest) : HealthMediaApiResponse
-//
+
+    @POST(Constants.HEALTH_MEDIA_ENDPOINT)
+    suspend fun fetchHealthMedia(@Body healthMediaApiRequest: HealthMediaApiRequest) : HealthMediaApiResponse
+
 //    @POST(Constants.DIGITAL_PROMOS_ENDPOINT)
 //    suspend fun fetchDigitalPromos(@Body digitalPromosApiRequest: DigitalPromosApiRequest) : DigitalPromosApiResponse
 //

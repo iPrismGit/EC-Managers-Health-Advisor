@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosResponse
 import com.iprism.ecmhealthadvisor.repositoris.HospitalRepository
@@ -61,10 +63,10 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //
 //    private val _contactUsInsertResponse = MutableLiveData<UiState<ContactUsResponse>>()
 //    val contactUsInsertResponse : LiveData<UiState<ContactUsResponse>> = _contactUsInsertResponse
-//
-//    private val _healthMediaResponse = MutableLiveData<UiState<HealthMediaResponse>>()
-//    val healthMediaResponse : LiveData<UiState<HealthMediaResponse>> = _healthMediaResponse
-//
+
+    private val _healthMediaResponse = MutableLiveData<UiState<HealthMediaResponse>>()
+    val healthMediaResponse : LiveData<UiState<HealthMediaResponse>> = _healthMediaResponse
+
 //    private val _digitalPromosResponse = MutableLiveData<UiState<DigitalPromosResponse>>()
 //    val digitalPromosResponse : LiveData<UiState<DigitalPromosResponse>> = _digitalPromosResponse
 //
@@ -329,23 +331,23 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //            }
 //        }
 //    }
-//
-//    fun fetchHealthMediaData(request: HealthMediaApiRequest) {
-//        viewModelScope.launch {
-//            _healthMediaResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchHealthMediaData(request)
-//                if (response.status) {
-//                    _healthMediaResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _healthMediaResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _healthMediaResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
-//
+
+    fun fetchHealthMediaData(request: HealthMediaApiRequest) {
+        viewModelScope.launch {
+            _healthMediaResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchHealthMediaData(request)
+                if (response.status) {
+                    _healthMediaResponse.value = UiState.Success(response.response)
+                } else {
+                    _healthMediaResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _healthMediaResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
 //    fun fetchDigitalPromos(request: DigitalPromosApiRequest) {
 //        viewModelScope.launch {
 //            _digitalPromosResponse.value = UiState.Loading

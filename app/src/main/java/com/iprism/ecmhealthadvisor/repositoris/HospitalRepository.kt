@@ -2,6 +2,8 @@ package com.iprism.ecmhealthadvisor.repositoris
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.network.EcManagersApi
@@ -71,11 +73,11 @@ class HospitalRepository {
 //    suspend fun contactUs(request: ContactUsApiRequest): ContactUsApiResponse {
 //        return apiService.contactUs(request)
 //    }
-//
-//    suspend fun fetchHealthMediaData(request: HealthMediaApiRequest): HealthMediaApiResponse {
-//        return apiService.fetchHealthMedia(request)
-//    }
-//
+
+    suspend fun fetchHealthMediaData(request: HealthMediaApiRequest): HealthMediaApiResponse {
+        return apiService.fetchHealthMedia(request)
+    }
+
 //    suspend fun fetchDigitalPromos(request: DigitalPromosApiRequest): DigitalPromosApiResponse {
 //        return apiService.fetchDigitalPromos(request)
 //    }
