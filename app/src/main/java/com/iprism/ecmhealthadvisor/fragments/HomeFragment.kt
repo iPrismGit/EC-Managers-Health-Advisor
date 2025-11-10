@@ -26,6 +26,7 @@ import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
 import com.iprism.ecmhealthadvisor.activities.PromoCouponsActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
 import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity
+import com.iprism.ecmhealthadvisor.activities.TestimonialVideosActivity
 import com.iprism.ecmhealthadvisor.adapters.BannersAdapter
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 import com.iprism.ecmhealthadvisor.databinding.FragmentHomeBinding
@@ -273,19 +274,28 @@ class HomeFragment : Fragment() {
 
     private fun handleHealthTalks() {
         binding.healthTalksLo.setOnClickListener { view ->
-            ToastUtils.showErrorCustomToast(requireContext(), "There are no Screens in Figma!")
+            var intent = Intent(requireContext(), TestimonialVideosActivity::class.java)
+            intent.putExtra("type", "health_talks")
+            intent.putExtra("title", "Health Talks")
+            startActivity(intent)
         }
     }
 
     private fun handleHospitalUpdatesLo() {
         binding.hospitalUpdatesLo.setOnClickListener(View.OnClickListener {
-            ToastUtils.showErrorCustomToast(requireContext(), "There are no Screens in Figma!")
+            var intent = Intent(requireContext(), TestimonialVideosActivity::class.java)
+            intent.putExtra("type", "hospital_updates")
+            intent.putExtra("title", "Hospital Updates")
+            startActivity(intent)
         })
     }
 
     private fun handlePatientTestimonialsLo() {
         binding.patientTestimonialsLo.setOnClickListener(View.OnClickListener {
-            ToastUtils.showErrorCustomToast(requireContext(), "There are no Screens in Figma!")
+            var intent = Intent(requireContext(), TestimonialVideosActivity::class.java)
+            intent.putExtra("type", "patient_testimonials")
+            intent.putExtra("title", "Patient Testimonials")
+            startActivity(intent)
         })
     }
 

@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosResponse
 import com.iprism.ecmhealthadvisor.repositoris.HospitalRepository
 import com.iprism.ecmhealthadvisor.utils.UiState
 import kotlinx.coroutines.launch
@@ -68,9 +70,9 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //
 //    private val _requestReferResponse = MutableLiveData<UiState<RequestAndReferResponse>>()
 //    val requestReferResponse : LiveData<UiState<RequestAndReferResponse>> = _requestReferResponse
-//
-//    private val _testimonialVideosResponse = MutableLiveData<UiState<TestimonialVideosResponse>>()
-//    val testimonialVideosResponse : LiveData<UiState<TestimonialVideosResponse>> = _testimonialVideosResponse
+
+    private val _testimonialVideosResponse = MutableLiveData<UiState<TestimonialVideosResponse>>()
+    val testimonialVideosResponse : LiveData<UiState<TestimonialVideosResponse>> = _testimonialVideosResponse
 
     fun fetchHospitalHods(request: DoctorsApiRequest) {
         viewModelScope.launch {
@@ -375,21 +377,21 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 //            }
 //        }
 //    }
-//
-//    fun fetchTestimonialVideos(request: TestimonialVideosApiRequest) {
-//        viewModelScope.launch {
-//            _testimonialVideosResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchTestimonialVideos(request)
-//                if (response.status) {
-//                    _testimonialVideosResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _testimonialVideosResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _testimonialVideosResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
+
+    fun fetchTestimonialVideos(request: TestimonialVideosApiRequest) {
+        viewModelScope.launch {
+            _testimonialVideosResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchTestimonialVideos(request)
+                if (response.status) {
+                    _testimonialVideosResponse.value = UiState.Success(response.response)
+                } else {
+                    _testimonialVideosResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _testimonialVideosResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
 
 }

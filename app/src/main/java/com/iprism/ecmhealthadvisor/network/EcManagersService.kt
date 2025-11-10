@@ -12,6 +12,8 @@ import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
@@ -155,8 +157,8 @@ interface EcManagersService {
 //
 //    @POST(Constants.REQUEST_REFER_ENDPOINT)
 //    suspend fun insertRequestAndRefer(@Body request : RequestReferApiRequest) : RequestAndReferApiResponse
-//
-//    @POST(Constants.TESTIMONIAL_VIDEOS_ENDPOINT)
-//    suspend fun fetchTestimonialVideos(@Body request : TestimonialVideosApiRequest) : TestimonialVideosApiResponse
+
+    @POST(Constants.TESTIMONIAL_VIDEOS_ENDPOINT)
+    suspend fun fetchTestimonialVideos(@Body request : TestimonialVideosApiRequest) : TestimonialVideosApiResponse
 
 }
