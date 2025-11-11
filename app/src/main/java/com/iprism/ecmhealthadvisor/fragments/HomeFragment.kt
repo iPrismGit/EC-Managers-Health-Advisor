@@ -27,6 +27,7 @@ import com.iprism.ecmhealthadvisor.activities.PromoCouponsActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
 import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity
 import com.iprism.ecmhealthadvisor.activities.TestimonialVideosActivity
+import com.iprism.ecmhealthadvisor.activities.WhiteBoardFeedBackActivity
 import com.iprism.ecmhealthadvisor.adapters.BannersAdapter
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 import com.iprism.ecmhealthadvisor.databinding.FragmentHomeBinding
@@ -198,7 +199,7 @@ class HomeFragment : Fragment() {
 
     private fun handleServiceFeedBackLo() {
         binding.serviceFeedBackLo.setOnClickListener { view ->
-            ToastUtils.showErrorCustomToast(requireContext(), "There are No Screens in Figma!")
+            startActivity(Intent(requireContext(), WhiteBoardFeedBackActivity::class.java))
         }
     }
 

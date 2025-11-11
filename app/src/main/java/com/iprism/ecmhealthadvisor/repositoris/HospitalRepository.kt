@@ -8,6 +8,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalTariffsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalTariffsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
@@ -16,6 +18,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiReq
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedBackApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedbackApiRequest
 import com.iprism.ecmhealthadvisor.network.EcManagersApi
 
 class HospitalRepository {
@@ -39,18 +43,18 @@ class HospitalRepository {
 //    suspend fun dailyReportsInsertAndView(request: DailyReportApiRequest): DailyReportApiResponse {
 //        return apiService.dailyReportsInsertAndView(request)
 //    }
-//
-//    suspend fun fetchHospitalTariffs(request: HospitalTariffsApiRequest): HospitalTariffsApiResponse {
-//        return apiService.fetchHospitalTariffs(request)
-//    }
-//
+
+    suspend fun fetchHospitalTariffs(request: HospitalTariffsApiRequest): HospitalTariffsApiResponse {
+        return apiService.fetchHospitalTariffs(request)
+    }
+
 //    suspend fun fetchSurgicalPackages(request: SurgicalPackagesApiRequest): SurgicalPackagesApiResponse {
 //        return apiService.fetchSurgicalPackages(request)
 //    }
-//
-//    suspend fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest): WhiteBoardFeedBackApiResponse {
-//        return apiService.whiteBoardFeedBackInsert(request)
-//    }
+
+    suspend fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest): WhiteBoardFeedBackApiResponse {
+        return apiService.whiteBoardFeedBackInsert(request)
+    }
 
 
     suspend fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest): TaskAndPerformanceApiResponse {

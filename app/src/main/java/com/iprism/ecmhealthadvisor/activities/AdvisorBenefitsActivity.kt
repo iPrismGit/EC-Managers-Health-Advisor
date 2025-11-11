@@ -28,7 +28,7 @@ class AdvisorBenefitsActivity : AppCompatActivity() {
             insets
         }
         handleBack()
-        setupAdvisorBenefitsAdapter()
+       // setupAdvisorBenefitsAdapter()
     }
 
     private fun handleBack() {
@@ -37,17 +37,17 @@ class AdvisorBenefitsActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupAdvisorBenefitsAdapter() {
-        var hospitalTariffsAdapter = HospitalTariffsAdapter(this)
-        var linearLayoutManager = LinearLayoutManager(this)
-        binding.tariffsRv.adapter = hospitalTariffsAdapter
-        binding.tariffsRv.layoutManager = linearLayoutManager
-        hospitalTariffsAdapter.setupListener(object : OnWhiteBoardClickListener {
-            override fun onItemClick(boardId: String) {
-                var intent = Intent(this@AdvisorBenefitsActivity, BenifitTypesActivity::class.java)
-                startActivity(intent)
-            }
-
-        })
-    }
+//    private fun setupAdvisorBenefitsAdapter() {
+//        var hospitalTariffsAdapter = HospitalTariffsAdapter(this)
+//        var linearLayoutManager = LinearLayoutManager(this)
+//        binding.tariffsRv.adapter = hospitalTariffsAdapter
+//        binding.tariffsRv.layoutManager = linearLayoutManager
+//        hospitalTariffsAdapter.setupListener(object : OnWhiteBoardClickListener {
+//            override fun onItemClick(boardId: String) {
+//                var intent = Intent(this@AdvisorBenefitsActivity, BenifitTypesActivity::class.java)
+//                startActivity(intent)
+//            }
+//
+//        })
+//    }
 }

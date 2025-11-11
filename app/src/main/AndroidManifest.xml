@@ -42,6 +42,14 @@
             android:exported="false" />
 
         <activity
+            android:name=".activities.WhiteBoardFeedBackActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.FeedBackActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".activities.VideoPlayActivity"
             android:exported="false" />
 
@@ -66,9 +74,7 @@
         <activity
             android:name=".activities.AdvisorBenefitsActivity"
             android:exported="false" />
-        <activity
-            android:name=".activities.AddDeigitalBrandingActivity"
-            android:exported="false" />
+
         <activity
             android:name=".activities.ViewAllDigitalBrandingsActivity"
             android:exported="false" />

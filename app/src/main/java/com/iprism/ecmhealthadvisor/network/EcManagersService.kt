@@ -20,6 +20,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalTariffsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalTariffsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
@@ -28,6 +30,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiReq
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedBackApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedbackApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
@@ -122,10 +126,10 @@ interface EcManagersService {
 
 //    @POST(Constants.DAILY_REPORTS_ENDPOINT)
 //    suspend fun dailyReportsInsertAndView(@Body dailyReportApiRequest: DailyReportApiRequest) : DailyReportApiResponse
-//
-//    @POST(Constants.TARIFFS_ENDPOINT)
-//    suspend fun fetchHospitalTariffs(@Body hospitalTariffsApiRequest: HospitalTariffsApiRequest) : HospitalTariffsApiResponse
-//
+
+    @POST(Constants.TARIFFS_ENDPOINT)
+    suspend fun fetchHospitalTariffs(@Body hospitalTariffsApiRequest: HospitalTariffsApiRequest) : HospitalTariffsApiResponse
+
 //    @POST(Constants.TOTAL_INBOUND_MARKETERS_ENDPOINT)
 //    suspend fun fetchInboundMarketers(@Body totalInboundMarketersApiRequest: TotalInboundMarketersApiRequest) : TotalInboundMarketersApiResponse
 //
@@ -135,10 +139,10 @@ interface EcManagersService {
     @POST(Constants.PROFILE_ENDPOINT)
     suspend fun fetchProfileDetails(@Body profileApiRequest: ProfileApiRequest) : ProfileApiResponse
 
-//
-//    @POST(Constants.WHITEBOARD_FEEDBACK_ENDPOINT)
-//    suspend fun whiteBoardFeedBackInsert(@Body whiteBoardFeedbackApiRequest: WhiteBoardFeedbackApiRequest) : WhiteBoardFeedBackApiResponse
-//
+
+    @POST(Constants.WHITEBOARD_FEEDBACK_ENDPOINT)
+    suspend fun whiteBoardFeedBackInsert(@Body whiteBoardFeedbackApiRequest: WhiteBoardFeedbackApiRequest) : WhiteBoardFeedBackApiResponse
+
 //    @POST(Constants.EVENTS_ENDPOINT)
 //    suspend fun fetchEventsAndStatusUpdating(@Body eventsApiRequest: EventsApiRequest) : EventsApiResponse
 //

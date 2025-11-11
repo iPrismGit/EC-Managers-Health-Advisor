@@ -11,35 +11,27 @@ import com.bumptech.glide.Glide
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.WhiteBoardFeedBackItemBinding
 import com.iprism.ecmhealthadvisor.interfaces.OnWhiteBoardClickListener
-import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TariffCategory
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardCategory
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class HospitalTariffsAdapter(var context: Context,  var tariffCategories: List<TariffCategory>) :
-    Adapter<HospitalTariffsAdapter.HospitalTariffViewHolder>() {
+class WhiteBoardsAdapter(var context: Context, var whiteBoardCategories: List<WhiteBoardCategory>) : Adapter<WhiteBoardsAdapter.WhiteBoardViewHolder>() {
 
     private lateinit var listener: OnWhiteBoardClickListener
 
-    fun setupListener(listener: OnWhiteBoardClickListener) {
+    fun setupListener(listener: OnWhiteBoardClickListener){
         this.listener = listener
     }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): HospitalTariffViewHolder {
-        var binding = WhiteBoardFeedBackItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return HospitalTariffViewHolder(binding)
+    ): WhiteBoardsAdapter.WhiteBoardViewHolder {
+        var binding = WhiteBoardFeedBackItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return WhiteBoardViewHolder(binding)
     }
 
-    override fun onBindViewHolder(
-        holder: HospitalTariffViewHolder,
-        position: Int
-    ) {
-        var category = tariffCategories[position]
+    override fun onBindViewHolder(holder: WhiteBoardsAdapter.WhiteBoardViewHolder, position: Int) {
+        var category = whiteBoardCategories[position]
         holder.binding.nameTxt.text = category.name
         if (category.image.isNotEmpty()) {
             Glide.with(context).load(Constants.IMAGES_URL + category.image)
@@ -59,10 +51,8 @@ class HospitalTariffsAdapter(var context: Context,  var tariffCategories: List<T
     }
 
     override fun getItemCount(): Int {
-        return tariffCategories.size
+        return whiteBoardCategories.size
     }
 
-    class HospitalTariffViewHolder(var binding: WhiteBoardFeedBackItemBinding) :
-        ViewHolder(binding.root)
-
+    class WhiteBoardViewHolder(var binding: WhiteBoardFeedBackItemBinding) : ViewHolder(binding.root)
 }

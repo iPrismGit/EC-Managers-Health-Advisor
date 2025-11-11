@@ -2,6 +2,5 @@ package com.iprism.ecmhealthadvisor.interfaces
 
 interface OnWhiteBoardClickListener {
 
-    fun onItemClick(boardId: String)
-
+    fun onItemClick(boardId : String, name : String)
 }

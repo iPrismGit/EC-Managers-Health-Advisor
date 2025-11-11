@@ -12,6 +12,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HealthMediaResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalFacilitiesResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalTariffsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.HospitalTariffsResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TaskAndPerformanceResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TeamConnectApiRequest
@@ -20,6 +22,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosApiReq
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TestimonialVideosResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedBackResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedbackApiRequest
 import com.iprism.ecmhealthadvisor.repositoris.HospitalRepository
 import com.iprism.ecmhealthadvisor.utils.UiState
 import kotlinx.coroutines.launch
@@ -36,11 +40,11 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     val teamConnectResponse: LiveData<UiState<TeamConnectResponse>> = _teamConnectResponse
 
 
-//    private val _hospitalTariffsResponse = MutableLiveData<UiState<HospitalTariffsResponse>>()
-//    val hospitalTariffsResponse: LiveData<UiState<HospitalTariffsResponse>> = _hospitalTariffsResponse
+    private val _hospitalTariffsResponse = MutableLiveData<UiState<HospitalTariffsResponse>>()
+    val hospitalTariffsResponse: LiveData<UiState<HospitalTariffsResponse>> = _hospitalTariffsResponse
 
-//    private val _whiteBoardFeedbackResponse = MutableLiveData<UiState<WhiteBoardFeedBackResponse>>()
-//    val whiteBoardFeedbackResponse : LiveData<UiState<WhiteBoardFeedBackResponse>> = _whiteBoardFeedbackResponse
+    private val _whiteBoardFeedbackResponse = MutableLiveData<UiState<WhiteBoardFeedBackResponse>>()
+    val whiteBoardFeedbackResponse : LiveData<UiState<WhiteBoardFeedBackResponse>> = _whiteBoardFeedbackResponse
 
     private val _taskPerformanceDetailsResponse = MutableLiveData<UiState<TaskAndPerformanceResponse>>()
     val taskPerformanceDetailsResponse : LiveData<UiState<TaskAndPerformanceResponse>> = _taskPerformanceDetailsResponse
@@ -117,37 +121,37 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
         }
     }
 
-//    fun fetchHospitalTariffs(request: HospitalTariffsApiRequest) {
-//        viewModelScope.launch {
-//            _hospitalTariffsResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchHospitalTariffs(request)
-//                if (response.status) {
-//                    _hospitalTariffsResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _hospitalTariffsResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _hospitalTariffsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
+    fun fetchHospitalTariffs(request: HospitalTariffsApiRequest) {
+        viewModelScope.launch {
+            _hospitalTariffsResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchHospitalTariffs(request)
+                if (response.status) {
+                    _hospitalTariffsResponse.value = UiState.Success(response.response)
+                } else {
+                    _hospitalTariffsResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _hospitalTariffsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
 
-//    fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest) {
-//        viewModelScope.launch {
-//            _whiteBoardFeedbackResponse.value = UiState.Loading
-//            try {
-//                val response = repository.insertWhiteBoardFeedback(request)
-//                if (response.status) {
-//                    _whiteBoardFeedbackResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _whiteBoardFeedbackResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _whiteBoardFeedbackResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
+    fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest) {
+        viewModelScope.launch {
+            _whiteBoardFeedbackResponse.value = UiState.Loading
+            try {
+                val response = repository.insertWhiteBoardFeedback(request)
+                if (response.status) {
+                    _whiteBoardFeedbackResponse.value = UiState.Success(response.response)
+                } else {
+                    _whiteBoardFeedbackResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _whiteBoardFeedbackResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
 
     fun fetchTaskPerformanceDetails(request: TaskAndPerformanceApiRequest) {
         viewModelScope.launch {
