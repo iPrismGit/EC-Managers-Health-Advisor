@@ -4,6 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContactUsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContactUsResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContentPagesApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContentPagesResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
@@ -38,8 +42,6 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
 
     private val _teamConnectResponse = MutableLiveData<UiState<TeamConnectResponse>>()
     val teamConnectResponse: LiveData<UiState<TeamConnectResponse>> = _teamConnectResponse
-
-
     private val _hospitalTariffsResponse = MutableLiveData<UiState<HospitalTariffsResponse>>()
     val hospitalTariffsResponse: LiveData<UiState<HospitalTariffsResponse>> = _hospitalTariffsResponse
 
@@ -49,8 +51,8 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     private val _taskPerformanceDetailsResponse = MutableLiveData<UiState<TaskAndPerformanceResponse>>()
     val taskPerformanceDetailsResponse : LiveData<UiState<TaskAndPerformanceResponse>> = _taskPerformanceDetailsResponse
 
-//    private val _contentPagesResponse = MutableLiveData<UiState<ContentPagesResponse>>()
-//    val contentPagesResponse : LiveData<UiState<ContentPagesResponse>> = _contentPagesResponse
+    private val _contentPagesResponse = MutableLiveData<UiState<ContentPagesResponse>>()
+    val contentPagesResponse : LiveData<UiState<ContentPagesResponse>> = _contentPagesResponse
 
     private val _facilitiesResponse = MutableLiveData<UiState<HospitalFacilitiesResponse>>()
     val facilitiesResponse : LiveData<UiState<HospitalFacilitiesResponse>> = _facilitiesResponse
@@ -58,11 +60,11 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
     private val _tieupsResponse = MutableLiveData<UiState<TieupsResponse>>()
     val tieupsResponse : LiveData<UiState<TieupsResponse>> = _tieupsResponse
 
-//    private val _contactUsResponse = MutableLiveData<UiState<ContactUsResponse>>()
-//    val contactUsResponse : LiveData<UiState<ContactUsResponse>> = _contactUsResponse
-//
-//    private val _contactUsInsertResponse = MutableLiveData<UiState<ContactUsResponse>>()
-//    val contactUsInsertResponse : LiveData<UiState<ContactUsResponse>> = _contactUsInsertResponse
+    private val _contactUsResponse = MutableLiveData<UiState<ContactUsResponse>>()
+    val contactUsResponse : LiveData<UiState<ContactUsResponse>> = _contactUsResponse
+
+    private val _contactUsInsertResponse = MutableLiveData<UiState<ContactUsResponse>>()
+    val contactUsInsertResponse : LiveData<UiState<ContactUsResponse>> = _contactUsInsertResponse
 
     private val _healthMediaResponse = MutableLiveData<UiState<HealthMediaResponse>>()
     val healthMediaResponse : LiveData<UiState<HealthMediaResponse>> = _healthMediaResponse
@@ -169,21 +171,21 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
         }
     }
 
-//    fun fetchContentPagesData(request: ContentPagesApiRequest) {
-//        viewModelScope.launch {
-//            _contentPagesResponse.value = UiState.Loading
-//            try {
-//                val response = repository.fetchContentPagesData(request)
-//                if (response.status) {
-//                    _contentPagesResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _contentPagesResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _contentPagesResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
+    fun fetchContentPagesData(request: ContentPagesApiRequest) {
+        viewModelScope.launch {
+            _contentPagesResponse.value = UiState.Loading
+            try {
+                val response = repository.fetchContentPagesData(request)
+                if (response.status) {
+                    _contentPagesResponse.value = UiState.Success(response.response)
+                } else {
+                    _contentPagesResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _contentPagesResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
 
     fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest) {
         viewModelScope.launch {
@@ -217,37 +219,37 @@ class HospitalViewModel(private val repository: HospitalRepository) : ViewModel(
         }
     }
 
-//    fun contactUs(request: ContactUsApiRequest) {
-//        viewModelScope.launch {
-//            _contactUsResponse.value = UiState.Loading
-//            try {
-//                val response = repository.contactUs(request)
-//                if (response.status) {
-//                    _contactUsResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _contactUsResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _contactUsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
-//
-//    fun contactUsInsert(request: ContactUsApiRequest) {
-//        viewModelScope.launch {
-//            _contactUsInsertResponse.value = UiState.Loading
-//            try {
-//                val response = repository.contactUs(request)
-//                if (response.status) {
-//                    _contactUsInsertResponse.value = UiState.Success(response.response)
-//                } else {
-//                    _contactUsInsertResponse.value = UiState.Error(response.message ?: "Something went wrong")
-//                }
-//            } catch (e: Exception) {
-//                _contactUsInsertResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
-//            }
-//        }
-//    }
+    fun contactUs(request: ContactUsApiRequest) {
+        viewModelScope.launch {
+            _contactUsResponse.value = UiState.Loading
+            try {
+                val response = repository.contactUs(request)
+                if (response.status) {
+                    _contactUsResponse.value = UiState.Success(response.response)
+                } else {
+                    _contactUsResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _contactUsResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
+
+    fun contactUsInsert(request: ContactUsApiRequest) {
+        viewModelScope.launch {
+            _contactUsInsertResponse.value = UiState.Loading
+            try {
+                val response = repository.contactUs(request)
+                if (response.status) {
+                    _contactUsInsertResponse.value = UiState.Success(response.response)
+                } else {
+                    _contactUsInsertResponse.value = UiState.Error(response.message ?: "Something went wrong")
+                }
+            } catch (e: Exception) {
+                _contactUsInsertResponse.value = UiState.Error(e.localizedMessage ?: "Unknown error")
+            }
+        }
+    }
 
     fun fetchHealthMediaData(request: HealthMediaApiRequest) {
         viewModelScope.launch {

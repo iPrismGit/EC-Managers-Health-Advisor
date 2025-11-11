@@ -1,4 +1,8 @@
 package com.iprism.ecmhealthadvisor.repositoris
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContactUsApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContactUsApiResponse
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContentPagesApiRequest
+import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContentPagesApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromosApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DoctorsApiRequest
@@ -27,7 +31,6 @@ class HospitalRepository {
 
     private val apiService = EcManagersApi.ecManagersService
 
-
     suspend fun fetchHospitalHods(request: DoctorsApiRequest): DoctorsApiResponse {
         return apiService.fetchHospitalHods(request)
     }
@@ -40,17 +43,9 @@ class HospitalRepository {
         return apiService.fetchTeamConnectEmployees(request)
     }
 
-//    suspend fun dailyReportsInsertAndView(request: DailyReportApiRequest): DailyReportApiResponse {
-//        return apiService.dailyReportsInsertAndView(request)
-//    }
-
     suspend fun fetchHospitalTariffs(request: HospitalTariffsApiRequest): HospitalTariffsApiResponse {
         return apiService.fetchHospitalTariffs(request)
     }
-
-//    suspend fun fetchSurgicalPackages(request: SurgicalPackagesApiRequest): SurgicalPackagesApiResponse {
-//        return apiService.fetchSurgicalPackages(request)
-//    }
 
     suspend fun insertWhiteBoardFeedback(request: WhiteBoardFeedbackApiRequest): WhiteBoardFeedBackApiResponse {
         return apiService.whiteBoardFeedBackInsert(request)
@@ -61,10 +56,10 @@ class HospitalRepository {
         return apiService.fetchTaskPerformanceDetails(request)
     }
 
-//    suspend fun fetchContentPagesData(request: ContentPagesApiRequest): ContentPagesApiResponse {
-//        return apiService.fetchContentPages(request)
-//    }
-//
+    suspend fun fetchContentPagesData(request: ContentPagesApiRequest): ContentPagesApiResponse {
+        return apiService.fetchContentPages(request)
+    }
+
     suspend fun fetchHospitalFacilities(request: HospitalFacilitiesApiRequest): HospitalFacilitiesApiResponse {
         return apiService.fetchHospitalFacilities(request)
     }
@@ -73,9 +68,9 @@ class HospitalRepository {
         return apiService.fetchHospitalTieups(request)
     }
 
-//    suspend fun contactUs(request: ContactUsApiRequest): ContactUsApiResponse {
-//        return apiService.contactUs(request)
-//    }
+    suspend fun contactUs(request: ContactUsApiRequest): ContactUsApiResponse {
+        return apiService.contactUs(request)
+    }
 
     suspend fun fetchHealthMediaData(request: HealthMediaApiRequest): HealthMediaApiResponse {
         return apiService.fetchHealthMedia(request)
