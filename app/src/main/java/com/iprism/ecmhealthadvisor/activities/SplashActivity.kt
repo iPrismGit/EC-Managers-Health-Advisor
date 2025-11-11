@@ -51,7 +51,6 @@ class SplashActivity : AppCompatActivity() {
         userDetails = user.getUserDetails()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        // Logo animation
         binding.logoImg.scaleX = 0f
         binding.logoImg.scaleY = 0f
         binding.logoImg.animate()
@@ -124,15 +123,13 @@ class SplashActivity : AppCompatActivity() {
             val hasInternet = if (isNetwork) NetworkUtil.hasInternetAccess() else false
 
             if (!isNetwork || !hasInternet) {
-                // Show dialog and retry if user reconnects
                 NoInternetDialog.show(this@SplashActivity)
 
-                // Keep checking every 2 seconds until internet is back
                 Handler(Looper.getMainLooper()).postDelayed({
                     checkInternetAndProceed()
                 }, 2000)
             } else {
-                // Internet available → proceed normally
+
                 NoInternetDialog.dismiss()
                 proceedToNextScreen()
             }

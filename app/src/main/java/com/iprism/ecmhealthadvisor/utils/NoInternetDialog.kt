@@ -16,7 +16,7 @@ object NoInternetDialog {
 
     fun show(context: Context) {
         if (dialog?.isShowing == true) return
-        if (context !is Activity) return // ✅ Important: only show when we have an Activity context
+        if (context !is Activity) return
 
         dialog = Dialog(context).apply {
             setContentView(LayoutInflater.from(context).inflate(R.layout.no_internet_dialog, null))
