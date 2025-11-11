@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val city = getSharedPreferences("user_location", MODE_PRIVATE)
             .getString("city_name", "Location Not Given!")
-        if (!NetworkUtil.isConnected(this)) {
-            showNoInternetDialog()
-            return
-        }
+//        if (!NetworkUtil.isConnected(this)) {
+//            showNoInternetDialog()
+//            return
+//        }
         binding.addressTxt.text = city
         val adapter = ViewPagerAdapter(this)
         binding.viewPager.isUserInputEnabled = false

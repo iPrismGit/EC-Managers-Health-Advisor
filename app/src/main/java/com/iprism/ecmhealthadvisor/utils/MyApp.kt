@@ -1,36 +1,64 @@
 package com.iprism.ecmhealthadvisor.utils
 
-import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Application
-import android.content.Context
-import android.content.res.Configuration
-import android.util.DisplayMetrics
+import android.os.Bundle
+
+import kotlinx.coroutines.*
 
 class MyApp : Application() {
 
+    private lateinit var networkConnection: NetworkConnectionLIveData
+    private var currentActivity: Activity? = null
+    private val appScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
     override fun onCreate() {
         super.onCreate()
-        fixDisplayAndFontScale(this)
+
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityResumed(activity: Activity) {
+                currentActivity = activity
+
+                appScope.launch {
+                    val isNetwork = NetworkUtil.isNetworkAvailable(activity)
+                    val hasInternet = if (isNetwork) NetworkUtil.hasInternetAccess() else false
+
+                    if (!isNetwork || !hasInternet) {
+                        NoInternetDialog.show(activity)
+                    } else {
+                        NoInternetDialog.dismiss()
+                    }
+                }
+            }
+
+            override fun onActivityPaused(activity: Activity) {
+                if (currentActivity == activity) currentActivity = null
+            }
+
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+            override fun onActivityStarted(activity: Activity) {}
+            override fun onActivityStopped(activity: Activity) {}
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+            override fun onActivityDestroyed(activity: Activity) {}
+        })
+
+        networkConnection = NetworkConnectionLIveData(this)
+        networkConnection.observeForever { isConnected ->
+            val activity = currentActivity ?: return@observeForever
+
+            if (isConnected) {
+                appScope.launch {
+                    val hasInternet = NetworkUtil.hasInternetAccess()
+                    if (hasInternet) {
+                        NoInternetDialog.dismiss()
+                    } else {
+                        NoInternetDialog.show(activity)
+                    }
+                }
+            } else {
+                NoInternetDialog.show(activity)
+            }
+        }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-
-        fixDisplayAndFontScale(this)
-    }
-
-    @SuppressLint("WrongConstant")
-    private fun fixDisplayAndFontScale(context: Context) {
-        val resources = context.resources
-        val configuration = Configuration(resources.configuration)
-        val metrics = resources.displayMetrics
-
-        configuration.fontScale = 1.0f
-
-        val stableDensity = DisplayMetrics.DENSITY_DEVICE_STABLE
-        configuration.densityDpi = stableDensity
-        metrics.densityDpi = stableDensity
-
-        resources.updateConfiguration(configuration, metrics)
-    }
 }
