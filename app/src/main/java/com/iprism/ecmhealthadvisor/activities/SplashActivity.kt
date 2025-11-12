@@ -50,7 +50,6 @@ class SplashActivity : AppCompatActivity() {
         user = User(this)
         userDetails = user.getUserDetails()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         binding.logoImg.scaleX = 0f
         binding.logoImg.scaleY = 0f
         binding.logoImg.animate()

@@ -8,15 +8,12 @@ import android.os.Build
 
 object FontDisplayLock {
 
-    // Lock font and display density globally
     fun wrap(context: Context): Context {
         val res = context.resources
         val config = Configuration(res.configuration)
 
-        // Reset font scale
         config.fontScale = 1.0f
 
-        // Reset density (fix for display size)
         val defaultDensity = Resources.getSystem().displayMetrics.densityDpi
         config.densityDpi = defaultDensity
 
@@ -29,7 +26,6 @@ object FontDisplayLock {
         }
     }
 
-    // Optional safety for runtime updates
     fun applyToResources(res: Resources) {
         val config = Configuration(res.configuration)
         val metrics = res.displayMetrics

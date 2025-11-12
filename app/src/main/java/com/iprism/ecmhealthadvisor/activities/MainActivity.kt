@@ -50,20 +50,17 @@ class MainActivity : BaseActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
         user = User(this)
         userDetails = user.getUserDetails()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val city = getSharedPreferences("user_location", MODE_PRIVATE)
             .getString("city_name", "Location Not Given!")
-//        if (!NetworkUtil.isConnected(this)) {
-//            showNoInternetDialog()
-//            return
-//        }
+
         binding.addressTxt.text = city
         val adapter = ViewPagerAdapter(this)
         binding.viewPager.isUserInputEnabled = false
