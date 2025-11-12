@@ -1,5 +1,6 @@
 package com.iprism.ecmhealthadvisor.activities
 
+import BaseActivity
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -36,7 +37,7 @@ import com.iprism.ecmhealthadvisor.utils.User
 import com.iprism.ecmhealthadvisor.utils.showToast
 import java.util.Locale
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var backPressedOnce = false
