@@ -2,7 +2,9 @@ package com.iprism.ecmhealthadvisor.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.BannerItemBinding
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.Banner
 import com.iprism.ecmhealthadvisor.utils.Constants
@@ -19,10 +21,16 @@ class BannersAdapter (private val banners: List<Banner>) :
 
     override fun onBindViewHolder(holder: BannersAdapter.BannerViewHolder, p1: Int) {
         var banner = banners[p1]
-        Glide.with(holder.binding.root.context)
-            .load(Constants.IMAGES_URL + banner.image)
-            .fitCenter()
-            .into(holder.binding.bannerImg)
+        if(banner.image.isNotEmpty()){
+            Glide.with(holder.binding.root.context)
+                .load(Constants.IMAGES_URL + banner.image).error(ContextCompat.getDrawable(holder.binding.root.context,
+                    R.drawable.dummy_icon))
+                .fitCenter()
+                .into(holder.binding.bannerImg)
+        }else{
+            holder.binding.bannerImg.setImageDrawable(ContextCompat.getDrawable(holder.binding.root.context, R.drawable.dummy_icon))
+        }
+
     }
 
     override fun getCount(): Int {
