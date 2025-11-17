@@ -214,19 +214,6 @@ class AddMemberActivity : AppCompatActivity() {
         leadsViewModel = ViewModelProvider(this, factory)[LeadsViewModel::class.java]
     }
 
-    private fun createLaunchSomeActivity() {
-        launchSomeActivity = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == RESULT_OK && result.data != null) {
-                val data = result.data
-                val imageUri = result.data?.data
-                imageUri?.let { startCrop(it) }
-            }
-        }
-    }
-
-
     private fun setupPaymentTypesAdapter(paymentTypes: List<LeadPaymentType>) {
         var namesList = paymentTypes.map { it.formattedName }
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, namesList)
@@ -445,39 +432,6 @@ class AddMemberActivity : AppCompatActivity() {
         }
     }
 
-    private fun convertUriToBase64Image(imageUri: Uri?): String {
-        if (imageUri == null) return ""
-
-        return try {
-            val inputStream = contentResolver.openInputStream(imageUri)
-            val bitmap = BitmapFactory.decodeStream(inputStream)
-            inputStream?.close()
-
-            if (bitmap != null) {
-                val byteArrayOutputStream = ByteArrayOutputStream()
-                bitmap.compress(
-                    Bitmap.CompressFormat.JPEG,
-                    100,
-                    byteArrayOutputStream
-                ) // Use PNG if you prefer lossless
-                val imageBytes = byteArrayOutputStream.toByteArray()
-                Base64.encodeToString(imageBytes, Base64.DEFAULT)
-            } else {
-                ""
-            }
-        } catch (e: IOException) {
-            e.printStackTrace()
-            ""
-        }
-    }
-
-    private fun isValidEmailAddress(email: String): Boolean {
-        val ePattern = "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
-        val pattern = Pattern.compile(ePattern)
-        val matcher = pattern.matcher(email)
-        return matcher.matches()
-    }
-
     private fun observeUserDropdownsResponse() {
         leadsViewModel.userDropDownsResponse.observe(this) { result ->
             when (result) {
@@ -562,6 +516,51 @@ class AddMemberActivity : AppCompatActivity() {
         binding.profileLo.setOnClickListener(View.OnClickListener {
             selectImage()
         })
+    }
+
+    private fun isValidEmailAddress(email: String): Boolean {
+        val ePattern = "^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+        val pattern = Pattern.compile(ePattern)
+        val matcher = pattern.matcher(email)
+        return matcher.matches()
+    }
+
+    private fun convertUriToBase64Image(imageUri: Uri?): String {
+        if (imageUri == null) return ""
+
+        return try {
+            val inputStream = contentResolver.openInputStream(imageUri)
+            val bitmap = BitmapFactory.decodeStream(inputStream)
+            inputStream?.close()
+
+            if (bitmap != null) {
+                val byteArrayOutputStream = ByteArrayOutputStream()
+                bitmap.compress(
+                    Bitmap.CompressFormat.JPEG,
+                    100,
+                    byteArrayOutputStream
+                ) // Use PNG if you prefer lossless
+                val imageBytes = byteArrayOutputStream.toByteArray()
+                Base64.encodeToString(imageBytes, Base64.DEFAULT)
+            } else {
+                ""
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            ""
+        }
+    }
+
+    private fun createLaunchSomeActivity() {
+        launchSomeActivity = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == RESULT_OK && result.data != null) {
+                val data = result.data
+                val imageUri = result.data?.data
+                imageUri?.let { startCrop(it) }
+            }
+        }
     }
 
     @SuppressLint("IntentReset")
