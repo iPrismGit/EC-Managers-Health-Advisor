@@ -25,5 +25,6 @@ object Constants {
     const val DIGITAL_PROMOS_ENDPOINT = "digital_promos"
     const val TESTIMONIAL_VIDEOS_ENDPOINT = "all_videos"
     const val HEALTH_ADVISOR_REFER_ENDPOINT = "health_advisor_refers"
+    const val REWARDS_ENDPOINT = "rewards"
 
 }

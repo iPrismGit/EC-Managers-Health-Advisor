@@ -146,6 +146,10 @@
         <activity
             android:name=".activities.NotificationsActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".activities.RewardsActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">

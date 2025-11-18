@@ -38,6 +38,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedBackApiRe
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedbackApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
+import com.iprism.ecmhealthadvisor.modals.rewards.RewardsApiRequest
+import com.iprism.ecmhealthadvisor.modals.rewards.RewardsApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -108,5 +110,8 @@ interface EcManagersService {
 
     @POST(Constants.TESTIMONIAL_VIDEOS_ENDPOINT)
     suspend fun fetchTestimonialVideos(@Body request : TestimonialVideosApiRequest) : TestimonialVideosApiResponse
+
+    @POST(Constants.REWARDS_ENDPOINT)
+    suspend fun fetchRewards(@Body request : RewardsApiRequest) : RewardsApiResponse
 
 }

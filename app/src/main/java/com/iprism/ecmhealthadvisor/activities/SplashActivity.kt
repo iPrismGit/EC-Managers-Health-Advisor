@@ -85,7 +85,8 @@ class SplashActivity : AppCompatActivity() {
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
@@ -98,13 +99,18 @@ class SplashActivity : AppCompatActivity() {
                 try {
                     val geocoder = Geocoder(this, Locale.getDefault())
                     val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                    val area = addresses?.get(0)?.subLocality
-                    val city = addresses?.get(0)?.locality ?: addresses?.get(0)?.subAdminArea ?: "Unknown"
-                    val cityText = area ?: city
 
-                    getSharedPreferences("user_location", MODE_PRIVATE).edit()
-                        .putString("city_name", cityText)
-                        .apply()
+                    if (!addresses.isNullOrEmpty()) {
+                        val address = addresses[0]
+
+                        // ✅ Get full formatted address (complete line)
+                        val fullAddress = address.getAddressLine(0) ?: "Unknown Address"
+
+                        // Save in SharedPreferences
+                        getSharedPreferences("user_location", MODE_PRIVATE).edit()
+                            .putString("full_address", fullAddress)
+                            .apply()
+                    }
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }

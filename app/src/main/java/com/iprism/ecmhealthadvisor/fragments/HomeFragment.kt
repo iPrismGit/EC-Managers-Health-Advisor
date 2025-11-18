@@ -25,6 +25,7 @@ import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
 import com.iprism.ecmhealthadvisor.activities.PromoCouponsActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
+import com.iprism.ecmhealthadvisor.activities.RewardsActivity
 import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity
 import com.iprism.ecmhealthadvisor.activities.TestimonialVideosActivity
 import com.iprism.ecmhealthadvisor.activities.WhiteBoardFeedBackActivity
@@ -87,7 +88,14 @@ class HomeFragment : Fragment() {
         handleDigitalBrandingLo()
         handleAdvisorBenefitsLo()
         handleSocialMediaLo()
+        handleRewardsLo()
         return binding.root
+    }
+
+    private fun handleRewardsLo() {
+        binding.rewardsLo.setOnClickListener { view ->
+            startActivity(Intent(requireContext(), RewardsActivity::class.java))
+        }
     }
 
     private fun initViewModel() {

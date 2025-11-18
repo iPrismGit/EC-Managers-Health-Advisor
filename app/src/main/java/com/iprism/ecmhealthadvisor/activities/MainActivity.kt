@@ -36,6 +36,7 @@ import com.iprism.ecmhealthadvisor.utils.NetworkUtil
 import com.iprism.ecmhealthadvisor.utils.User
 import com.iprism.ecmhealthadvisor.utils.showToast
 import java.util.Locale
+import kotlin.text.equals
 
 class MainActivity : BaseActivity() {
 
@@ -59,9 +60,9 @@ class MainActivity : BaseActivity() {
         userDetails = user.getUserDetails()
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val city = getSharedPreferences("user_location", MODE_PRIVATE)
-            .getString("city_name", "Location Not Given!")
-
+            .getString("full_address", "Location Not Given!")
         binding.addressTxt.text = city
+        binding.addressTxt.isSelected = true
         val adapter = ViewPagerAdapter(this)
         binding.viewPager.isUserInputEnabled = false
         binding.viewPager.adapter = adapter
@@ -85,44 +86,27 @@ class MainActivity : BaseActivity() {
         try {
             val geocoder = Geocoder(this, Locale.getDefault())
             val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-            if (!addresses.isNullOrEmpty()) {
 
-                val areaName = addresses[0].subLocality
-                val cityName = addresses[0].locality
-                val fullName = when {
-                    !areaName.isNullOrEmpty() -> areaName
-                    !cityName.isNullOrEmpty() -> cityName
-                    else -> "Unknown Area"
-                }
+            if (!addresses.isNullOrEmpty()) {
+                val address = addresses[0]
+
+
+                val fullAddress = address.getAddressLine(0) ?: "Unknown Address"
 
                 val editor = getSharedPreferences("user_location", MODE_PRIVATE).edit()
-                editor.putString("city_name", fullName)
+                editor.putString("full_address", fullAddress)
                 editor.apply()
 
-                binding.addressTxt.text = fullName
+                binding.addressTxt.text = fullAddress
+            } else {
+                showToast("Address not found")
             }
         } catch (e: Exception) {
             e.printStackTrace()
-            showToast("Unable to fetch area name")
+            showToast("Unable to fetch address")
         }
     }
 
-    private fun showNoInternetDialog() {
-        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("No Internet Connection")
-            .setMessage("Please check your internet connection and try again.")
-            .setCancelable(false)
-            .setPositiveButton("Retry") { dialog, _ ->
-                dialog.dismiss()
-                recreate()
-            }
-            .setNegativeButton("Exit") { dialog, _ ->
-                dialog.dismiss()
-                finishAffinity()
-            }
-
-        builder.show()
-    }
 
     private fun showNoPermissionDialog() {
         val builder = androidx.appcompat.app.AlertDialog.Builder(this)
@@ -178,6 +162,7 @@ class MainActivity : BaseActivity() {
             if (location != null) {
                 getCityNameFromLocation(location)
             } else {
+
                 showToast("Unable to get location. Try again.")
             }
         }
@@ -215,7 +200,7 @@ class MainActivity : BaseActivity() {
         bottomSheetBinding.crossIv.setOnClickListener {
             bottomSheetDialog.dismiss()
         }
-
+        bottomSheetBinding.hospitalNameTxt.text = userDetails[User.HOSPITAL_NAME].toString()
         val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
         bottomSheet?.setBackgroundColor(Color.TRANSPARENT)
 
