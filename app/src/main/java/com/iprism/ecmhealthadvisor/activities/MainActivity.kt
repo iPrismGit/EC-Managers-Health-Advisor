@@ -9,9 +9,11 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Geocoder
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -114,12 +116,22 @@ class MainActivity : BaseActivity() {
             .setMessage("Location permission is required to get your city name.")
             .setPositiveButton("Grant") { dialog, _ ->
                 dialog.dismiss()
-                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                openAppSettings()
             }
             .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }
+
         builder.show()
+    }
+
+    private fun openAppSettings() {
+        val intent = Intent(
+            Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+            Uri.fromParts("package", packageName, null)
+        )
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
     }
 
     private fun checkLocationPermissionAndFetch() {

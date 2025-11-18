@@ -130,7 +130,7 @@ class HospitalDoctorsActivity : AppCompatActivity() {
 
             override fun onWhatsappClick(doctorId: String, mobile: String) {
                 this@HospitalDoctorsActivity.mobileNumber = mobile
-                val url = "https://wa.me/$mobileNumber"
+                val url = "https://wa.me/+91 $mobileNumber"
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
 
