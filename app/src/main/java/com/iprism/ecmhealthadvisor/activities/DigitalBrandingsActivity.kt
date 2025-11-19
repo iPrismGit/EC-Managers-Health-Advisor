@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
+import android.graphics.ColorSpace
 import android.graphics.ImageDecoder
 import android.graphics.Paint
 import android.graphics.PorterDuff
@@ -110,7 +111,12 @@ class DigitalBrandingsActivity : AppCompatActivity() {
 
                 connection.connect()
                 val inputStream = connection.getInputStream()
-                val baseBitmap = BitmapFactory.decodeStream(inputStream)
+
+                val options = BitmapFactory.Options().apply {
+                    inPreferredConfig = Bitmap.Config.ARGB_8888
+                }
+
+                val baseBitmap = BitmapFactory.decodeStream(inputStream, null, options)
                 inputStream.close()
 
                 if (baseBitmap == null) {
@@ -120,7 +126,10 @@ class DigitalBrandingsActivity : AppCompatActivity() {
                 val source = ImageDecoder.createSource(contentResolver, imageUri)
                 val selectedBitmap = ImageDecoder.decodeBitmap(source) { decoder, _, _ ->
                     decoder.isMutableRequired = true
+                    decoder.allocator = ImageDecoder.ALLOCATOR_SOFTWARE
+                    decoder.setTargetColorSpace(ColorSpace.get(ColorSpace.Named.SRGB))
                 }
+
 
                 val combined = overlayCircularImageBottomRight(baseBitmap, selectedBitmap)
 
@@ -146,10 +155,12 @@ class DigitalBrandingsActivity : AppCompatActivity() {
     }
 
     private fun overlayCircularImageBottomRight(base: Bitmap, overlay: Bitmap): Bitmap {
+
         val result = base.copy(Bitmap.Config.ARGB_8888, true)
         val canvas = Canvas(result)
 
-        val overlaySize = (base.width * 0.20f).toInt()
+        val overlaySize = (base.width * 0.15f).toInt()
+
         val scaledOverlay = Bitmap.createScaledBitmap(overlay, overlaySize, overlaySize, true)
 
         val circularOverlay = getCircularBitmap(scaledOverlay)
@@ -157,13 +168,15 @@ class DigitalBrandingsActivity : AppCompatActivity() {
         val left = base.width - circularOverlay.width - 40f
         val top = base.height - circularOverlay.height - 40f
 
-        canvas.drawBitmap(circularOverlay, left, top, null)
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG or Paint.FILTER_BITMAP_FLAG)
+
+        canvas.drawBitmap(circularOverlay, left, top, paint)
 
         return result
     }
 
     private suspend fun saveToTradeMarketingFolder(bitmap: Bitmap) {
-        val folderName = "ECMHealthAdvisor"
+        val folderName = "Health Advisor"
         val downloads =
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
         val folder = File(downloads, folderName)
@@ -201,12 +214,14 @@ class DigitalBrandingsActivity : AppCompatActivity() {
         val output = Bitmap.createBitmap(bitmap.width, bitmap.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(output)
 
-        val paint = Paint()
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+            isFilterBitmap = true
+            isDither = true
+        }
+
         val rect = Rect(0, 0, bitmap.width, bitmap.height)
         val rectF = RectF(rect)
 
-        paint.isAntiAlias = true
-        canvas.drawARGB(0, 0, 0, 0)
         canvas.drawOval(rectF, paint)
 
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
