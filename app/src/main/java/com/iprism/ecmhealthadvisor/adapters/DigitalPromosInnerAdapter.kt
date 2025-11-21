@@ -1,4 +1,4 @@
-package com.iprism.ecmcorporatemarketing.adapters
+package com.iprism.ecmhealthadvisor.adapters
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.iprism.ecmhealthadvisor.R
-import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
 
 import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Media

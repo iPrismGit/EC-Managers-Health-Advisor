@@ -1,13 +1,10 @@
-package com.iprism.ecmcorporatemarketing.adapters
+package com.iprism.ecmhealthadvisor.adapters
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.media.MediaMetadataRetriever
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
@@ -33,14 +30,14 @@ class FacilitiesInnerAdapter(var context: Context, var imagesList: List<Media>) 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FacilitiesInnerAdapter.FacilitiInnerViewHolder {
+    ): FacilitiInnerViewHolder {
         var binding =
             InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FacilitiInnerViewHolder(binding)
     }
 
     override fun onBindViewHolder(
-        holder: FacilitiesInnerAdapter.FacilitiInnerViewHolder,
+        holder: FacilitiInnerViewHolder,
         position: Int
     ) {
         var media = imagesList[position]

@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
-import com.iprism.ecmhealthadvisor.adapters.InboundTeamsAdapter
 import com.iprism.ecmhealthadvisor.adapters.MarketingTeamsAdapter
 
 import com.iprism.ecmhealthadvisor.databinding.FragmentInBoundTeamBinding

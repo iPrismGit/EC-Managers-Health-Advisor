@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.iprism.ecmcorporatemarketing.adapters.FacilitiesInnerAdapter
 import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
-import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Tieup
 
 class HospitalTieUpsAdapter(var context: Context, var tieups : List<Tieup>) :

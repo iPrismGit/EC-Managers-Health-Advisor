@@ -23,7 +23,6 @@ import com.iprism.ecmhealthadvisor.activities.HospitalTieupsActivity
 import com.iprism.ecmhealthadvisor.activities.LoginActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
-import com.iprism.ecmhealthadvisor.activities.PromoCouponsActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
 import com.iprism.ecmhealthadvisor.activities.RewardsActivity
 import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity

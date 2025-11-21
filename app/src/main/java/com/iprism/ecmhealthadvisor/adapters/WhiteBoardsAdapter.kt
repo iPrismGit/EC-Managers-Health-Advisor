@@ -55,4 +55,5 @@ class WhiteBoardsAdapter(var context: Context, var whiteBoardCategories: List<Wh
     }
 
     class WhiteBoardViewHolder(var binding: WhiteBoardFeedBackItemBinding) : ViewHolder(binding.root)
+
 }

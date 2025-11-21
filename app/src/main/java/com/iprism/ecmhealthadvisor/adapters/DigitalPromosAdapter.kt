@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.iprism.ecmcorporatemarketing.adapters.DigitalPromosInnerAdapter
 import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
 
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromo

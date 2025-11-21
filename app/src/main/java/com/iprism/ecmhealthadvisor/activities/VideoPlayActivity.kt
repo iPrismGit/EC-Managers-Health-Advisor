@@ -26,7 +26,6 @@ class VideoPlayActivity : AppCompatActivity() {
     private lateinit var binding: ActivityVideoPlayBinding
     private var player: ExoPlayer? = null
     private var videoUrl = ""
-
     private var playbackPosition: Long = 0
     private var currentWindow: Int = 0
     private var playWhenReady: Boolean = true

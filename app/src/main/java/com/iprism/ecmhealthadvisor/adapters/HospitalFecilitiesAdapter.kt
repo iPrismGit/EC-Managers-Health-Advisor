@@ -3,15 +3,11 @@ package com.iprism.ecmhealthadvisor.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.iprism.ecmcorporatemarketing.adapters.FacilitiesInnerAdapter
-import com.iprism.ecmhealthadvisor.R
 import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
 
-import com.iprism.ecmhealthadvisor.databinding.InsuranceItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Facility
 
 class HospitalFecilitiesAdapter(var context: Context, var facilities: List<Facility>) :
