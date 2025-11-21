@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Whiteboard Feedback"
+            android:text="Service Feedback"
             android:textColor="@color/black"
             android:textSize="18dp" />
     </LinearLayout>

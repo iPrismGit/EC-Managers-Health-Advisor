@@ -68,6 +68,7 @@
 
         <activity
             android:name=".activities.AddMemberActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:exported="false" />
         <activity
             android:name=".activities.BenifitTypesActivity"
@@ -139,9 +140,11 @@
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:exported="false" />
         <activity
             android:name=".activities.OtpActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:exported="false" />
         <activity
             android:name=".activities.NotificationsActivity"
@@ -173,7 +176,7 @@
             android:resource="@array/preloaded_fonts" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAaf0xB28iKcaFh6Ex4bRFSaQzZtbu8GOg" />
+            android:value="AIzaSyBo0oxMG5TuIec-Hho2VpxB9r9xdgQumgI" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

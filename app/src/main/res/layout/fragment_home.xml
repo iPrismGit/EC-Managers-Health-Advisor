@@ -1068,7 +1068,7 @@
                                         android:layout_height="match_parent"
                                         android:adjustViewBounds="true"
                                         android:scaleType="centerCrop"
-                                        android:src="@drawable/hospital_hods_img" />
+                                        android:src="@drawable/white_board_feed_back_img" />
 
                                 </com.google.android.material.card.MaterialCardView>
 

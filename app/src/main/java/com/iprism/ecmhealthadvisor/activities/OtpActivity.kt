@@ -39,11 +39,7 @@ class OtpActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
         otp = intent.getStringExtra("otp").toString()
         mobile = intent.getStringExtra("mobile").toString()
         binding.mobileTxt.text = "+91 " + mobile

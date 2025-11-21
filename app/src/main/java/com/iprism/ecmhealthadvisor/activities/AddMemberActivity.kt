@@ -355,49 +355,47 @@ class AddMemberActivity : AppCompatActivity() {
     private fun handleSubmitBtn() {
         binding.downloadAppBtn.setOnClickListener {
             if (profileUri == null) {
-                ToastUtils.showErrorCustomToast(this, "Please Add Lead Profile!")
+                ToastUtils.showErrorCustomToast(this, "Please Add Lead Profile..!")
             } else if (getName().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Name!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Name..!")
             } else if (getMobile().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Mobile Number!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Mobile Number..!")
             } else if (getMobile().length != 10) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (Pattern.matches("[0-5].*", getMobile())) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (getEmail().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Email ID!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Email ID..!")
             } else if (!isValidEmailAddress(getEmail())) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Valid Email ID")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Valid Email ID..!")
             } else if (genderId.equals("-1", true)) {
-                ToastUtils.showErrorCustomToast(this, "Please Select Gender!")
+                ToastUtils.showErrorCustomToast(this, "Please Select Gender..!")
             }  else if (bloodgroupId.equals("-1", true)) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Blood Group..!")
             }else if (getDob().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Select Date of Birth!")
+                ToastUtils.showErrorCustomToast(this, "Please Select Date of Birth..!")
             } else if (profession.isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Select Profession Type!")
+                ToastUtils.showErrorCustomToast(this, "Please Select Profession Type..!")
             } else if (getFamilyMembers().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Family Members Count!")
-            }
-//            else if (getAddress().isEmpty()) {
-//                ToastUtils.showErrorCustomToast(this, "Please Enter User Address!")
-//            }
-            else if (getTreatmentStatus().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Treatment Status!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Family Members Count..!")
+            } else if (getFamilyMembers().matches(Regex("0+"))) {
+                ToastUtils.showErrorCustomToast(this, "Family Members Count should not be Zero..!!")
+            } else if (getAddress().isEmpty()) {
+                ToastUtils.showErrorCustomToast(this, "Please Select User Address..!")
+            } else if (getTreatmentStatus().isEmpty()) {
+                ToastUtils.showErrorCustomToast(this, "Please Enter Treatment Status..!")
             } else if (paymentTypeId.equals("-1", true)) {
-                ToastUtils.showErrorCustomToast(this, "Please Select Payment Type!")
+                ToastUtils.showErrorCustomToast(this, "Please Select Payment Type..!")
             } else if (paymentTypeId.equals("2", true) && insuranceType.isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Select  Insurance Type!")
+                ToastUtils.showErrorCustomToast(this, "Please Select  Insurance Type..!")
             } else if (paymentTypeId.equals("2", true) && getInsuranceCompanyName().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Insurance Company Name!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter Insurance Company Name..!")
             } else if (paymentTypeId.equals("2", true) && getTpaName().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter TPA Name!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter TPA Name..!")
             } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter No. of Persons Covered!")
-            } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().equals("0", true)) {
-                ToastUtils.showErrorCustomToast(this, "No. of Persons Covered Should not be 0!")
-            } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().equals("00", true)) {
-                ToastUtils.showErrorCustomToast(this, "No. of Persons Covered Should not be 0!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter No. of Persons Covered..!")
+            } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().matches(Regex("0+"))) {
+                ToastUtils.showErrorCustomToast(this, "No. of Persons Covered Should not be Zero..!")
             } else if (paymentTypeId.equals("3", true) && insuranceType.isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select  Others Type!")
             } else {
