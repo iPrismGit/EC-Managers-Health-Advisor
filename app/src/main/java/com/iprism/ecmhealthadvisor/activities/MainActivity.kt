@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.location.Geocoder
 import android.location.Location
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -16,6 +17,7 @@ import android.provider.Settings
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -72,6 +74,28 @@ class MainActivity : AppCompatActivity() {
         handleNotificationsIv()
         handleMenuImg()
         handleAddressTxt()
+        askNotificationPermission()
+    }
+
+    private val requestNotificationPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                Toast.makeText(this, "Notification Permission Granted", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Notification Permission Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    private fun askNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
     }
 
     private fun handleAddressTxt() {

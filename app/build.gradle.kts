@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.onesignal.androidsdk.onesignal-gradle-plugin")
 }
 
 android {
@@ -86,5 +87,6 @@ dependencies {
     implementation("com.google.auth:google-auth-library-oauth2-http:1.19.0")
     implementation("com.google.android.gms:play-services-auth-api-phone:18.0.1")
     implementation("com.google.android.libraries.places:places:2.6.0")
+    implementation("com.onesignal:OneSignal:[4.0.0, 4.99.99]")
 
 }

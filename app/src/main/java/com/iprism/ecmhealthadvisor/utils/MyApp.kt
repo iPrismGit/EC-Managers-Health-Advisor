@@ -7,6 +7,9 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import com.onesignal.OSNotificationReceivedEvent
+import com.onesignal.OneSignal
 import kotlinx.coroutines.*
 
 class MyApp : Application() {
@@ -19,6 +22,24 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        OneSignal.initWithContext(this)
+
+        OneSignal.setAppId("e9cb5d03-036e-4f79-9a9c-d40882633bdb")
+        Log.d("OneSignal", "Device is subscribed: " + OneSignal.getDeviceState()!!.isSubscribed())
+
+        OneSignal.setNotificationWillShowInForegroundHandler(
+            OneSignal.OSNotificationWillShowInForegroundHandler { notificationReceivedEvent: OSNotificationReceivedEvent? ->
+                Log.d(
+                    "OneSignalNotification",
+                    "Title: " + notificationReceivedEvent!!.getNotification().getTitle()
+                )
+                Log.d(
+                    "OneSignalNotification",
+                    "Body: " + notificationReceivedEvent.getNotification().getBody()
+                )
+                notificationReceivedEvent.complete(notificationReceivedEvent.getNotification())
+            })
 
         registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
             override fun onActivityResumed(activity: Activity) {

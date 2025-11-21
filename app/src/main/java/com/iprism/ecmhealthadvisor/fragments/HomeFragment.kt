@@ -38,14 +38,17 @@ import com.iprism.ecmhealthadvisor.utils.UiState
 import com.iprism.ecmhealthadvisor.utils.User
 import com.iprism.ecmhealthadvisor.viewmodels.HomePageViewModel
 import com.iprism.ecmhealthadvisor.viewmodels.ViewModelFactory
+import com.onesignal.OneSignal
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
+import org.json.JSONObject
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel: HomePageViewModel
     private lateinit var user: User
+    private var playerId: String = ""
     private lateinit var userDetails: HashMap<String, String?>
 
     override fun onCreateView(
@@ -53,6 +56,12 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val deviceState = OneSignal.getDeviceState()
+        if (deviceState != null) {
+            playerId = deviceState.userId ?: ""
+            Log.d("OneSignal", "Player ID1: $playerId")
+        }
+        OneSignal.sendTags(JSONObject().put("user_type", "health_advisor"))
         user = User(requireContext())
         userDetails = user.getUserDetails()
         Log.d("userDetails", userDetails.toString())
@@ -61,7 +70,7 @@ class HomeFragment : Fragment() {
         var homePageApiRequest = HomePageApiRequest(
             userDetails[User.AUTH_TOKEN].toString(),
             userDetails[User.MAIN_DATA_ID].toString(),
-            "12345",
+            playerId,
             userDetails[User.ID].toString()
         )
         viewModel.fetchHomePageBanners(homePageApiRequest)

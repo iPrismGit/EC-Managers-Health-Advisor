@@ -76,10 +76,6 @@
         <activity
             android:name=".activities.AdvisorBenefitsActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".activities.ViewAllDigitalBrandingsActivity"
-            android:exported="false" />
         <activity
             android:name=".activities.DigitalBrandingsActivity"
             android:exported="false" />
@@ -99,12 +95,6 @@
             android:name=".activities.HospitalTieupsActivity"
             android:exported="false" />
 
-        <activity
-            android:name=".activities.PromoCouponsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.SinglePromoCouponsActivity"
-            android:exported="false" />
         <activity
             android:name=".activities.HospitalHodsActivity"
             android:exported="false" />
@@ -177,6 +167,12 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBo0oxMG5TuIec-Hho2VpxB9r9xdgQumgI" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="channel" />
+        <meta-data
+            android:name="com.onesignal.NotificationServiceExtension"
+            android:value="com.iprism.ecmhealthadvisor.utils.OneSignalServiceNotifications" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

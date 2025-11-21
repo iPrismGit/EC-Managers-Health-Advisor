@@ -22,6 +22,8 @@ import com.iprism.ecmhealthadvisor.utils.hideProgress
 import com.iprism.ecmhealthadvisor.utils.showProgress
 import com.iprism.ecmhealthadvisor.viewmodels.AuthenticationViewModel
 import com.iprism.ecmhealthadvisor.viewmodels.ViewModelFactory
+import com.onesignal.OneSignal
+import org.json.JSONObject
 import kotlin.toString
 
 class OtpActivity : AppCompatActivity() {
@@ -39,7 +41,12 @@ class OtpActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityOtpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        val deviceState = OneSignal.getDeviceState()
+        if (deviceState != null) {
+            playerId = deviceState.userId ?: ""
+            Log.d("OneSignal", "Player ID1: $playerId")
+        }
+        OneSignal.sendTags(JSONObject().put("user_type", "health_advisor"))
         otp = intent.getStringExtra("otp").toString()
         mobile = intent.getStringExtra("mobile").toString()
         binding.mobileTxt.text = "+91 " + mobile
@@ -132,7 +139,7 @@ class OtpActivity : AppCompatActivity() {
                 if (getOtp() != currentOtp) {
                     ToastUtils.showErrorCustomToast(this, "Please Enter Valid Otp!")
                 } else {
-                    val loginRequest = LoginApiRequest("", "", mobile, "verified", "12345")
+                    val loginRequest = LoginApiRequest("", "", mobile, "verified", playerId)
                     viewModel.login(loginRequest)
                     Log.d("LoginApiRequest", loginRequest.toString())
                 }
