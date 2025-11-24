@@ -124,6 +124,7 @@
             android:exported="false" />
         <activity
             android:name=".activities.ContentPagesActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:exported="false" />
         <activity
             android:name=".activities.AddUsersActivity"

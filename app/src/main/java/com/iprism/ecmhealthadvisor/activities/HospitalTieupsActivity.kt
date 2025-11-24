@@ -1,5 +1,6 @@
 package com.iprism.ecmhealthadvisor.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -78,6 +79,15 @@ class HospitalTieupsActivity : AppCompatActivity() {
                         if ((visibleItemCount + firstVisibleItemPosition) >= totalItemCount && firstVisibleItemPosition >= 0) {
                             loadMoreItems()
                         }
+                    }
+                }
+            })
+            tieupsAdapter.setupListener(object : HospitalTieUpsAdapter.OnFacilityOuterClickListener{
+                override fun onItemClick(url: String, type: String) {
+                    if (type.equals("video", true)){
+                        val intent = Intent(this@HospitalTieupsActivity, VideoPlayActivity::class.java)
+                        intent.putExtra("videoUrl", url)
+                        startActivity(intent)
                     }
                 }
             })

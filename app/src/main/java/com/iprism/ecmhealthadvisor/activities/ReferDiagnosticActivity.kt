@@ -93,13 +93,13 @@ class ReferDiagnosticActivity : AppCompatActivity() {
             if (getName().isEmpty()){
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Name..!")
             } else if (getMobile().isEmpty()){
-                ToastUtils.showErrorCustomToast(this, "Please Enter Mobile Patient Number..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter  Patient Mobile Number..!")
             } else if (getMobile().length != 10){
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (Pattern.matches("[0-5].*", getMobile())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (genderId.equals("-1", true)){
-                ToastUtils.showErrorCustomToast(this, "Please Select Patient Gender Type..!")
+                ToastUtils.showErrorCustomToast(this, "Please Select Patient Gender..!")
             } else if (getDob().isEmpty()){
                 ToastUtils.showErrorCustomToast(this, "Please Select Patient Date of Birth..!")
             } else {

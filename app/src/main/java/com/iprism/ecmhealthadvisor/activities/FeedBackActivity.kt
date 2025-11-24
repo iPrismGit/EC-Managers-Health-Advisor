@@ -55,9 +55,11 @@ class FeedBackActivity : AppCompatActivity() {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Name..!")
             } else if (getRoomNumber().isEmpty()){
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Room Number..!")
+            } else if (getRoomNumber().matches(Regex("0+"))){
+                ToastUtils.showErrorCustomToast(this, "Room NumberShould not be Zero..!")
             } else if (getFeedBack().isEmpty()){
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Feedback..!")
-            }else{
+            } else{
                 var whiteBoardFeedbackApiRequest = WhiteBoardFeedbackApiRequest(
                     userDetails[User.AUTH_TOKEN].toString(),
                     catId,

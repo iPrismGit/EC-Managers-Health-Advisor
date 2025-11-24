@@ -59,6 +59,7 @@ class AddMemberActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddMemberBinding
     private var name = ""
     private var type = ""
+    private var tag = ""
     private lateinit var leadsViewModel: LeadsViewModel
     private lateinit var offerLauncher: ActivityResultLauncher<Intent>
     private lateinit var locationPermissionLauncher: ActivityResultLauncher<Array<String>>
@@ -115,6 +116,7 @@ class AddMemberActivity : AppCompatActivity() {
         userDetails = user.getUserDetails()
         name = intent.getStringExtra("name").toString()
         type = intent.getStringExtra("type").toString()
+        tag = intent.getStringExtra("tag").toString()
 //        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -355,17 +357,17 @@ class AddMemberActivity : AppCompatActivity() {
     private fun handleSubmitBtn() {
         binding.downloadAppBtn.setOnClickListener {
             if (profileUri == null) {
-                ToastUtils.showErrorCustomToast(this, "Please Add Lead Profile..!")
+                ToastUtils.showErrorCustomToast(this, "Please Add " + tag +"Profile..!")
             } else if (getName().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Name..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag +  "Name..!")
             } else if (getMobile().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Mobile Number..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag +  "Mobile Number..!")
             } else if (getMobile().length != 10) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (Pattern.matches("[0-5].*", getMobile())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (getEmail().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Lead Email ID..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter "+ tag +  "Email ID..!")
             } else if (!isValidEmailAddress(getEmail())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Email ID..!")
             } else if (genderId.equals("-1", true)) {
@@ -690,7 +692,7 @@ class AddMemberActivity : AppCompatActivity() {
                 is UiState.Success -> {
                     binding.progress.hideProgress()
                     var intent = Intent(this, SuccessActivity::class.java)
-                    intent.putExtra("tag", "User Added ")
+                    intent.putExtra("tag",  tag +  "Added ")
                     startActivity(intent)
                 }
 
