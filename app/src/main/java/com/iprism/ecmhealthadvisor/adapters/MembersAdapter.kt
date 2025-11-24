@@ -14,7 +14,7 @@ import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 import com.iprism.ecmhealthadvisor.modals.addleads.Lead
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class MembersAdapter(var context: Context, var leads : List<Lead>) :
+class MembersAdapter(var context: Context, var leads: List<Lead>) :
     RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
@@ -39,11 +39,20 @@ class MembersAdapter(var context: Context, var leads : List<Lead>) :
         holder.binding.clinicNameTxt.visibility = View.GONE
         holder.binding.profileIv.borderColor = ContextCompat.getColor(context, R.color.green)
         holder.binding.profileIv.borderWidth = 4
-        if (lead.image.isNotEmpty()){
-            Glide.with(context).load(Constants.IMAGES_URL + lead.image).error(ContextCompat.getDrawable(context,
-                R.drawable.customer_image)).into(holder.binding.profileIv)
-        } else{
-            holder.binding.profileIv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.customer_image))
+        if (lead.image.isNotEmpty()) {
+            Glide.with(context).load(Constants.IMAGES_URL + lead.image).error(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.customer_image
+                )
+            ).into(holder.binding.profileIv)
+        } else {
+            holder.binding.profileIv.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.customer_image
+                )
+            )
         }
         holder.binding.callNowLo.setOnClickListener(View.OnClickListener {
             listener.onCallNowClick(lead.id, lead.mobile)

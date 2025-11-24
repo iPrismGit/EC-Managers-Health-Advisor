@@ -17,7 +17,7 @@ import com.iprism.ecmhealthadvisor.databinding.PersonItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Doctor
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class HospitalHodsAdapter(var context: Context, var hods : List<Doctor>) :
+class HospitalHodsAdapter(var context: Context, var hods: List<Doctor>) :
     Adapter<HospitalHodsAdapter.HsopitalHodViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
@@ -46,11 +46,17 @@ class HospitalHodsAdapter(var context: Context, var hods : List<Doctor>) :
         holder.binding.nameTxt.text = hod.name
         holder.binding.qualificationTxt.text = hod.qualification
         holder.binding.clinicNameTxt.text = hod.specialization
-        if (hod.image.isNotEmpty()){
+        if (hod.image.isNotEmpty()) {
             Glide.with(context).load(Constants.IMAGES_URL + hod.image).error(
-                ContextCompat.getDrawable(context, R.drawable.customer_image)).into(holder.binding.profileIv)
-        } else{
-            holder.binding.profileIv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.customer_image))
+                ContextCompat.getDrawable(context, R.drawable.customer_image)
+            ).into(holder.binding.profileIv)
+        } else {
+            holder.binding.profileIv.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.customer_image
+                )
+            )
         }
         holder.binding.callNowLo.setOnClickListener(View.OnClickListener {
             it.startAnimation(bounce)

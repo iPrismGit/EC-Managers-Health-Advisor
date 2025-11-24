@@ -82,10 +82,12 @@ class HospitalTieupsActivity : AppCompatActivity() {
                     }
                 }
             })
-            tieupsAdapter.setupListener(object : HospitalTieUpsAdapter.OnFacilityOuterClickListener{
+            tieupsAdapter.setupListener(object :
+                HospitalTieUpsAdapter.OnFacilityOuterClickListener {
                 override fun onItemClick(url: String, type: String) {
-                    if (type.equals("video", true)){
-                        val intent = Intent(this@HospitalTieupsActivity, VideoPlayActivity::class.java)
+                    if (type.equals("video", true)) {
+                        val intent =
+                            Intent(this@HospitalTieupsActivity, VideoPlayActivity::class.java)
                         intent.putExtra("videoUrl", url)
                         startActivity(intent)
                     }

@@ -36,7 +36,6 @@ class HospitalFecilitiesActivity : AppCompatActivity() {
     private var isLastPage = false
     private var currentPage = 1
     private val limit = 10
-
     private lateinit var hospitalViewModel: HospitalViewModel
     private lateinit var user: User
     private lateinit var userDetails: HashMap<String, String?>
@@ -92,15 +91,18 @@ class HospitalFecilitiesActivity : AppCompatActivity() {
                 }
             })
         }
-        facilitiesAdapter.setupListener(object : HospitalFecilitiesAdapter.OnFacilityOuterClickListener{
+        facilitiesAdapter.setupListener(object :
+            HospitalFecilitiesAdapter.OnFacilityOuterClickListener {
             override fun onItemClick(url: String, type: String) {
                 android.util.Log.d("urlAndType", url + ", " + type)
-                if (type.equals("image", true)){
-                    var intent = Intent(this@HospitalFecilitiesActivity, ViewPhotoActivity::class.java)
+                if (type.equals("image", true)) {
+                    var intent =
+                        Intent(this@HospitalFecilitiesActivity, ViewPhotoActivity::class.java)
                     intent.putExtra("imageUrl", url)
                     startActivity(intent)
-                } else if (type.equals("video", true)){
-                    var intent = Intent(this@HospitalFecilitiesActivity, VideoPlayActivity::class.java)
+                } else if (type.equals("video", true)) {
+                    var intent =
+                        Intent(this@HospitalFecilitiesActivity, VideoPlayActivity::class.java)
                     intent.putExtra("videoUrl", Constants.IMAGES_URL + url)
                     startActivity(intent)
                 }

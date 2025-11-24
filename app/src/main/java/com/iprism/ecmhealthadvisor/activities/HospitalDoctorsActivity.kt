@@ -117,7 +117,7 @@ class HospitalDoctorsActivity : AppCompatActivity() {
         doctorsAdapter.setupListener(object : OnSingleItemClickListener {
             override fun onCallNowClick(doctorId: String, mobile: String) {
                 this@HospitalDoctorsActivity.mobileNumber = mobile
-                if (mobileNumber.isNotEmpty()){
+                if (mobileNumber.isNotEmpty()) {
                     makePhoneCall(this@HospitalDoctorsActivity.mobileNumber)
                 }
             }
@@ -143,7 +143,11 @@ class HospitalDoctorsActivity : AppCompatActivity() {
                         intent.setPackage("com.whatsapp.w4b")
                         startActivity(intent)
                     } catch (e2: Exception) {
-                        Toast.makeText(this@HospitalDoctorsActivity, "WhatsApp not installed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@HospitalDoctorsActivity,
+                            "WhatsApp not installed",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -243,7 +247,11 @@ class HospitalDoctorsActivity : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.CALL_PHONE
+                )
+            ) {
 
                 ActivityCompat.requestPermissions(
                     this,

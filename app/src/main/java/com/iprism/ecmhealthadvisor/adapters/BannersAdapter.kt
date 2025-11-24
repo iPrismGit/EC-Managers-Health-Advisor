@@ -11,24 +11,34 @@ import com.iprism.ecmhealthadvisor.utils.Constants
 
 import com.smarteist.autoimageslider.SliderViewAdapter
 
-class BannersAdapter (private val banners: List<Banner>) :
+class BannersAdapter(private val banners: List<Banner>) :
     SliderViewAdapter<BannersAdapter.BannerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?): BannersAdapter.BannerViewHolder {
-        var binding = BannerItemBinding.inflate( LayoutInflater.from(parent!!.context), parent, false)
+        var binding =
+            BannerItemBinding.inflate(LayoutInflater.from(parent!!.context), parent, false)
         return BannerViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: BannersAdapter.BannerViewHolder, p1: Int) {
         var banner = banners[p1]
-        if(banner.image.isNotEmpty()){
+        if (banner.image.isNotEmpty()) {
             Glide.with(holder.binding.root.context)
-                .load(Constants.IMAGES_URL + banner.image).error(ContextCompat.getDrawable(holder.binding.root.context,
-                    R.drawable.dummy_icon))
+                .load(Constants.IMAGES_URL + banner.image).error(
+                    ContextCompat.getDrawable(
+                        holder.binding.root.context,
+                        R.drawable.dummy_icon
+                    )
+                )
                 .fitCenter()
                 .into(holder.binding.bannerImg)
-        }else{
-            holder.binding.bannerImg.setImageDrawable(ContextCompat.getDrawable(holder.binding.root.context, R.drawable.dummy_icon))
+        } else {
+            holder.binding.bannerImg.setImageDrawable(
+                ContextCompat.getDrawable(
+                    holder.binding.root.context,
+                    R.drawable.dummy_icon
+                )
+            )
         }
 
     }

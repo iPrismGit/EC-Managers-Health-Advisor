@@ -26,8 +26,8 @@ class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
     private lateinit var authenticationViewModel: AuthenticationViewModel
-    private lateinit var user : User
-    private lateinit var userDetails : HashMap<String, String?>
+    private lateinit var user: User
+    private lateinit var userDetails: HashMap<String, String?>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +51,8 @@ class ProfileFragment : Fragment() {
     private fun initViewModel() {
         val repository = AuthenticationRepository()
         val factory = ViewModelFactory { AuthenticationViewModel(repository) }
-        authenticationViewModel = ViewModelProvider(this, factory)[AuthenticationViewModel::class.java]
+        authenticationViewModel =
+            ViewModelProvider(this, factory)[AuthenticationViewModel::class.java]
     }
 
     private fun observeProfileResponse() {
@@ -72,11 +73,18 @@ class ProfileFragment : Fragment() {
                     binding.genderTxt.text = result.data.profile.gender_name
                     binding.dateOfBirthTxt.text = result.data.profile.dob
                     binding.bloodGroupTxt.text = result.data.profile.blood_group_name
-                    if (result.data.profile.image.isNotEmpty()){
-                        Glide.with(requireContext()).load(Constants.IMAGES_URL + result.data.profile.image).error(
-                            ContextCompat.getDrawable(requireContext(), R.drawable.customer_image)).into(binding.profileIv)
-                    } else{
-                        binding.profileIv.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.customer_image))
+                    if (result.data.profile.image.isNotEmpty()) {
+                        Glide.with(requireContext())
+                            .load(Constants.IMAGES_URL + result.data.profile.image).error(
+                            ContextCompat.getDrawable(requireContext(), R.drawable.customer_image)
+                        ).into(binding.profileIv)
+                    } else {
+                        binding.profileIv.setImageDrawable(
+                            ContextCompat.getDrawable(
+                                requireContext(),
+                                R.drawable.customer_image
+                            )
+                        )
                     }
                 }
 

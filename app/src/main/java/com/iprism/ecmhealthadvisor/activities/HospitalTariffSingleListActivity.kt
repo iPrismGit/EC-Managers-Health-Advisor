@@ -85,7 +85,8 @@ class HospitalTariffSingleListActivity : AppCompatActivity() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    binding.refreshLayout.isEnabled = !binding.singleTariffsRv.canScrollVertically(-1)
+                    binding.refreshLayout.isEnabled =
+                        !binding.singleTariffsRv.canScrollVertically(-1)
                     val visibleItemCount = linearLayoutManager.childCount
                     val totalItemCount = linearLayoutManager.itemCount
                     val firstVisibleItemPosition =

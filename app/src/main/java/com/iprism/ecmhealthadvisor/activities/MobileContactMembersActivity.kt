@@ -114,7 +114,7 @@ class MobileContactMembersActivity : AppCompatActivity() {
         leadsAdapter.setupListener(object : OnSingleItemClickListener {
             override fun onCallNowClick(doctorId: String, mobile: String) {
                 this@MobileContactMembersActivity.mobileNumber = mobile
-                if (mobileNumber.isNotEmpty()){
+                if (mobileNumber.isNotEmpty()) {
                     makePhoneCall(this@MobileContactMembersActivity.mobileNumber)
                 }
             }
@@ -140,7 +140,11 @@ class MobileContactMembersActivity : AppCompatActivity() {
                         intent.setPackage("com.whatsapp.w4b")
                         startActivity(intent)
                     } catch (e2: Exception) {
-                        Toast.makeText(this@MobileContactMembersActivity, "WhatsApp not installed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@MobileContactMembersActivity,
+                            "WhatsApp not installed",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -239,7 +243,11 @@ class MobileContactMembersActivity : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.CALL_PHONE
+                )
+            ) {
 
                 ActivityCompat.requestPermissions(
                     this,

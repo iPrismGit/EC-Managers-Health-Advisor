@@ -87,7 +87,8 @@ class MarketingTeamFragment : Fragment() {
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
-                    binding.refreshLayout.isEnabled = !binding.marketingTeamRv.canScrollVertically(-1)
+                    binding.refreshLayout.isEnabled =
+                        !binding.marketingTeamRv.canScrollVertically(-1)
                     val visibleItemCount = linearLayoutManager.childCount
                     val totalItemCount = linearLayoutManager.itemCount
                     val firstVisibleItemPosition =
@@ -104,7 +105,7 @@ class MarketingTeamFragment : Fragment() {
         marketingTeamsAdapter.setupListener(object : OnSingleItemClickListener {
             override fun onCallNowClick(doctorId: String, mobile: String) {
                 this@MarketingTeamFragment.mobileNumber = mobile
-                if (mobileNumber.isNotEmpty()){
+                if (mobileNumber.isNotEmpty()) {
                     makePhoneCall(this@MarketingTeamFragment.mobileNumber)
                 }
             }
@@ -130,7 +131,11 @@ class MarketingTeamFragment : Fragment() {
                         intent.setPackage("com.whatsapp.w4b")
                         startActivity(intent)
                     } catch (e2: Exception) {
-                        Toast.makeText(requireContext(), "WhatsApp not installed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            requireContext(),
+                            "WhatsApp not installed",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
@@ -231,7 +236,11 @@ class MarketingTeamFragment : Fragment() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), Manifest.permission.CALL_PHONE)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    requireActivity(),
+                    Manifest.permission.CALL_PHONE
+                )
+            ) {
 
                 ActivityCompat.requestPermissions(
                     requireActivity(),

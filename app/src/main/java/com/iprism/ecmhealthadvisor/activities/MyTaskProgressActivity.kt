@@ -111,7 +111,15 @@ class MyTaskProgressActivity : AppCompatActivity() {
         binding.rightArrowIv.visibility = if (isCurrentMonth) View.GONE else View.VISIBLE
         selectedMonth = selectedCalendar.get(Calendar.MONTH) + 1
         selectedYear = selectedCalendar.get(Calendar.YEAR)
-        var taskAndPerformanceApiRequest = TaskAndPerformanceApiRequest(userDetails[User.AUTH_TOKEN].toString(), userDetails[User.MAIN_DATA_ID].toString(), selectedMonth.toString(), type, userDetails[User.ID].toString(), "view", selectedYear.toString())
+        var taskAndPerformanceApiRequest = TaskAndPerformanceApiRequest(
+            userDetails[User.AUTH_TOKEN].toString(),
+            userDetails[User.MAIN_DATA_ID].toString(),
+            selectedMonth.toString(),
+            type,
+            userDetails[User.ID].toString(),
+            "view",
+            selectedYear.toString()
+        )
         hospitalViewModel.fetchTaskPerformanceDetails(taskAndPerformanceApiRequest)
         Log.d("taskRequest", taskAndPerformanceApiRequest.toString())
     }

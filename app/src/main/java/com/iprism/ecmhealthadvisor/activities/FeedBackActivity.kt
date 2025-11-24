@@ -51,15 +51,15 @@ class FeedBackActivity : AppCompatActivity() {
 
     private fun handleSubmitBtn() {
         binding.submitBtn.setOnClickListener(View.OnClickListener {
-            if (getName().isEmpty()){
+            if (getName().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Name..!")
-            } else if (getRoomNumber().isEmpty()){
+            } else if (getRoomNumber().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Room Number..!")
-            } else if (getRoomNumber().matches(Regex("0+"))){
+            } else if (getRoomNumber().matches(Regex("0+"))) {
                 ToastUtils.showErrorCustomToast(this, "Room NumberShould not be Zero..!")
-            } else if (getFeedBack().isEmpty()){
+            } else if (getFeedBack().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Feedback..!")
-            } else{
+            } else {
                 var whiteBoardFeedbackApiRequest = WhiteBoardFeedbackApiRequest(
                     userDetails[User.AUTH_TOKEN].toString(),
                     catId,
@@ -75,15 +75,15 @@ class FeedBackActivity : AppCompatActivity() {
         })
     }
 
-    private fun getName() : String{
+    private fun getName(): String {
         return binding.nameTxt.text.toString().trim()
     }
 
-    private fun getRoomNumber() : String{
+    private fun getRoomNumber(): String {
         return binding.roomNumberTxt.text.toString().trim()
     }
 
-    private fun getFeedBack() : String{
+    private fun getFeedBack(): String {
         return binding.feedbackTxt.text.toString().trim()
     }
 

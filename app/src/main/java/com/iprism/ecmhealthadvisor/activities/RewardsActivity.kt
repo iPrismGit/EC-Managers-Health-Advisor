@@ -27,7 +27,7 @@ class RewardsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRewardsBinding
     private lateinit var rewardsViewModel: RewardsViewModel
     private lateinit var user: User
-    private lateinit var userDetails : HashMap<String, String?>
+    private lateinit var userDetails: HashMap<String, String?>
     private lateinit var withdrawBinding: WithdrawalRequestBottomSheetBinding
     private var redeemableAmount = 0
 
@@ -137,14 +137,18 @@ class RewardsActivity : AppCompatActivity() {
                     binding.totalAmountTxt.text = "₹" + result.data.total_commission
                     binding.withdrawalAmountTxt.text = "₹" + result.data.total_credited
                     binding.redemableAmountTxt.text = "₹" + result.data.wallet_balance
-                    binding.todayCountTxt.text = "No.of Persons Added : " + result.data.today.toString()
-                    binding.yesterdayCountTxt.text =  "No.of Persons Added : " + result.data.yesterday.toString()
-                    binding.thisWeekCountTxt.text =  "No.of Persons Added : " + result.data.this_week.toString()
-                    binding.requestedAmountTxt.text =  "Your Withdrawal Request amount ₹" + result.data.total_requested.toString() + " is in Progress.."
+                    binding.todayCountTxt.text =
+                        "No.of Persons Added : " + result.data.today.toString()
+                    binding.yesterdayCountTxt.text =
+                        "No.of Persons Added : " + result.data.yesterday.toString()
+                    binding.thisWeekCountTxt.text =
+                        "No.of Persons Added : " + result.data.this_week.toString()
+                    binding.requestedAmountTxt.text =
+                        "Your Withdrawal Request amount ₹" + result.data.total_requested.toString() + " is in Progress.."
                     redeemableAmount = result.data.wallet_balance
-                    if (result.data.total_requested == 0){
+                    if (result.data.total_requested == 0) {
                         binding.requestedAmountTxt.visibility = View.GONE
-                    }else{
+                    } else {
                         binding.requestedAmountTxt.visibility = View.VISIBLE
                     }
                 }

@@ -111,7 +111,7 @@ class TestimonialVideosActivity : AppCompatActivity() {
                     }
                 }
             })
-            testimonialsAdapter.setupListener(object : TestimonialClickListener{
+            testimonialsAdapter.setupListener(object : TestimonialClickListener {
                 override fun onVideoClick(url: String) {
                     openYouTubeLink(url)
                 }

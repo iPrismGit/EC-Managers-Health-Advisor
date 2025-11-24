@@ -18,8 +18,8 @@ import com.iprism.ecmhealthadvisor.viewmodels.ViewModelFactory
 class ContentPagesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContentPagesBinding
-    private var tag : String = ""
-    private var name : String = ""
+    private var tag: String = ""
+    private var name: String = ""
     private lateinit var hospitalViewModel: HospitalViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

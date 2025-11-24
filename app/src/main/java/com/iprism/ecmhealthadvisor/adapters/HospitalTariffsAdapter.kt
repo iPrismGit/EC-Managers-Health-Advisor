@@ -14,7 +14,7 @@ import com.iprism.ecmhealthadvisor.interfaces.OnWhiteBoardClickListener
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TariffCategory
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class HospitalTariffsAdapter(var context: Context,  var tariffCategories: List<TariffCategory>) :
+class HospitalTariffsAdapter(var context: Context, var tariffCategories: List<TariffCategory>) :
     Adapter<HospitalTariffsAdapter.HospitalTariffViewHolder>() {
 
     private lateinit var listener: OnWhiteBoardClickListener

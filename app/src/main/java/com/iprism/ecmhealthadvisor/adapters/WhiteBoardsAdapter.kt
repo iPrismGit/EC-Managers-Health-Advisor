@@ -14,11 +14,12 @@ import com.iprism.ecmhealthadvisor.interfaces.OnWhiteBoardClickListener
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardCategory
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class WhiteBoardsAdapter(var context: Context, var whiteBoardCategories: List<WhiteBoardCategory>) : Adapter<WhiteBoardsAdapter.WhiteBoardViewHolder>() {
+class WhiteBoardsAdapter(var context: Context, var whiteBoardCategories: List<WhiteBoardCategory>) :
+    Adapter<WhiteBoardsAdapter.WhiteBoardViewHolder>() {
 
     private lateinit var listener: OnWhiteBoardClickListener
 
-    fun setupListener(listener: OnWhiteBoardClickListener){
+    fun setupListener(listener: OnWhiteBoardClickListener) {
         this.listener = listener
     }
 
@@ -26,7 +27,11 @@ class WhiteBoardsAdapter(var context: Context, var whiteBoardCategories: List<Wh
         parent: ViewGroup,
         viewType: Int
     ): WhiteBoardsAdapter.WhiteBoardViewHolder {
-        var binding = WhiteBoardFeedBackItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding = WhiteBoardFeedBackItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return WhiteBoardViewHolder(binding)
     }
 
@@ -54,6 +59,7 @@ class WhiteBoardsAdapter(var context: Context, var whiteBoardCategories: List<Wh
         return whiteBoardCategories.size
     }
 
-    class WhiteBoardViewHolder(var binding: WhiteBoardFeedBackItemBinding) : ViewHolder(binding.root)
+    class WhiteBoardViewHolder(var binding: WhiteBoardFeedBackItemBinding) :
+        ViewHolder(binding.root)
 
 }

@@ -48,7 +48,14 @@ class HospitalTariffsListActivity : AppCompatActivity() {
         initViewModel()
         observeHospitalTariffCategoriesResponse()
         handleRefreshLo()
-        var hospitalTariffsApiRequest = HospitalTariffsApiRequest(userDetails[User.AUTH_TOKEN].toString(), "", userDetails[User.MAIN_DATA_ID].toString(), 1, userDetails[User.ID].toString(), "categories")
+        var hospitalTariffsApiRequest = HospitalTariffsApiRequest(
+            userDetails[User.AUTH_TOKEN].toString(),
+            "",
+            userDetails[User.MAIN_DATA_ID].toString(),
+            1,
+            userDetails[User.ID].toString(),
+            "categories"
+        )
         hospitalViewModel.fetchHospitalTariffs(hospitalTariffsApiRequest)
     }
 
@@ -79,11 +86,11 @@ class HospitalTariffsListActivity : AppCompatActivity() {
 
                 is UiState.Success -> {
                     binding.progress.hideProgress()
-                    if (result.data.categories.isNotEmpty()){
+                    if (result.data.categories.isNotEmpty()) {
                         setupHospitalTariffsAdapter(result.data.categories)
                         binding.tariffCategoriesRv.visibility = View.VISIBLE
                         binding.noDataTxt.visibility = View.GONE
-                    }else{
+                    } else {
                         binding.tariffCategoriesRv.visibility = View.GONE
                         binding.noDataTxt.visibility = View.VISIBLE
                     }
@@ -111,7 +118,7 @@ class HospitalTariffsListActivity : AppCompatActivity() {
         binding.tariffCategoriesRv.adapter = hospitalTariffsAdapter
         binding.tariffCategoriesRv.layoutManager = linearLayoutManager
         hospitalTariffsAdapter.setupListener(object : OnWhiteBoardClickListener {
-            override fun onItemClick(boardId: String, name : String) {
+            override fun onItemClick(boardId: String, name: String) {
                 var intent = Intent(
                     this@HospitalTariffsListActivity,
                     HospitalTariffSingleListActivity::class.java

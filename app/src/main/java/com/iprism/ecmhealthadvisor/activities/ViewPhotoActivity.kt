@@ -27,9 +27,10 @@ class ViewPhotoActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        if (imageUrl.isNotEmpty()){
-            Glide.with(this).load(Constants.IMAGES_URL + imageUrl).error(ContextCompat.getDrawable(this,R.drawable.img)).into(binding.facilityIv)
-        }else{
+        if (imageUrl.isNotEmpty()) {
+            Glide.with(this).load(Constants.IMAGES_URL + imageUrl)
+                .error(ContextCompat.getDrawable(this, R.drawable.img)).into(binding.facilityIv)
+        } else {
             binding.facilityIv.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.logo))
         }
         handleBack()

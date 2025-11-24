@@ -15,12 +15,13 @@ import com.iprism.ecmhealthadvisor.interfaces.OnSingleItemClickListener
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Doctor
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class CategoryDoctorsAdapter(var context: Context, var doctors: List<Doctor>): Adapter<CategoryDoctorsAdapter.CategoryDoctorViewHolder> () {
+class CategoryDoctorsAdapter(var context: Context, var doctors: List<Doctor>) :
+    Adapter<CategoryDoctorsAdapter.CategoryDoctorViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
     val bounce = AnimationUtils.loadAnimation(context, R.anim.bounce)
 
-    fun setupListener(listener: OnSingleItemClickListener){
+    fun setupListener(listener: OnSingleItemClickListener) {
         this.listener = listener
     }
 
@@ -32,7 +33,10 @@ class CategoryDoctorsAdapter(var context: Context, var doctors: List<Doctor>): A
         return CategoryDoctorViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoryDoctorsAdapter.CategoryDoctorViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: CategoryDoctorsAdapter.CategoryDoctorViewHolder,
+        position: Int
+    ) {
         var doctor = doctors[position]
         holder.binding.clinicNameTxt.visibility = View.VISIBLE
         holder.binding.profileIv.borderColor = ContextCompat.getColor(context, R.color.green)
@@ -40,11 +44,17 @@ class CategoryDoctorsAdapter(var context: Context, var doctors: List<Doctor>): A
         holder.binding.nameTxt.text = doctor.name
         holder.binding.qualificationTxt.text = doctor.qualification
         holder.binding.clinicNameTxt.text = doctor.specialization
-        if (doctor.image.isNotEmpty()){
+        if (doctor.image.isNotEmpty()) {
             Glide.with(context).load(Constants.IMAGES_URL + doctor.image).error(
-                ContextCompat.getDrawable(context, R.drawable.customer_image)).into(holder.binding.profileIv)
-        } else{
-            holder.binding.profileIv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.customer_image))
+                ContextCompat.getDrawable(context, R.drawable.customer_image)
+            ).into(holder.binding.profileIv)
+        } else {
+            holder.binding.profileIv.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.customer_image
+                )
+            )
         }
         holder.binding.callNowLo.setOnClickListener(View.OnClickListener {
             it.startAnimation(bounce)

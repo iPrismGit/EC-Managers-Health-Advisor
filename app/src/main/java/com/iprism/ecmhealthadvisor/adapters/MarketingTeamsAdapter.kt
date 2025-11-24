@@ -18,7 +18,7 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.PanelAdvisor
 import com.iprism.ecmhealthadvisor.utils.Constants
 
 
-class MarketingTeamsAdapter(var context: Context, var employees : List<PanelAdvisor> ) :
+class MarketingTeamsAdapter(var context: Context, var employees: List<PanelAdvisor>) :
     Adapter<MarketingTeamsAdapter.MarketingTeamViewHolder>() {
 
     private lateinit var listener: OnSingleItemClickListener
@@ -47,11 +47,17 @@ class MarketingTeamsAdapter(var context: Context, var employees : List<PanelAdvi
         holder.binding.qualificationTxt.text = employee.designation
         holder.binding.clinicNameTxt.visibility = View.VISIBLE
         holder.binding.clinicNameTxt.text = "Marketing Team"
-        if (employee.image.isNotEmpty()){
+        if (employee.image.isNotEmpty()) {
             Glide.with(context).load(Constants.IMAGES_URL + employee.image).error(
-                ContextCompat.getDrawable(context, R.drawable.customer_image)).into(holder.binding.profileIv)
-        } else{
-            holder.binding.profileIv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.customer_image))
+                ContextCompat.getDrawable(context, R.drawable.customer_image)
+            ).into(holder.binding.profileIv)
+        } else {
+            holder.binding.profileIv.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.customer_image
+                )
+            )
         }
         holder.binding.callNowLo.setOnClickListener(View.OnClickListener {
             listener.onCallNowClick(employee.id, employee.mobile)

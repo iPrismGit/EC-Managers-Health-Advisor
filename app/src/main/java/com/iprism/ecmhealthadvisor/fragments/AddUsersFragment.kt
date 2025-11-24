@@ -32,6 +32,7 @@ class AddUsersFragment : Fragment() {
             var intent = Intent(requireContext(), AddMemberActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("type", "social_group")
+            intent.putExtra("tag", "Social Group Member ")
             startActivity(intent)
         }
     }
@@ -42,6 +43,7 @@ class AddUsersFragment : Fragment() {
             var intent = Intent(requireContext(), AddMemberActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("type", "whatsapp_group")
+            intent.putExtra("tag", "Whatsapp Group Member ")
             startActivity(intent)
         }
     }
@@ -52,6 +54,7 @@ class AddUsersFragment : Fragment() {
             var intent = Intent(requireContext(), AddMemberActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("type", "my_group")
+            intent.putExtra("tag", "My Group Member ")
             startActivity(intent)
         }
     }
@@ -62,6 +65,7 @@ class AddUsersFragment : Fragment() {
             var intent = Intent(requireContext(), AddMemberActivity::class.java)
             intent.putExtra("name", name)
             intent.putExtra("type", "mobile_contact")
+            intent.putExtra("tag", "Mobile Contact Member ")
             startActivity(intent)
         }
     }

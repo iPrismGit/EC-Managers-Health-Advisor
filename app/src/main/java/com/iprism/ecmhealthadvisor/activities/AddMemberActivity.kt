@@ -125,11 +125,17 @@ class AddMemberActivity : AppCompatActivity() {
         binding.titleTxt.text = name
         binding.advisorNameTxt.text = userDetails[User.NAME]
         binding.hospitalNameTxt.text = userDetails[User.HOSPITAL_NAME]
-        if (userDetails[User.IMAGE].toString().isNotEmpty()){
+        if (userDetails[User.IMAGE].toString().isNotEmpty()) {
             Glide.with(this).load(Constants.IMAGES_URL + userDetails[User.IMAGE]).error(
-                ContextCompat.getDrawable(this, R.drawable.customer_image)).into(binding.advisorImg)
-        } else{
-            binding.advisorImg.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.customer_image))
+                ContextCompat.getDrawable(this, R.drawable.customer_image)
+            ).into(binding.advisorImg)
+        } else {
+            binding.advisorImg.setImageDrawable(
+                ContextCompat.getDrawable(
+                    this,
+                    R.drawable.customer_image
+                )
+            )
         }
 
         binding.profileIv.borderColor = ContextCompat.getColor(this, R.color.green)
@@ -357,24 +363,24 @@ class AddMemberActivity : AppCompatActivity() {
     private fun handleSubmitBtn() {
         binding.downloadAppBtn.setOnClickListener {
             if (profileUri == null) {
-                ToastUtils.showErrorCustomToast(this, "Please Add " + tag +"Profile..!")
+                ToastUtils.showErrorCustomToast(this, "Please Add " + tag + "Profile..!")
             } else if (getName().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag +  "Name..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag + "Name..!")
             } else if (getMobile().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag +  "Mobile Number..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag + "Mobile Number..!")
             } else if (getMobile().length != 10) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (Pattern.matches("[0-5].*", getMobile())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (getEmail().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter "+ tag +  "Email ID..!")
+                ToastUtils.showErrorCustomToast(this, "Please Enter " + tag + "Email ID..!")
             } else if (!isValidEmailAddress(getEmail())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Email ID..!")
             } else if (genderId.equals("-1", true)) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Gender..!")
-            }  else if (bloodgroupId.equals("-1", true)) {
+            } else if (bloodgroupId.equals("-1", true)) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Blood Group..!")
-            }else if (getDob().isEmpty()) {
+            } else if (getDob().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Date of Birth..!")
             } else if (profession.isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Profession Type..!")
@@ -396,8 +402,15 @@ class AddMemberActivity : AppCompatActivity() {
                 ToastUtils.showErrorCustomToast(this, "Please Enter TPA Name..!")
             } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter No. of Persons Covered..!")
-            } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().matches(Regex("0+"))) {
-                ToastUtils.showErrorCustomToast(this, "No. of Persons Covered Should not be Zero..!")
+            } else if (paymentTypeId.equals(
+                    "2",
+                    true
+                ) && getNoOfPersonsCovered().matches(Regex("0+"))
+            ) {
+                ToastUtils.showErrorCustomToast(
+                    this,
+                    "No. of Persons Covered Should not be Zero..!"
+                )
             } else if (paymentTypeId.equals("3", true) && insuranceType.isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select  Others Type!")
             } else {
@@ -692,7 +705,7 @@ class AddMemberActivity : AppCompatActivity() {
                 is UiState.Success -> {
                     binding.progress.hideProgress()
                     var intent = Intent(this, SuccessActivity::class.java)
-                    intent.putExtra("tag",  tag +  "Added ")
+                    intent.putExtra("tag", tag + "Added ")
                     startActivity(intent)
                 }
 

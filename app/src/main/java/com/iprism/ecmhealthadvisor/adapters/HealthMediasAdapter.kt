@@ -11,13 +11,15 @@ import com.iprism.ecmhealthadvisor.databinding.HealthMediaItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.MainData
 import com.iprism.ecmhealthadvisor.utils.Constants
 
-class HealthMediasAdapter(var context: Context, var images: List<MainData>) : RecyclerView.Adapter<HealthMediasAdapter.HealthMediaViewHolder>() {
+class HealthMediasAdapter(var context: Context, var images: List<MainData>) :
+    RecyclerView.Adapter<HealthMediasAdapter.HealthMediaViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): HealthMediasAdapter.HealthMediaViewHolder {
-        var binding = HealthMediaItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding =
+            HealthMediaItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return HealthMediaViewHolder(binding)
     }
 
@@ -27,10 +29,17 @@ class HealthMediasAdapter(var context: Context, var images: List<MainData>) : Re
     ) {
         var media = images[position]
         holder.binding.dateTxt.text = media.created_on
-        if (media.image.isNotEmpty()){
-            Glide.with(context).load(Constants.IMAGES_URL + media.image).error(ContextCompat.getDrawable(context, R.drawable.logo)).into(holder.binding.mediaIv)
-        } else{
-            holder.binding.mediaIv.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.logo))
+        if (media.image.isNotEmpty()) {
+            Glide.with(context).load(Constants.IMAGES_URL + media.image)
+                .error(ContextCompat.getDrawable(context, R.drawable.logo))
+                .into(holder.binding.mediaIv)
+        } else {
+            holder.binding.mediaIv.setImageDrawable(
+                ContextCompat.getDrawable(
+                    context,
+                    R.drawable.logo
+                )
+            )
         }
     }
 
@@ -38,6 +47,7 @@ class HealthMediasAdapter(var context: Context, var images: List<MainData>) : Re
         return images.size
     }
 
-    class HealthMediaViewHolder(var binding: HealthMediaItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class HealthMediaViewHolder(var binding: HealthMediaItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 }

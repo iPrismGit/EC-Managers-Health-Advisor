@@ -16,11 +16,12 @@ import com.iprism.ecmhealthadvisor.interfaces.TestimonialClickListener
 import com.iprism.ecmhealthadvisor.utils.Constants
 
 
-class TestimonialAdapter(var context: Context, var videos : List<Video>) : RecyclerView.Adapter<TestimonialAdapter.TestimonialViewHolder>() {
+class TestimonialAdapter(var context: Context, var videos: List<Video>) :
+    RecyclerView.Adapter<TestimonialAdapter.TestimonialViewHolder>() {
 
     private lateinit var listener: TestimonialClickListener
 
-    fun setupListener(listener: TestimonialClickListener){
+    fun setupListener(listener: TestimonialClickListener) {
         this.listener = listener
     }
 
@@ -57,9 +58,10 @@ class TestimonialAdapter(var context: Context, var videos : List<Video>) : Recyc
     }
 
     override fun getItemCount(): Int {
-      return videos.size
+        return videos.size
     }
 
-    class TestimonialViewHolder(var binding: VideoItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class TestimonialViewHolder(var binding: VideoItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 }

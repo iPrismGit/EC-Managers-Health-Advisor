@@ -15,10 +15,11 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Media
 import com.iprism.ecmhealthadvisor.utils.Constants
 
 
-class DigitalPromosInnerAdapter(var context: Context, var imagesList : List<Media>) : RecyclerView.Adapter<DigitalPromosInnerAdapter.DigitalPromoInnerViewHodler>() {
-      private lateinit var listener : OnFacilityInnerClickListener
+class DigitalPromosInnerAdapter(var context: Context, var imagesList: List<Media>) :
+    RecyclerView.Adapter<DigitalPromosInnerAdapter.DigitalPromoInnerViewHodler>() {
+    private lateinit var listener: OnFacilityInnerClickListener
 
-    fun setupListener(listener: OnFacilityInnerClickListener){
+    fun setupListener(listener: OnFacilityInnerClickListener) {
         this.listener = listener
     }
 
@@ -26,7 +27,8 @@ class DigitalPromosInnerAdapter(var context: Context, var imagesList : List<Medi
         parent: ViewGroup,
         viewType: Int
     ): DigitalPromoInnerViewHodler {
-        var binding = InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding =
+            InsuranceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DigitalPromoInnerViewHodler(binding)
     }
 
@@ -50,7 +52,8 @@ class DigitalPromosInnerAdapter(var context: Context, var imagesList : List<Medi
             val retriever = MediaMetadataRetriever()
             try {
                 retriever.setDataSource(Constants.IMAGES_URL + media.url, HashMap())
-                val bitmap: Bitmap? = retriever.getFrameAtTime(1, MediaMetadataRetriever.OPTION_CLOSEST)
+                val bitmap: Bitmap? =
+                    retriever.getFrameAtTime(1, MediaMetadataRetriever.OPTION_CLOSEST)
                 if (bitmap != null) {
                     holder.binding.facilityImg.setImageBitmap(bitmap)
                 } else {
@@ -73,12 +76,13 @@ class DigitalPromosInnerAdapter(var context: Context, var imagesList : List<Medi
         return imagesList.size
     }
 
-    interface OnFacilityInnerClickListener{
+    interface OnFacilityInnerClickListener {
 
-        fun onItemClick(url : String, type : String)
+        fun onItemClick(url: String, type: String)
 
     }
 
-    class DigitalPromoInnerViewHodler(var binding: InsuranceItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class DigitalPromoInnerViewHodler(var binding: InsuranceItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
 }

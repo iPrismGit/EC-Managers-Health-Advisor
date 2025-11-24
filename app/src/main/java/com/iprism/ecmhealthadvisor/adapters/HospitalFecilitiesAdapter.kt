@@ -11,14 +11,16 @@ import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Facility
 
 class HospitalFecilitiesAdapter(var context: Context, var facilities: List<Facility>) :
-    Adapter<HospitalFecilitiesAdapter.HospitalFecilityViewHolder>(), FacilitiesInnerAdapter.OnFacilityInnerClickListener {
+    Adapter<HospitalFecilitiesAdapter.HospitalFecilityViewHolder>(),
+    FacilitiesInnerAdapter.OnFacilityInnerClickListener {
 
-    private lateinit var  listener: OnFacilityOuterClickListener
+    private lateinit var listener: OnFacilityOuterClickListener
 
 
-    fun setupListener(listener: OnFacilityOuterClickListener){
+    fun setupListener(listener: OnFacilityOuterClickListener) {
         this.listener = listener
     }
+
     interface OnFacilityOuterClickListener {
         fun onItemClick(url: String, type: String)
     }
@@ -39,7 +41,8 @@ class HospitalFecilitiesAdapter(var context: Context, var facilities: List<Facil
         var facility = facilities[position]
         holder.binding.nameTxt.text = facility.name
         var adapter = FacilitiesInnerAdapter(context, facility.media)
-        var linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        var linearLayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         holder.binding.facilitiesInnerRv.adapter = adapter
         holder.binding.facilitiesInnerRv.layoutManager = linearLayoutManager
         adapter.setupListener(this)

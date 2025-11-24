@@ -28,7 +28,7 @@ class AdvisorBenefitsActivity : AppCompatActivity() {
             insets
         }
         handleBack()
-       // setupAdvisorBenefitsAdapter()
+        // setupAdvisorBenefitsAdapter()
     }
 
     private fun handleBack() {

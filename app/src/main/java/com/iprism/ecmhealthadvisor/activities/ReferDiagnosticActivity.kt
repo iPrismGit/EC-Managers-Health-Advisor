@@ -40,7 +40,7 @@ class ReferDiagnosticActivity : AppCompatActivity() {
     private lateinit var leadsViewModel: LeadsViewModel
     private lateinit var referViewModel: ReferViewModel
     private lateinit var user: User
-    private lateinit var userDetails : HashMap<String, String?>
+    private lateinit var userDetails: HashMap<String, String?>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,35 +76,43 @@ class ReferDiagnosticActivity : AppCompatActivity() {
         referViewModel = ViewModelProvider(this, referFactory)[ReferViewModel::class.java]
     }
 
-    private fun getMobile() : String {
+    private fun getMobile(): String {
         return binding.mobileTxt.text.toString().trim()
     }
 
-    private fun getName() : String {
+    private fun getName(): String {
         return binding.nameTxt.text.toString().trim()
     }
 
-    private fun getDob() : String {
+    private fun getDob(): String {
         return binding.dateOfBirthTxt.text.toString().trim()
     }
 
     private fun handleContinueBtn() {
         binding.continueBtn.setOnClickListener { view ->
-            if (getName().isEmpty()){
+            if (getName().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Name..!")
-            } else if (getMobile().isEmpty()){
+            } else if (getMobile().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter  Patient Mobile Number..!")
-            } else if (getMobile().length != 10){
+            } else if (getMobile().length != 10) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
             } else if (Pattern.matches("[0-5].*", getMobile())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number..!")
-            } else if (genderId.equals("-1", true)){
+            } else if (genderId.equals("-1", true)) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Patient Gender..!")
-            } else if (getDob().isEmpty()){
+            } else if (getDob().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select Patient Date of Birth..!")
             } else {
-                var request = ReferApiRequest(userDetails[User.AUTH_TOKEN].toString(), getDob(), genderId, userDetails[User.MAIN_DATA_ID].toString(),
-                    getMobile(), getName(), type, userDetails[User.ID].toString())
+                var request = ReferApiRequest(
+                    userDetails[User.AUTH_TOKEN].toString(),
+                    getDob(),
+                    genderId,
+                    userDetails[User.MAIN_DATA_ID].toString(),
+                    getMobile(),
+                    getName(),
+                    type,
+                    userDetails[User.ID].toString()
+                )
                 referViewModel.referAdmissionOrDiagnostic(request)
                 Log.d("ReferRequest", request.toString())
             }

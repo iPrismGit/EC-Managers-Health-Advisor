@@ -30,8 +30,8 @@ class ContactUsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityContactUsBinding
     private lateinit var hospitalViewModel: HospitalViewModel
-    private lateinit var user : User
-    private lateinit var  userDetails : HashMap<String, String?>
+    private lateinit var user: User
+    private lateinit var userDetails: HashMap<String, String?>
     private var mobileNumber: String = ""
     private val CALL_PHONE_PERMISSION_CODE = 1
 
@@ -83,7 +83,7 @@ class ContactUsActivity : AppCompatActivity() {
         binding.continueBtn.setOnClickListener(View.OnClickListener {
             if (getName().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Name")
-            } else if (!isValidPersonName(getName())){
+            } else if (!isValidPersonName(getName())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Name!")
             } else if (getEmailId().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Email ID")
@@ -194,7 +194,11 @@ class ContactUsActivity : AppCompatActivity() {
             ) != PackageManager.PERMISSION_GRANTED
         ) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.CALL_PHONE
+                )
+            ) {
 
                 ActivityCompat.requestPermissions(
                     this,

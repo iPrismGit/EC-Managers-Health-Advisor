@@ -98,7 +98,8 @@ class SplashActivity : AppCompatActivity() {
             if (location != null) {
                 try {
                     val geocoder = Geocoder(this, Locale.getDefault())
-                    val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                    val addresses =
+                        geocoder.getFromLocation(location.latitude, location.longitude, 1)
 
                     if (!addresses.isNullOrEmpty()) {
                         val address = addresses[0]
@@ -152,7 +153,11 @@ class SplashActivity : AppCompatActivity() {
         }, 1000)
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_PERMISSION_CODE) {
             if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {

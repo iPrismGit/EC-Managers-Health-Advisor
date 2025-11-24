@@ -66,6 +66,7 @@ class DigitalBrandingsActivity : AppCompatActivity() {
     private lateinit var userDetails: HashMap<String, String?>
     private var selectedUrl: String? = null
     private var selectedType: String? = null
+
     @RequiresApi(Build.VERSION_CODES.P)
     private val pickImageLauncher = registerForActivityResult(
         ActivityResultContracts.GetContent()

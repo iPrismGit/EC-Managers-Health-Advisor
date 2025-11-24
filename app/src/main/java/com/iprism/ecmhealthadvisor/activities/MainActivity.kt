@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var backPressedOnce = false
-    private lateinit var user : User
-    private lateinit var userDetails : HashMap<String, String?>
+    private lateinit var user: User
+    private lateinit var userDetails: HashMap<String, String?>
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleAddressTxt() {
         binding.addressTxt.setOnClickListener { view ->
-            if (binding.addressTxt.text.equals("Location Not Given!")){
+            if (binding.addressTxt.text.equals("Location Not Given!")) {
                 checkLocationPermissionAndFetch()
             }
         }
@@ -159,12 +159,20 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkLocationPermissionAndFetch() {
         when {
-            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED -> {
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED -> {
                 fetchLocation()
             }
-            ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION) -> {
+
+            ActivityCompat.shouldShowRequestPermissionRationale(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) -> {
                 requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }
+
             else -> {
                 requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
             }
@@ -236,7 +244,8 @@ class MainActivity : AppCompatActivity() {
             bottomSheetDialog.dismiss()
         }
         bottomSheetBinding.hospitalNameTxt.text = userDetails[User.HOSPITAL_NAME].toString()
-        val bottomSheet = bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
+        val bottomSheet =
+            bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
         bottomSheet?.setBackgroundColor(Color.TRANSPARENT)
 
         bottomSheet?.let {

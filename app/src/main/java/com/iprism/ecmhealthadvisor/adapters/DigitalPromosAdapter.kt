@@ -9,14 +9,17 @@ import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
 
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.DigitalPromo
 
-class DigitalPromosAdapter(var context: Context, var digitalPromos: List<DigitalPromo>) : RecyclerView.Adapter<DigitalPromosAdapter.DigitalPromoViewHolder> (),  DigitalPromosInnerAdapter.OnFacilityInnerClickListener  {
+class DigitalPromosAdapter(var context: Context, var digitalPromos: List<DigitalPromo>) :
+    RecyclerView.Adapter<DigitalPromosAdapter.DigitalPromoViewHolder>(),
+    DigitalPromosInnerAdapter.OnFacilityInnerClickListener {
 
-    private lateinit var  listener: OnFacilityOuterClickListener
+    private lateinit var listener: OnFacilityOuterClickListener
 
 
-    fun setupListener(listener: OnFacilityOuterClickListener){
+    fun setupListener(listener: OnFacilityOuterClickListener) {
         this.listener = listener
     }
+
     interface OnFacilityOuterClickListener {
         fun onItemClick(url: String, type: String)
     }
@@ -25,7 +28,8 @@ class DigitalPromosAdapter(var context: Context, var digitalPromos: List<Digital
         parent: ViewGroup,
         viewType: Int
     ): DigitalPromoViewHolder {
-        var binding = FacilityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        var binding =
+            FacilityItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return DigitalPromoViewHolder(binding)
     }
 
@@ -36,7 +40,8 @@ class DigitalPromosAdapter(var context: Context, var digitalPromos: List<Digital
         var promo = digitalPromos[position]
         holder.binding.nameTxt.text = promo.name
         var adapter = DigitalPromosInnerAdapter(context, promo.media)
-        var linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        var linearLayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         holder.binding.facilitiesInnerRv.adapter = adapter
         holder.binding.facilitiesInnerRv.layoutManager = linearLayoutManager
         adapter.setupListener(this)
@@ -50,5 +55,6 @@ class DigitalPromosAdapter(var context: Context, var digitalPromos: List<Digital
         listener.onItemClick(url, type)
     }
 
-    class DigitalPromoViewHolder(var binding: FacilityItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class DigitalPromoViewHolder(var binding: FacilityItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

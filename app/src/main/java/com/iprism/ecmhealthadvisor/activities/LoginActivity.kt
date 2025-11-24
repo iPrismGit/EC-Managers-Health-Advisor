@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)[AuthenticationViewModel::class.java]
     }
 
-    private fun getMobile() : String {
+    private fun getMobile(): String {
         return binding.mobileTxt.text.toString().trim()
     }
 
@@ -60,10 +60,10 @@ class LoginActivity : AppCompatActivity() {
                 is UiState.Success -> {
                     binding.progress.hideProgress()
                     var otp = ""
-                    if (getMobile().equals("8585858585", true)){
+                    if (getMobile().equals("8585858585", true)) {
                         otp = "5555"
                         ToastUtils.showSuccessCustomToast(this, otp)
-                    } else{
+                    } else {
                         otp = result.data.otp.toString()
                     }
                     ToastUtils.showSuccessCustomToast(this, otp)
@@ -96,13 +96,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun handleContinueBtn() {
         binding.continueBtn.setOnClickListener(View.OnClickListener {
-            if (getMobile().isEmpty()){
+            if (getMobile().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Mobile Number!")
-            } else if (getMobile().length != 10){
+            } else if (getMobile().length != 10) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number!")
-            }  else if (Pattern.matches("[0-5].*", getMobile())) {
+            } else if (Pattern.matches("[0-5].*", getMobile())) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Valid Mobile Number!")
-            }  else{
+            } else {
                 val loginRequest = LoginApiRequest("", "", getMobile(), "not_verified", "")
                 viewModel.login(loginRequest)
             }

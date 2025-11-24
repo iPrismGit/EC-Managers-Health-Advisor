@@ -61,7 +61,7 @@ class WhiteBoardFeedBackActivity : AppCompatActivity() {
         hospitalViewModel.insertWhiteBoardFeedback(whiteBoardsApiRequest)
     }
 
-    private fun setupWhiteBoardsAdapter(categories : List<WhiteBoardCategory>) {
+    private fun setupWhiteBoardsAdapter(categories: List<WhiteBoardCategory>) {
         var whiteBoardsAdapter = WhiteBoardsAdapter(this, categories)
         var linearLayoutManager = LinearLayoutManager(this)
         binding.whiteboardsRv.adapter = whiteBoardsAdapter
@@ -117,11 +117,11 @@ class WhiteBoardFeedBackActivity : AppCompatActivity() {
 
                 is UiState.Success -> {
                     binding.progress.hideProgress()
-                    if (result.data.categories.isNotEmpty()){
+                    if (result.data.categories.isNotEmpty()) {
                         setupWhiteBoardsAdapter(result.data.categories)
                         binding.whiteboardsRv.visibility = View.VISIBLE
                         binding.noDataTxt.visibility = View.GONE
-                    }else{
+                    } else {
                         binding.whiteboardsRv.visibility = View.GONE
                         binding.noDataTxt.visibility = View.VISIBLE
                     }

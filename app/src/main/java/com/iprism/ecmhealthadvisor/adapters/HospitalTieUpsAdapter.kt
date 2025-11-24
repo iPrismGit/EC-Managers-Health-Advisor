@@ -9,13 +9,14 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.iprism.ecmhealthadvisor.databinding.FacilityItemBinding
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Tieup
 
-class HospitalTieUpsAdapter(var context: Context, var tieups : List<Tieup>) :
-    Adapter<HospitalTieUpsAdapter.HospitalTieUpViewHolder>(),   FacilitiesInnerAdapter.OnFacilityInnerClickListener  {
+class HospitalTieUpsAdapter(var context: Context, var tieups: List<Tieup>) :
+    Adapter<HospitalTieUpsAdapter.HospitalTieUpViewHolder>(),
+    FacilitiesInnerAdapter.OnFacilityInnerClickListener {
 
-    private lateinit var  listener: OnFacilityOuterClickListener
+    private lateinit var listener: OnFacilityOuterClickListener
 
 
-    fun setupListener(listener: OnFacilityOuterClickListener){
+    fun setupListener(listener: OnFacilityOuterClickListener) {
         this.listener = listener
     }
 
@@ -40,7 +41,8 @@ class HospitalTieUpsAdapter(var context: Context, var tieups : List<Tieup>) :
         var tieup = tieups[position]
         holder.binding.nameTxt.text = tieup.name
         var adapter = FacilitiesInnerAdapter(context, tieup.media)
-        var linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        var linearLayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         holder.binding.facilitiesInnerRv.adapter = adapter
         holder.binding.facilitiesInnerRv.layoutManager = linearLayoutManager
         adapter.setupListener(this)

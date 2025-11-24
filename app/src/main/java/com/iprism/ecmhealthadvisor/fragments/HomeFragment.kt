@@ -119,8 +119,10 @@ class HomeFragment : Fragment() {
         binding.topBannersSlider.setIndicatorAnimation(IndicatorAnimationType.WORM)
         binding.topBannersSlider.scrollTimeInSec = 3
         binding.topBannersSlider.isAutoCycle = true
-        binding.topBannersSlider.indicatorSelectedColor = ContextCompat.getColor(requireContext(), R.color.green)
-        binding.topBannersSlider.indicatorUnselectedColor = ContextCompat.getColor(requireContext(), R.color.white)
+        binding.topBannersSlider.indicatorSelectedColor =
+            ContextCompat.getColor(requireContext(), R.color.green)
+        binding.topBannersSlider.indicatorUnselectedColor =
+            ContextCompat.getColor(requireContext(), R.color.white)
         binding.topBannersSlider.setIndicatorRadius(4)
         binding.topBannersSlider.startAutoCycle()
     }
@@ -132,8 +134,10 @@ class HomeFragment : Fragment() {
         binding.middleBannersSlider.setIndicatorAnimation(IndicatorAnimationType.WORM)
         binding.middleBannersSlider.scrollTimeInSec = 3
         binding.middleBannersSlider.isAutoCycle = true
-        binding.middleBannersSlider.indicatorSelectedColor = ContextCompat.getColor(requireContext(), R.color.green)
-        binding.middleBannersSlider.indicatorUnselectedColor = ContextCompat.getColor(requireContext(), R.color.white)
+        binding.middleBannersSlider.indicatorSelectedColor =
+            ContextCompat.getColor(requireContext(), R.color.green)
+        binding.middleBannersSlider.indicatorUnselectedColor =
+            ContextCompat.getColor(requireContext(), R.color.white)
         binding.middleBannersSlider.setIndicatorRadius(4)
         binding.middleBannersSlider.startAutoCycle()
     }
@@ -145,8 +149,10 @@ class HomeFragment : Fragment() {
         binding.bottomBannersSlider.setIndicatorAnimation(IndicatorAnimationType.WORM)
         binding.bottomBannersSlider.scrollTimeInSec = 3
         binding.bottomBannersSlider.isAutoCycle = true
-        binding.bottomBannersSlider.indicatorSelectedColor = ContextCompat.getColor(requireContext(), R.color.green)
-        binding.bottomBannersSlider.indicatorUnselectedColor = ContextCompat.getColor(requireContext(), R.color.white)
+        binding.bottomBannersSlider.indicatorSelectedColor =
+            ContextCompat.getColor(requireContext(), R.color.green)
+        binding.bottomBannersSlider.indicatorUnselectedColor =
+            ContextCompat.getColor(requireContext(), R.color.white)
         binding.bottomBannersSlider.setIndicatorRadius(4)
         binding.bottomBannersSlider.startAutoCycle()
     }
@@ -185,7 +191,7 @@ class HomeFragment : Fragment() {
                     ToastUtils.showErrorCustomToast(requireContext(), result.message)
                     binding.shimmerLo.visibility = View.VISIBLE
                     binding.mainLo.visibility = View.GONE
-                    if (result.message.equals("Token not verified", true)){
+                    if (result.message.equals("Token not verified", true)) {
                         user.logoutUser()
                         startActivity(Intent(requireContext(), LoginActivity::class.java))
                         activity?.finish()

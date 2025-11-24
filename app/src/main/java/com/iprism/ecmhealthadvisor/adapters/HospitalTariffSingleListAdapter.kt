@@ -14,7 +14,7 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.Tariff
 import com.iprism.ecmhealthadvisor.utils.Constants
 import kotlin.toString
 
-class HospitalTariffSingleListAdapter(var context: Context, var tariffs : List<Tariff>) :
+class HospitalTariffSingleListAdapter(var context: Context, var tariffs: List<Tariff>) :
     Adapter<HospitalTariffSingleListAdapter.HospitalTariffSingleItemViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -35,7 +35,8 @@ class HospitalTariffSingleListAdapter(var context: Context, var tariffs : List<T
     ) {
         var tariff = tariffs[position]
         holder.binding.nameTxt.text = tariff.name
-        holder.binding.priceTxt.text = "₹" + tariff.from_price.toString() + " to ₹" + tariff.to_price
+        holder.binding.priceTxt.text =
+            "₹" + tariff.from_price.toString() + " to ₹" + tariff.to_price
         holder.binding.priceTxt.visibility = View.VISIBLE
         if (tariff.image.isNotEmpty()) {
             Glide.with(context).load(Constants.IMAGES_URL + tariff.image)
