@@ -42,7 +42,7 @@ class AddUsersActivity : AppCompatActivity() {
             var name = getString(R.string.social_groups)
             var intent = Intent(this, AddMemberActivity::class.java)
             intent.putExtra("name", name)
-            intent.putExtra("type", "social_group")
+            intent.putExtra("type", "social_groups")
             intent.putExtra("tag", "Social Group Member ")
             startActivity(intent)
         }
@@ -53,7 +53,7 @@ class AddUsersActivity : AppCompatActivity() {
             var name = getString(R.string.whats_app_group_members)
             var intent = Intent(this, AddMemberActivity::class.java)
             intent.putExtra("name", name)
-            intent.putExtra("type", "whatsapp_group")
+            intent.putExtra("type", "whatsapp_groups")
             intent.putExtra("tag", "Whatsapp Group Member ")
             startActivity(intent)
         }
@@ -64,7 +64,7 @@ class AddUsersActivity : AppCompatActivity() {
             var name = getString(R.string.my_group_members)
             var intent = Intent(this, AddMemberActivity::class.java)
             intent.putExtra("name", name)
-            intent.putExtra("type", "my_group")
+            intent.putExtra("type", "group_members")
             intent.putExtra("tag", "My Group Member ")
             startActivity(intent)
         }
@@ -75,7 +75,7 @@ class AddUsersActivity : AppCompatActivity() {
             var name = getString(R.string.mobile_contact_leads)
             var intent = Intent(this, AddMemberActivity::class.java)
             intent.putExtra("name", name)
-            intent.putExtra("type", "mobile_contact")
+            intent.putExtra("type", "leads")
             intent.putExtra("tag", "Mobile Contact Member ")
             startActivity(intent)
         }

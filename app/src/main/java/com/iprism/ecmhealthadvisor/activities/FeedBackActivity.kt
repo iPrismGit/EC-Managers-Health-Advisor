@@ -56,7 +56,7 @@ class FeedBackActivity : AppCompatActivity() {
             } else if (getRoomNumber().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Room Number..!")
             } else if (getRoomNumber().matches(Regex("0+"))) {
-                ToastUtils.showErrorCustomToast(this, "Room NumberShould not be Zero..!")
+                ToastUtils.showErrorCustomToast(this, "Room Number Should not be Zero..!")
             } else if (getFeedBack().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Patient Feedback..!")
             } else {

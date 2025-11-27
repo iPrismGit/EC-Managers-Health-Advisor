@@ -36,7 +36,7 @@ class MyTasksActivity : AppCompatActivity() {
             var name = getString(R.string.social_groups)
             var intent = Intent(this, MyTaskProgressActivity::class.java)
             intent.putExtra("title", name)
-            intent.putExtra("type", "social_group")
+            intent.putExtra("type", "social_groups")
             startActivity(intent)
         }
     }
@@ -46,7 +46,7 @@ class MyTasksActivity : AppCompatActivity() {
             var name = getString(R.string.whats_app_group_members)
             var intent = Intent(this, MyTaskProgressActivity::class.java)
             intent.putExtra("title", name)
-            intent.putExtra("type", "whatsapp_group")
+            intent.putExtra("type", "whatsapp_groups")
             startActivity(intent)
         }
     }
@@ -56,7 +56,7 @@ class MyTasksActivity : AppCompatActivity() {
             var name = getString(R.string.my_group_members)
             var intent = Intent(this, MyTaskProgressActivity::class.java)
             intent.putExtra("title", name)
-            intent.putExtra("type", "my_group")
+            intent.putExtra("type", "group_members")
             startActivity(intent)
         }
     }
@@ -66,7 +66,7 @@ class MyTasksActivity : AppCompatActivity() {
             var name = getString(R.string.mobile_contact_leads)
             var intent = Intent(this, MyTaskProgressActivity::class.java)
             intent.putExtra("title", name)
-            intent.putExtra("type", "mobile_contact")
+            intent.putExtra("type", "leads")
             startActivity(intent)
         }
     }
