@@ -1,8 +1,11 @@
 package com.iprism.ecmhealthadvisor.activities
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.animation.DecelerateInterpolator
+import android.widget.ProgressBar
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +24,9 @@ import com.iprism.ecmhealthadvisor.viewmodels.ViewModelFactory
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
+import kotlin.compareTo
+import kotlin.text.toFloat
+import kotlin.toString
 
 class MyTaskProgressActivity : AppCompatActivity() {
 
@@ -136,10 +142,23 @@ class MyTaskProgressActivity : AppCompatActivity() {
                     binding.progress.hideProgress()
                     binding.mainLo.visibility = View.VISIBLE
                     binding.noDataTxt.visibility = View.GONE
+
                     binding.leadCountTxt.text = result.data.lead_task.toString()
                     binding.achivedCountTxt.text = result.data.achieved.toString()
                     binding.pendingCountTxt.text = result.data.pending.toString()
+
+                    val percentage = if (result.data.lead_task > 0) {
+                        ((result.data.achieved.toFloat() / result.data.lead_task.toFloat()) * 100).toInt()
+                    } else {
+                        0
+                    }
+
+                    val safeProgress = if (percentage == 0) 1 else percentage
+                    animateProgress(binding.targetsProgressBar, safeProgress)
+
+                    binding.targetTxt.text = "Target : ${result.data.lead_task}"
                 }
+
 
                 is UiState.Error -> {
                     binding.progress.hideProgress()
@@ -148,6 +167,17 @@ class MyTaskProgressActivity : AppCompatActivity() {
                     ToastUtils.showErrorCustomToast(this, result.message)
                 }
             }
+        }
+    }
+
+    private fun animateProgress(progressBar: ProgressBar, to: Int) {
+        progressBar.max = 100
+        progressBar.progress = 0
+
+        ObjectAnimator.ofInt(progressBar, "progress", 0, to).apply {
+            duration = 800
+            interpolator = DecelerateInterpolator()
+            start()
         }
     }
 
