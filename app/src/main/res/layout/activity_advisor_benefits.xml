@@ -44,6 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -56,7 +57,7 @@
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/tariffs_rv"
+                        android:id="@+id/benefit_categories_rv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
@@ -68,5 +69,33 @@
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/no_data_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/inter_semibold"
+        android:gravity="center"
+        android:text="No Data Found..!"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/progress"
+        style="@style/AVLoadingIndicatorView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:indicatorColor="@color/green"
+        app:indicatorName="LineSpinFadeLoaderIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

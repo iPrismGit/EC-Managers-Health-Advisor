@@ -121,7 +121,7 @@ interface EcManagersService {
     @POST(Constants.NOTIFICATIONS_ENDPOINT)
     suspend fun fetchNotifications(@Body notificationsApiRequest: NotificationsApiRequest) : NotificationsApiResponse
 
-    @POST(Constants.NOTIFICATIONS_ENDPOINT)
+    @POST(Constants.HEALTH_ADVISOR_BENEFITS_ENDPOINT)
     suspend fun healthAdvisorBenefits(@Body request : HealthAdvisorBenefitsApiRequest) : HealthAdvisorBenefitsApiResponse
 
 }

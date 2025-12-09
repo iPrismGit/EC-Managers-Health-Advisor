@@ -207,8 +207,7 @@ class HomeFragment : Fragment() {
 
     private fun handleSocialMediaLo() {
         binding.socialMediaLo.setOnClickListener { view ->
-            ToastUtils.showErrorCustomToast(requireContext(), "There No Screens in Figma!")
-        }
+            startActivity(Intent(requireContext(), DigitalBrandingsActivity::class.java))        }
     }
 
     private fun handleAdvisorBenefitsLo() {
