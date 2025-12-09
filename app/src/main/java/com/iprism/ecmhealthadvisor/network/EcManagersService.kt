@@ -36,6 +36,8 @@ import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiRequest
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.TieupsApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedBackApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.WhiteBoardFeedbackApiRequest
+import com.iprism.ecmhealthadvisor.modals.notification.NotificationsApiRequest
+import com.iprism.ecmhealthadvisor.modals.notification.NotificationsApiResponse
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRequest
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.modals.rewards.RewardsApiRequest
@@ -113,5 +115,8 @@ interface EcManagersService {
 
     @POST(Constants.REWARDS_ENDPOINT)
     suspend fun fetchRewards(@Body request : RewardsApiRequest) : RewardsApiResponse
+
+    @POST(Constants.NOTIFICATIONS_ENDPOINT)
+    suspend fun fetchNotifications(@Body notificationsApiRequest: NotificationsApiRequest) : NotificationsApiResponse
 
 }

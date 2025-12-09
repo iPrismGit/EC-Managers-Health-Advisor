@@ -56,14 +56,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        user = User(requireContext())
+        userDetails = user.getUserDetails()
         val deviceState = OneSignal.getDeviceState()
         if (deviceState != null) {
             playerId = deviceState.userId ?: ""
             Log.d("OneSignal", "Player ID1: $playerId")
         }
-        OneSignal.sendTags(JSONObject().put("user_type", "health_advisor"))
-        user = User(requireContext())
-        userDetails = user.getUserDetails()
+      //  OneSignal.sendTags(JSONObject().put("user_type", "health_advisor"))
+        val tags = JSONObject()
+        tags.put("user_type", "health_advisor")
+        tags.put("main_data_id", userDetails[User.MAIN_DATA_ID].toString())
+        OneSignal.sendTags(tags)
         Log.d("userDetails", userDetails.toString())
         initViewModel()
         observeHomePageResponse()

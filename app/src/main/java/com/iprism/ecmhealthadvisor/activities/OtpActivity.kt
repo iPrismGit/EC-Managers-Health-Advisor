@@ -47,6 +47,10 @@ class OtpActivity : AppCompatActivity() {
             Log.d("OneSignal", "Player ID1: $playerId")
         }
         OneSignal.sendTags(JSONObject().put("user_type", "health_advisor"))
+        val tags = JSONObject()
+        tags.put("user_type", "health_advisor")
+        tags.put("main_data_id", "1")
+        OneSignal.sendTags(tags)
         otp = intent.getStringExtra("otp").toString()
         mobile = intent.getStringExtra("mobile").toString()
         binding.mobileTxt.text = "+91 " + mobile

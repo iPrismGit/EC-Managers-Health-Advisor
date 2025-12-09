@@ -14,9 +14,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,6 +27,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -35,9 +39,17 @@ import com.iprism.ecmhealthadvisor.adapters.ViewPagerAdapter
 import com.iprism.ecmhealthadvisor.databinding.ActivityMainBinding
 import com.iprism.ecmhealthadvisor.databinding.LogOutDialogBinding
 import com.iprism.ecmhealthadvisor.databinding.MenuBottomSheetBinding
+import com.iprism.ecmhealthadvisor.modals.notification.NotificationsApiRequest
+import com.iprism.ecmhealthadvisor.repositoris.NotificationsRepository
 import com.iprism.ecmhealthadvisor.utils.NetworkUtil
+import com.iprism.ecmhealthadvisor.utils.ToastUtils
+import com.iprism.ecmhealthadvisor.utils.UiState
 import com.iprism.ecmhealthadvisor.utils.User
 import com.iprism.ecmhealthadvisor.utils.showToast
+import com.iprism.ecmhealthadvisor.viewmodels.NotificationsViewModel
+import com.iprism.ecmhealthadvisor.viewmodels.ViewModelFactory
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.Locale
 import kotlin.text.equals
 
@@ -48,6 +60,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var user: User
     private lateinit var userDetails: HashMap<String, String?>
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private var notificationCount = 0
+    private lateinit var notificationsViewModel: NotificationsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +89,69 @@ class MainActivity : AppCompatActivity() {
         handleMenuImg()
         handleAddressTxt()
         askNotificationPermission()
+        initNotificationsViewModel()
+        observeNotificationCountResponse()
+        fetchNotificationCount()
+    }
+
+    private fun initNotificationsViewModel() {
+        val repository = NotificationsRepository()
+        val factory = ViewModelFactory { NotificationsViewModel(repository) }
+        notificationsViewModel = ViewModelProvider(this, factory)[NotificationsViewModel::class.java]
+    }
+
+    private fun updateBadge(count: Int) {
+        notificationCount = count
+
+        val badgeTextView = findViewById<TextView>(R.id.notification_badge)
+
+        if (count > 0) {
+            badgeTextView.text = count.toString()
+            badgeTextView.setBackgroundResource(R.drawable.badge_background)
+            badgeTextView.visibility = View.VISIBLE
+        } else {
+            badgeTextView.visibility = View.GONE
+        }
+    }
+
+    private fun fetchNotificationCount() {
+        lifecycleScope.launch {
+            while (true) {
+                getNotificationCountFromApi()
+                delay(4000)
+            }
+        }
+    }
+
+    private fun getNotificationCountFromApi() {
+        var notificationsApiRequest = NotificationsApiRequest(
+            userDetails[User.AUTH_TOKEN].toString(),
+            1,
+            userDetails[User.ID].toString(),
+            "count",
+            userDetails[User.MAIN_DATA_ID].toString()
+        )
+        notificationsViewModel.fetchNotificationsCount(notificationsApiRequest)
+    }
+
+    private fun observeNotificationCountResponse() {
+        notificationsViewModel.notificationsCountResponse.observe(this) { result ->
+            when (result) {
+                is UiState.Loading -> {
+
+                }
+
+                is UiState.Success -> {
+                    notificationCount = result.data.count
+                    updateBadge(notificationCount)
+                    Log.d("notificationCount", notificationCount.toString())
+                }
+
+                is UiState.Error -> {
+                    ToastUtils.showErrorCustomToast(this, result.message)
+                }
+            }
+        }
     }
 
     private val requestNotificationPermission =
