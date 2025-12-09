@@ -27,5 +27,6 @@ object Constants {
     const val HEALTH_ADVISOR_REFER_ENDPOINT = "health_advisor_refers"
     const val REWARDS_ENDPOINT = "rewards"
     const val NOTIFICATIONS_ENDPOINT = "notifications"
+    const val HEALTH_ADVISOR_BENEFITS_ENDPOINT = "health_advisor_benefit_booking"
 
 }

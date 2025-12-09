@@ -10,6 +10,8 @@ import com.iprism.ecmhealthadvisor.modals.authentication.LoginApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ProfileApiRequest
 import com.iprism.ecmhealthadvisor.modals.authentication.ProfileApiResponse
 import com.iprism.ecmhealthadvisor.modals.authentication.ResendOtpApiRequest
+import com.iprism.ecmhealthadvisor.modals.healthadvisorbenefits.HealthAdvisorBenefitsApiRequest
+import com.iprism.ecmhealthadvisor.modals.healthadvisorbenefits.HealthAdvisorBenefitsApiResponse
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiRequest
 import com.iprism.ecmhealthadvisor.modals.homepagemodels.HomePageApiResponse
 import com.iprism.ecmhealthadvisor.modals.hospitalmodels.ContactUsApiRequest
@@ -118,5 +120,8 @@ interface EcManagersService {
 
     @POST(Constants.NOTIFICATIONS_ENDPOINT)
     suspend fun fetchNotifications(@Body notificationsApiRequest: NotificationsApiRequest) : NotificationsApiResponse
+
+    @POST(Constants.NOTIFICATIONS_ENDPOINT)
+    suspend fun healthAdvisorBenefits(@Body request : HealthAdvisorBenefitsApiRequest) : HealthAdvisorBenefitsApiResponse
 
 }
