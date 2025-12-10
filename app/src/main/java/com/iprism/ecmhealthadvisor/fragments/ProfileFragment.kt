@@ -72,12 +72,21 @@ class ProfileFragment : Fragment() {
                     binding.emailTxt.text = result.data.profile.email
                     binding.genderTxt.text = result.data.profile.gender_name
                     binding.dateOfBirthTxt.text = result.data.profile.dob
-                    binding.bloodGroupTxt.text = result.data.profile.blood_group_name
+                    if (result.data.profile.blood_group_name != null && result.data.profile.blood_group_name.isNotEmpty()) {
+                        binding.bloodGroupLo.visibility = View.VISIBLE
+                        binding.bloodGroupTxt.text = result.data.profile.blood_group_name
+                    } else {
+                        binding.bloodGroupLo.visibility = View.GONE
+                    }
+
                     if (result.data.profile.image.isNotEmpty()) {
                         Glide.with(requireContext())
                             .load(Constants.IMAGES_URL + result.data.profile.image).error(
-                            ContextCompat.getDrawable(requireContext(), R.drawable.customer_image)
-                        ).into(binding.profileIv)
+                                ContextCompat.getDrawable(
+                                    requireContext(),
+                                    R.drawable.customer_image
+                                )
+                            ).into(binding.profileIv)
                     } else {
                         binding.profileIv.setImageDrawable(
                             ContextCompat.getDrawable(

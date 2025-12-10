@@ -576,7 +576,7 @@
                                         android:layout_height="match_parent"
                                         android:adjustViewBounds="true"
                                         android:scaleType="centerCrop"
-                                        android:src="@drawable/events_img" />
+                                        android:src="@drawable/health_media_img" />
 
                                 </com.google.android.material.card.MaterialCardView>
 

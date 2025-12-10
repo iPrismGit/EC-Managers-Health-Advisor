@@ -78,8 +78,10 @@ class AddMemberActivity : AppCompatActivity() {
     private val REQUEST_CAMERA_PERMISSION = 100
     private var profileUri: Uri? = null
     private var launchSomeActivity: ActivityResultLauncher<Intent>? = null
+    private var isInsuranceRgListenerEnabled = true
+    private var isOthersRgListenerEnabled = true
     val paymentTypes = listOf(
-        LeadPaymentType("-1", "", "Select Payment Type"),
+        LeadPaymentType("-1", "", "Select Treatment Status"),
         LeadPaymentType("1", "cash", "Cash"),
         LeadPaymentType("2", "health_insurance", "Health Insurance"),
         LeadPaymentType("3", "others", "Others")
@@ -168,44 +170,27 @@ class AddMemberActivity : AppCompatActivity() {
         }
 
         binding.insuranceCompaniesRg.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.personal_insurance_rb -> {
-                    insuranceType = "personal_insurance"
-                }
+            if (!isInsuranceRgListenerEnabled) return@setOnCheckedChangeListener
 
-                R.id.company_insurance_rb -> {
-                    insuranceType = "company_insurance"
-                }
+            insuranceType = when (checkedId) {
+                R.id.personal_insurance_rb -> "personal_insurance"
+                R.id.company_insurance_rb -> "company_insurance"
+                else -> ""
             }
         }
 
         binding.othersRg.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.state_govt_rb -> {
-                    insuranceType = "state_govt"
-                }
+            if (!isOthersRgListenerEnabled) return@setOnCheckedChangeListener
 
-                R.id.central_govt_rb -> {
-                    insuranceType = "central_govt"
-                }
-
-                R.id.arogyabhadratha_rb -> {
-                    insuranceType = "arogyabhadratha"
-                }
-
-                R.id.arogyasree_rb -> {
-                    insuranceType = "arogyasree"
-                }
-
-                R.id.ayushmanbhava_rb -> {
-                    insuranceType = "ayushmanbhava"
-                }
-
-                R.id.others_rb -> {
-                    insuranceType = "others"
-                }
+            insuranceType = when (checkedId) {
+                R.id.state_govt_rb -> "state_govt"
+                R.id.central_govt_rb -> "central_govt"
+                R.id.arogyabhadratha_rb -> "arogyabhadratha"
+                R.id.arogyasree_rb -> "arogyasree"
+                R.id.ayushmanbhava_rb -> "ayushmanbhava"
+                R.id.others_rb -> "others"
+                else -> ""
             }
-
         }
         observeAddLeadResponse()
     }
@@ -237,20 +222,49 @@ class AddMemberActivity : AppCompatActivity() {
                 ) {
                     paymentTypeId = paymentTypes[position].id.toString()
                     paymentTypeName = paymentTypes[position].name.toString()
-                    if (paymentTypeName.isEmpty() || paymentTypeName.equals("cash", true)) {
-                        binding.insuranceLo.visibility = View.GONE
-                        binding.othersLo.visibility = View.GONE
-                        insuranceType = "cash"
-                    } else if (paymentTypeName.equals("health_insurance", true)) {
-                        binding.insuranceLo.visibility = View.VISIBLE
-                        binding.othersLo.visibility = View.GONE
-                        insuranceType = ""
-                    } else if (paymentTypeName.equals("others", true)) {
-                        binding.insuranceLo.visibility = View.GONE
-                        binding.othersLo.visibility = View.VISIBLE
-                        insuranceType = ""
+
+                    when {
+                        paymentTypeName.equals("cash", true) -> {
+                            binding.insuranceLo.visibility = View.GONE
+                            binding.othersLo.visibility = View.GONE
+                            insuranceType = "cash"
+
+                            // Disable listeners
+                            isInsuranceRgListenerEnabled = false
+                            isOthersRgListenerEnabled = false
+
+                            binding.insuranceCompaniesRg.clearCheck()
+                            binding.othersRg.clearCheck()
+
+                            // Re-enable listeners
+                            isInsuranceRgListenerEnabled = true
+                            isOthersRgListenerEnabled = true
+                        }
+
+                        paymentTypeName.equals("health_insurance", true) -> {
+                            binding.insuranceLo.visibility = View.VISIBLE
+                            binding.othersLo.visibility = View.GONE
+                            insuranceType = ""
+
+                            isOthersRgListenerEnabled = false
+                            binding.othersRg.clearCheck()
+                            isOthersRgListenerEnabled = true
+                        }
+
+                        paymentTypeName.equals("others", true) -> {
+                            binding.insuranceLo.visibility = View.GONE
+                            binding.othersLo.visibility = View.VISIBLE
+                            insuranceType = ""
+
+                            isInsuranceRgListenerEnabled = false
+                            binding.insuranceCompaniesRg.clearCheck()
+                            isInsuranceRgListenerEnabled = true
+                        }
                     }
+
+                    Log.d("PaymentType", "$paymentTypeId, $paymentTypeName, $insuranceType")
                 }
+
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
 
@@ -390,10 +404,8 @@ class AddMemberActivity : AppCompatActivity() {
                 ToastUtils.showErrorCustomToast(this, "Family Members Count should not be Zero..!!")
             } else if (getAddress().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select User Address..!")
-            } else if (getTreatmentStatus().isEmpty()) {
-                ToastUtils.showErrorCustomToast(this, "Please Enter Treatment Status..!")
-            } else if (paymentTypeId.equals("-1", true)) {
-                ToastUtils.showErrorCustomToast(this, "Please Select Payment Type..!")
+            }  else if (paymentTypeId.equals("-1", true)) {
+                ToastUtils.showErrorCustomToast(this, "Please Select Treatment Status..!")
             } else if (paymentTypeId.equals("2", true) && insuranceType.isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select  Insurance Type..!")
             } else if (paymentTypeId.equals("2", true) && getInsuranceCompanyName().isEmpty()) {

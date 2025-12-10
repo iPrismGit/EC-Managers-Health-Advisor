@@ -32,6 +32,8 @@ class BenifitTypesActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBenifitTypesBinding
     private var catId = ""
     private var name = ""
+    private var tag: String = ""
+    private var termName: String = ""
     private lateinit var user: User
     private var selectedIds =""
     private lateinit var userDetails: HashMap<String, String?>
@@ -54,6 +56,7 @@ class BenifitTypesActivity : AppCompatActivity() {
         binding.titleTxt.text = name
         handleBack()
         initViewModel()
+        handleTermsBtn()
         observeHealthAdvisorSubCategoriesResponse()
         handleBookAppointmentBtn()
         observeBookingResponse()
@@ -82,12 +85,23 @@ class BenifitTypesActivity : AppCompatActivity() {
         )
     }
 
+    private fun handleTermsBtn() {
+        binding.termsTxt.setOnClickListener { view ->
+            tag = "terms"
+            termName = "Terms & Conditions"
+            var intent = Intent(this, ContentPagesActivity::class.java)
+            intent.putExtra("tag", tag)
+            intent.putExtra("name", termName)
+            startActivity(intent)
+        }
+    }
+
     private fun handleBookAppointmentBtn() {
         binding.bookAppointmentBtn.setOnClickListener { view ->
             if (selectedIds.isEmpty()){
-                ToastUtils.showErrorCustomToast(this, "Please select at least one benefit..!")
+                ToastUtils.showErrorCustomToast(this, "Please Select at least 1 Benefit..!")
             } else if (!binding.acceptCb.isChecked){
-                ToastUtils.showErrorCustomToast(this, "Please accept terms and conditions..!")
+                ToastUtils.showErrorCustomToast(this, "Please Accept Terms & Conditions..!")
             } else{
                 var request = HealthAdvisorBenefitsApiRequest(userDetails[User.AUTH_TOKEN].toString(),
                     catId, userDetails[User.MAIN_DATA_ID].toString(), selectedIds,

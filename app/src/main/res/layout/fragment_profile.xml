@@ -160,26 +160,36 @@
                     android:background="@drawable/edit_text_bg"
                     android:padding="16dp"/>
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/blood_group_lo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/blood_group"
-                    android:textColor="@color/black"
-                    android:textSize="14dp"
-                    android:fontFamily="@font/lato"
-                    android:layout_marginTop="16dp"/>
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/blood_group_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/lato"
-                    android:textSize="14dp"
-                    android:text="B+"
-                    android:layout_marginTop="6dp"
-                    android:background="@drawable/edit_text_bg"
-                    android:padding="16dp"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/blood_group"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"
+                        android:fontFamily="@font/lato"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:id="@+id/blood_group_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/lato"
+                        android:textSize="14dp"
+                        android:text="B+"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:padding="16dp"/>
+
+                </LinearLayout>
+
+
             </LinearLayout>
         </ScrollView>
 
