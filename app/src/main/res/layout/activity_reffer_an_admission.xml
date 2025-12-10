@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ReferDiagnosticActivity">
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -30,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Refer a Diagnostics"
+            android:text="Refer an Admission"
             android:textColor="@color/black"
             android:textSize="18dp" />
     </LinearLayout>
@@ -100,6 +99,28 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Reason for Admission"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/lato"/>
+
+                <EditText
+                    android:id="@+id/reason_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edit_text_bg"
+                    android:padding="16dp"
+                    android:textSize="14dp"
+                    android:maxLength="500"
+                    android:inputType="textMultiLine"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/lato"
+                    android:textColorHint="@color/gray"
+                    android:hint="@string/enter"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="Contact Number"
                     android:layout_marginTop="6dp"
                     android:textColor="@color/black"
@@ -122,31 +143,45 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Diagnostic Test Name"
+                    android:text="Location"
                     android:layout_marginTop="6dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lato"/>
 
-                <EditText
-                    android:id="@+id/test_name_txt"
+                <LinearLayout
+                    android:id="@+id/address_lo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edit_text_bg"
-                    android:padding="16dp"
-                    android:textSize="14dp"
-                    android:maxLength="500"
-                    android:inputType="textMultiLine"
                     android:layout_marginTop="6dp"
-                    android:fontFamily="@font/lato"
-                    android:textColorHint="@color/gray"
-                    android:hint="@string/enter"/>
+                    android:background="@drawable/edit_text_bg"
+                    android:gravity="center"
+                    android:padding="16dp">
 
+                    <TextView
+                        android:id="@+id/address_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/lato"
+                        android:hint="Select"
+                        android:orientation="horizontal"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14dp" />
 
+                    <ImageView
+                        android:id="@+id/location_fetch_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/current_location_img" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/upload_prescription"
+                    android:text="@string/upload_reports"
                     android:layout_marginTop="6dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/lato"/>

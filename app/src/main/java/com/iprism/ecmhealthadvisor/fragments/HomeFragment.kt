@@ -24,6 +24,7 @@ import com.iprism.ecmhealthadvisor.activities.LoginActivity
 import com.iprism.ecmhealthadvisor.activities.MobileContactMembersActivity
 import com.iprism.ecmhealthadvisor.activities.MyTasksActivity
 import com.iprism.ecmhealthadvisor.activities.ReferDiagnosticActivity
+import com.iprism.ecmhealthadvisor.activities.RefferAnAdmissionActivity
 import com.iprism.ecmhealthadvisor.activities.RewardsActivity
 import com.iprism.ecmhealthadvisor.activities.TeamConnectActivity
 import com.iprism.ecmhealthadvisor.activities.TestimonialVideosActivity
@@ -239,7 +240,7 @@ class HomeFragment : Fragment() {
 
     private fun handleReferAdmissionLo() {
         binding.referAdmissionLo.setOnClickListener { view ->
-            var intent = Intent(requireContext(), ReferDiagnosticActivity::class.java)
+            var intent = Intent(requireContext(), RefferAnAdmissionActivity::class.java)
             intent.putExtra("tag", "Hospital Admission")
             intent.putExtra("type", "hospital_admission")
             startActivity(intent)

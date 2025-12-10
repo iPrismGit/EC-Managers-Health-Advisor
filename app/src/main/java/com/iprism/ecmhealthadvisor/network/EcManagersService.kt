@@ -44,6 +44,9 @@ import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiRe
 import com.iprism.ecmhealthadvisor.modals.referadmissionanddiagnostic.ReferApiResponse
 import com.iprism.ecmhealthadvisor.modals.rewards.RewardsApiRequest
 import com.iprism.ecmhealthadvisor.modals.rewards.RewardsApiResponse
+import com.iprism.ecmhealthadvisor.modals.toprequests.ReferAnAdmissionApiRequest
+import com.iprism.ecmhealthadvisor.modals.toprequests.ReferDiagnosticApiRequest
+import com.iprism.ecmhealthadvisor.modals.toprequests.RequestAndReferApiResponse
 import com.iprism.ecmhealthadvisor.utils.Constants
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -123,5 +126,11 @@ interface EcManagersService {
 
     @POST(Constants.HEALTH_ADVISOR_BENEFITS_ENDPOINT)
     suspend fun healthAdvisorBenefits(@Body request : HealthAdvisorBenefitsApiRequest) : HealthAdvisorBenefitsApiResponse
+
+    @POST(Constants.REFER_ADMISSION_ENDPOINT)
+    suspend fun referAdmission(@Body request : ReferAnAdmissionApiRequest) : RequestAndReferApiResponse
+
+    @POST(Constants.REFER_DIAGNOSTIC_ENDPOINT)
+    suspend fun referDiagnostic(@Body request : ReferDiagnosticApiRequest) : RequestAndReferApiResponse
 
 }

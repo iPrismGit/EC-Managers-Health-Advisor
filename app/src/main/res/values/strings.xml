@@ -8,6 +8,8 @@
     <string name="date_of_birth">Date of Birth<font fgcolor='#FF0000'>*</font></string>
     <string name="blood_group">Blood Group<font fgcolor='#FF0000'>*</font></string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="upload_reports">Upload Reports<font fgcolor='#B4B4B4'>(Optional)</font></string>
+    <string name="upload_prescription">Upload Prescription<font fgcolor='#B4B4B4'>(Optional)</font></string>
     <string name="hospital_admission_description">Quickly refer patients for hospital admission through \nthe app. Connect with trusted hospitals easily and \nensure fast, secure care.</string>
     <string name="ambulance_booking_description">Book an ambulance with ease, anytime you need urgent \nmedical help. Fast response and reliable \nservice at your doorstep.</string>
     <string name="diagnostic_referral_description">Easily refer patients for diagnostic tests through the app.\n Connect with trusted labs for quick, reliable reports and\n hassle-free service.</string>
