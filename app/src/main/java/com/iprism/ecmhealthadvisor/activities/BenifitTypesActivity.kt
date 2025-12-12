@@ -158,6 +158,7 @@ class BenifitTypesActivity : AppCompatActivity() {
             when (result) {
                 is UiState.Loading -> {
                     binding.progress.showProgress()
+                    binding.bookAppointmentBtn.isEnabled =  false
                 }
 
                 is UiState.Success -> {
@@ -168,6 +169,7 @@ class BenifitTypesActivity : AppCompatActivity() {
                 }
 
                 is UiState.Error -> {
+                    binding.bookAppointmentBtn.isEnabled =  true
                     binding.progress.hideProgress()
                     ToastUtils.showErrorCustomToast(this, result.message)
                     binding.benefitsRv.visibility = View.GONE
