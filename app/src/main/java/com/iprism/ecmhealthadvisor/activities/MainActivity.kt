@@ -41,6 +41,7 @@ import com.iprism.ecmhealthadvisor.databinding.LogOutDialogBinding
 import com.iprism.ecmhealthadvisor.databinding.MenuBottomSheetBinding
 import com.iprism.ecmhealthadvisor.modals.notification.NotificationsApiRequest
 import com.iprism.ecmhealthadvisor.repositoris.NotificationsRepository
+import com.iprism.ecmhealthadvisor.utils.InAppUpdate
 import com.iprism.ecmhealthadvisor.utils.NetworkUtil
 import com.iprism.ecmhealthadvisor.utils.ToastUtils
 import com.iprism.ecmhealthadvisor.utils.UiState
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        InAppUpdate.initUpdate(this)
 //        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
 //            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
 //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -92,6 +94,16 @@ class MainActivity : AppCompatActivity() {
         initNotificationsViewModel()
         observeNotificationCountResponse()
         fetchNotificationCount()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        InAppUpdate.initResult(this, requestCode, resultCode)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        InAppUpdate.initResume(this)
     }
 
     private fun initNotificationsViewModel() {

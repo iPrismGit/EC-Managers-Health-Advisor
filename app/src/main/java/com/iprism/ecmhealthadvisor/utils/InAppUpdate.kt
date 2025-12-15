@@ -40,7 +40,7 @@ object InAppUpdate {
             try {
                 val appStoreIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("market://details?id=com.iprism.ecmuser")
+                    Uri.parse("market://details?id=com.iprism.ecmhealthadvisor")
                 ).apply {
                     setPackage("com.android.vending")
                 }
@@ -48,7 +48,7 @@ object InAppUpdate {
             } catch (exception: ActivityNotFoundException) {
                 val playStoreIntent = Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://play.google.com/store/apps/details?id=com.iprism.ecmuser")
+                    Uri.parse("https://play.google.com/store/apps/details?id=com.iprism.ecmhealthadvisor")
                 )
                 activity.startActivity(playStoreIntent)
             }
