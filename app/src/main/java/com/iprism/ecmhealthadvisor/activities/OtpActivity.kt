@@ -124,7 +124,7 @@ class OtpActivity : AppCompatActivity() {
                     } else {
                         resendOtp = result.data.otp.toString()
                     }
-                    ToastUtils.showSuccessCustomToast(this, resendOtp)
+                   // ToastUtils.showSuccessCustomToast(this, resendOtp)
                     setCurrentOtp(resendOtp)
                     binding.resendBtn.isEnabled = true
                 }

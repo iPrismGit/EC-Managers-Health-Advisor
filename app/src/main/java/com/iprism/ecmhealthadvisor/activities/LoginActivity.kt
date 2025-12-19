@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         otp = result.data.otp.toString()
                     }
-                    ToastUtils.showSuccessCustomToast(this, otp)
+                 //   ToastUtils.showSuccessCustomToast(this, otp)
                     val intent = Intent(this@LoginActivity, OtpActivity::class.java)
                     intent.putExtra("otp", otp)
                     intent.putExtra("mobile", getMobile())

@@ -2,8 +2,8 @@ package com.iprism.ecmhealthadvisor.utils
 
 object Constants {
 
-    const val BASE_URL = "https://iprismsolutions.com/ecmanagers/health_advisor/ws/"
-    const val IMAGES_URL = "https://iprismsolutions.com/ecmanagers/"
+    const val BASE_URL = "https://caremanagers.in/ecmanagers/health_advisor/ws/"
+    const val IMAGES_URL = "https://caremanagers.in/ecmanagers/"
     const val LOGIN_ENDPOINT = "login"
     const val RESEND_OTP_ENDPOINT = "resend_otp"
     const val HOME_PAGE_ENDPOINT = "home_page"
