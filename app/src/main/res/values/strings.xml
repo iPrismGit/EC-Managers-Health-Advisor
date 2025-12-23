@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ECMHealthAdvisor</string>
+    <string name="app_name">ECM Health Advisor</string>
     <string name="terms_and_conditions"><![CDATA[Terms & Conditions]]></string>
     <string name="cast_and_community"><![CDATA[Caste & Community]]></string>
     <string name="name">Name<font fgcolor='#FF0000'>*</font></string>

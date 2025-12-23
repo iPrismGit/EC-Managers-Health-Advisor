@@ -20,6 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ECMHealthAdvisor"
+rootProject.name = "ECM Health Advisor"
 include(":app")
  
