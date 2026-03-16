@@ -48,15 +48,38 @@
             android:layout_margin="12dp"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/lato_black"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="Confirm Your Location"
-                android:textColor="@color/green"
-                android:textSize="18dp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_black"
+                    android:padding="4dp"
+                    android:layout_weight="1"
+                    android:text="Confirm Your Location"
+                    android:textColor="@color/green"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/change_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="@color/green"
+                    android:fontFamily="@font/inter"
+                    android:padding="12dp"
+                    android:text="Change Location"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:cornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -145,7 +168,7 @@ Hyderabad, Rai Durg, telangana 500032,India" />
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:indicatorColor="@color/blue"
+        app:indicatorColor="@color/green"
         app:indicatorName="LineSpinFadeLoaderIndicator"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

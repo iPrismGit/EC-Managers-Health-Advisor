@@ -10,6 +10,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.provider.MediaStore
 import android.util.Base64
 import android.util.Log
@@ -76,10 +77,12 @@ class AddMemberActivity : AppCompatActivity() {
     private lateinit var userDetails: HashMap<String, String?>
     private val REQUEST_IMAGE_CAPTURE = 1
     private val REQUEST_CAMERA_PERMISSION = 100
+    private val REQUEST_CONTACT_PERMISSION = 200
     private var profileUri: Uri? = null
     private var launchSomeActivity: ActivityResultLauncher<Intent>? = null
     private var isInsuranceRgListenerEnabled = true
     private var isOthersRgListenerEnabled = true
+    private lateinit var contactPickerLauncher: ActivityResultLauncher<Intent>
     val paymentTypes = listOf(
         LeadPaymentType("-1", "", "Select Treatment Status"),
         LeadPaymentType("1", "cash", "Cash"),
@@ -108,6 +111,8 @@ class AddMemberActivity : AppCompatActivity() {
             .circleCrop()
             .into(binding.profileIv)
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -142,6 +147,13 @@ class AddMemberActivity : AppCompatActivity() {
 
         binding.profileIv.borderColor = ContextCompat.getColor(this, R.color.green)
         binding.profileIv.borderWidth = 4
+        if (type.equals("leads", true)){
+            binding.contactNumberIv.visibility = View.VISIBLE
+            binding.contactNameIv.visibility = View.VISIBLE
+        } else{
+            binding.contactNumberIv.visibility = View.GONE
+            binding.contactNameIv.visibility = View.GONE
+        }
         createLaunchSomeActivity()
         initViewModel()
         setupActivityResultLaunchers()
@@ -152,6 +164,8 @@ class AddMemberActivity : AppCompatActivity() {
         handleDobLo()
         setupPaymentTypesAdapter(paymentTypes)
         observeUserDropdownsResponse()
+        handleContactNumberIv()
+        handleContactNameIv()
         leadsViewModel.fetchUserDropDowns()
         binding.professionRg.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
@@ -192,7 +206,101 @@ class AddMemberActivity : AppCompatActivity() {
                 else -> ""
             }
         }
+        contactPickerLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+
+                if (result.resultCode == RESULT_OK && result.data != null) {
+
+                    val contactUri: Uri? = result.data!!.data
+
+                    val projection = arrayOf(
+                        android.provider.ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+                        android.provider.ContactsContract.CommonDataKinds.Phone.NUMBER
+                    )
+
+                    val cursor = contentResolver.query(contactUri!!, projection, null, null, null)
+
+                    cursor?.use {
+
+                        if (it.moveToFirst()) {
+
+                            val nameIndex = it.getColumnIndex(
+                                android.provider.ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
+                            )
+
+                            val numberIndex = it.getColumnIndex(
+                                android.provider.ContactsContract.CommonDataKinds.Phone.NUMBER
+                            )
+
+                            val contactName = it.getString(nameIndex)
+                            val phoneNumber = it.getString(numberIndex)
+
+                            binding.nameTxt.setText(contactName)
+
+                            binding.contactNumberTxt.setText(
+                                phoneNumber.replace("\\s".toRegex(), "")
+                            )
+                        }
+                    }
+                }
+            }
         observeAddLeadResponse()
+    }
+
+    private fun handleContactNumberIv() {
+        binding.contactNumberIv.setOnClickListener {
+
+            if (type.equals("leads", true)) {
+
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.READ_CONTACTS
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type =
+                        android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+                    contactPickerLauncher.launch(intent)
+
+                } else {
+
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.READ_CONTACTS),
+                        REQUEST_CONTACT_PERMISSION
+                    )
+                }
+            }
+        }
+    }
+
+    private fun handleContactNameIv() {
+        binding.contactNameIv.setOnClickListener {
+
+            if (type.equals("leads", true)) {
+
+                if (ContextCompat.checkSelfPermission(
+                        this,
+                        Manifest.permission.READ_CONTACTS
+                    ) == PackageManager.PERMISSION_GRANTED
+                ) {
+
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type =
+                        android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+                    contactPickerLauncher.launch(intent)
+
+                } else {
+
+                    ActivityCompat.requestPermissions(
+                        this,
+                        arrayOf(Manifest.permission.READ_CONTACTS),
+                        REQUEST_CONTACT_PERMISSION
+                    )
+                }
+            }
+        }
     }
 
     private fun handleDobLo() {
@@ -426,7 +534,7 @@ class AddMemberActivity : AppCompatActivity() {
             } else if (paymentTypeId.equals("3", true) && insuranceType.isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Select  Others Type!")
             } else {
-                var addLeadApiRequest = AddLeadApiRequest(
+                val addLeadApiRequest = AddLeadApiRequest(
                     getAddress(),
                     userDetails[User.AUTH_TOKEN].toString(),
                     getDob(),
@@ -685,18 +793,27 @@ class AddMemberActivity : AppCompatActivity() {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
         when (requestCode) {
+
             REQUEST_CAMERA_PERMISSION -> {
-                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     launchCameraIntent()
                 } else {
                     showToast("Permission Denied")
                 }
-                return
             }
 
-            else -> {
+            REQUEST_CONTACT_PERMISSION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = android.provider.ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
+                    contactPickerLauncher.launch(intent)
+
+                } else {
+                    ToastUtils.showErrorCustomToast(this, "Contacts permission required")
+                }
             }
         }
     }

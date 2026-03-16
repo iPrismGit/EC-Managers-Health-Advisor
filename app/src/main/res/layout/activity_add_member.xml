@@ -171,19 +171,35 @@
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <EditText
-                    android:id="@+id/name_txt"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/edit_text_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="Enter Name"
-                    android:inputType="textPersonName"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
-                    android:textSize="14dp" />
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/name_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/lato"
+                        android:hint="Enter Name"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14dp" />
+
+                    <ImageView
+                        android:id="@+id/contact_name_iv"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/contacts"
+                        app:tint="@color/light_gray1" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -194,20 +210,36 @@
                     android:textColor="@color/black"
                     android:textSize="14dp" />
 
-                <EditText
-                    android:id="@+id/contact_number_txt"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
                     android:background="@drawable/edit_text_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="Enter Mobile Number"
-                    android:inputType="number"
-                    android:maxLength="10"
-                    android:padding="16dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/gray"
-                    android:textSize="14dp" />
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <EditText
+                        android:id="@+id/contact_number_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/lato"
+                        android:hint="Enter Mobile Number"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="14dp" />
+
+                    <ImageView
+                        android:id="@+id/contact_number_iv"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/contacts"
+                        app:tint="@color/light_gray1" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -459,9 +491,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"

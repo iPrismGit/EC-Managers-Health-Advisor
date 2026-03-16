@@ -184,6 +184,23 @@ public class LocationActivity extends FragmentActivity implements OnMapReadyCall
 
         handleBackImg();
         handleConfirmBtn();
+        handleChangeLocationBtn();
+    }
+
+    private void handleChangeLocationBtn() {
+        binding.changeBtn.setOnClickListener(v -> {
+            try {
+                if (!Places.isInitialized()) {
+                    Places.initialize(getApplicationContext(), apikey);
+                }
+                List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+                Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).setCountry("IN").build(LocationActivity.this);
+                //  startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
+                launchSomeActivity.launch(intent);
+            } catch (Exception e) {
+
+            }
+        });
     }
 
     private void handleBackImg() {
