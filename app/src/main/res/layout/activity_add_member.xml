@@ -640,6 +640,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/lato"
+                        android:text="Insurance Coverage Amount (in Lacks)"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/insurance_coverage_amount_txt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:background="@drawable/edit_text_bg"
+                        android:fontFamily="@font/lato"
+                        android:hint="Enter"
+                        android:maxLength="3"
+                        android:inputType="number"
+                        android:padding="16dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/lato"
                         android:text="No. of Persons Covered"
                         android:textColor="@color/black"
                         android:textSize="14dp" />

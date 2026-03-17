@@ -520,6 +520,10 @@ class AddMemberActivity : AppCompatActivity() {
                 ToastUtils.showErrorCustomToast(this, "Please Enter Insurance Company Name..!")
             } else if (paymentTypeId.equals("2", true) && getTpaName().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter TPA Name..!")
+            } else if (paymentTypeId.equals("2", true) && getInsuranceCoverageAmount().isEmpty()) {
+                ToastUtils.showErrorCustomToast(this, "Please Enter Insurance Coverage Amount..!!")
+            } else if (paymentTypeId.equals("2", true) && getInsuranceCoverageAmount().matches(Regex("0+"))) {
+                ToastUtils.showErrorCustomToast(this, "Insurance Coverage Amount Should not be Zero..!")
             } else if (paymentTypeId.equals("2", true) && getNoOfPersonsCovered().isEmpty()) {
                 ToastUtils.showErrorCustomToast(this, "Please Enter No. of Persons Covered..!")
             } else if (paymentTypeId.equals(
@@ -556,7 +560,8 @@ class AddMemberActivity : AppCompatActivity() {
                     getFamilyMembers(),
                     getTpaName(),
                     getTreatmentStatus(),
-                    userDetails[User.ID].toString()
+                    userDetails[User.ID].toString(),
+                    getInsuranceCoverageAmount()
                 )
                 leadsViewModel.addLead(addLeadApiRequest)
                 Log.d("AddLeadRequest", addLeadApiRequest.toString())
@@ -639,6 +644,10 @@ class AddMemberActivity : AppCompatActivity() {
 
     private fun getTpaName(): String {
         return binding.tpaNameTxt.text.toString().trim()
+    }
+
+    private fun getInsuranceCoverageAmount(): String {
+        return binding.insuranceCoverageAmountTxt.text.toString().trim()
     }
 
     private fun getNoOfPersonsCovered(): String {

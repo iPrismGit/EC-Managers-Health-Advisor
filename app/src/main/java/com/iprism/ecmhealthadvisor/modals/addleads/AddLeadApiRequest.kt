@@ -23,6 +23,7 @@ data class AddLeadApiRequest(
     val total_family_members: String,
     val tpa_name: String,
     val treatment_status: String,
-    val user_id: String
+    val user_id: String,
+    val insurance_coverage_amount : String
 
 )
